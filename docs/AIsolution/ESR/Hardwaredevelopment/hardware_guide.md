@@ -40,9 +40,9 @@
 
 | 麦克风数量 | 回声消除需求 | 推荐方案 |
 | -- | -- |   -- |
-| 1 | Y | [CSK4002+ES7243E+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK300X%2BES7243_C11-1.rar)<br/>[CSK4002+ES7202+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK300X%2BES7202%E7%A6%BB%E7%BA%BF%E6%A8%A1%E5%9D%97-%E6%A0%87%E6%A1%88%E5%8F%82%E8%80%83%E8%AE%BE%E8%AE%A1C11-1.rar)|
-| 2 | Y | [CSK4002+ES7210+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7210_C11-1.rar) |
-| 2 | N |  [CSK4002+ES7243E+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK300X%2BES7243_C11-1.rar)<br/>[CSK4002+ES7202+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK300X%2BES7202%E7%A6%BB%E7%BA%BF%E6%A8%A1%E5%9D%97-%E6%A0%87%E6%A1%88%E5%8F%82%E8%80%83%E8%AE%BE%E8%AE%A1C11-1.rar) |
+| 1 | Y | [CSK4002+ES7243E+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7243_C12-24.rar)<br/>[CSK4002+ES7202+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7202_C12-24.rar)|
+| 2 | Y | [CSK4002+ES7210+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7210_C12-24.rar) |
+| 2 | N |  [CSK4002+ES7243E+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7243_C12-24.rar)<br/>[CSK4002+ES7202+功放](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/CSK4002%2BES7202_C12-24.rar) |
 
 
 
