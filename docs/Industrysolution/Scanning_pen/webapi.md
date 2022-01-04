@@ -1157,7 +1157,7 @@ Authorization: Bearer {token}
 | details_synonyms               | String    | 近义词                   |
 | details_antonyms               | String    | 反义词                   |
 
-#### 中文成语返回示例
+### 中文成语返回示例
 
 ```json
 {
