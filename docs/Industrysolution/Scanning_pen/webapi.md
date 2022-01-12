@@ -411,8 +411,6 @@ sidebar_position: 4
 
 
 
-
-
 ## 语音翻译
 
 流程图
@@ -1362,6 +1360,11 @@ Authorization: Bearer {token}
 | details_picture                    | String    | 单词主题图片                          |
 
 ## 口语练习
+
+:::info
+该功能需要提前联系商务开通。
+
+:::
 
 ### 获取难度列表
 
