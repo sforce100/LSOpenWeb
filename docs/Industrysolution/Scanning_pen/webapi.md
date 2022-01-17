@@ -1389,12 +1389,12 @@ Authorization: Bearer {token}
         {
             "level_id": "1",
             "title": "初级",
-            "types": ["translate"]
+            "types": ["answer"]
         },
         {
             "level_id": "2",
             "title": "中级",
-            "types": ["translate"]
+            "types": ["answer"]
         },
         {
             "level_id": "3",
@@ -1409,7 +1409,7 @@ Authorization: Bearer {token}
 | :------- | :-------- | :---------------------------- |
 | level_id | String    | 难度ID                        |
 | title    | String    | 英文单词类型固定为【en_word】 |
-| types    | String    | 可选题型translate(翻译), answer(问答) |
+| types    | String    | 可选题型translate(翻译), answer(问答)，其中level1和leve2只有answer。 |
 
 ### 获取随机题目
 
@@ -1430,7 +1430,7 @@ Authorization: Bearer {token}
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
 | level_id | String | 难度ID | 是   |
-| type | String | 可选题型translate(翻译)、answer(问答) | choice |
+| type | String | 可选题型translate(翻译)、answer(问答) | 是 |
 
 #### 返回示例
 
@@ -1506,6 +1506,178 @@ Authorization: Bearer {token}
 | content     | String | 参考回答                    |
 | beg_pos     | String | 朗读开始时间                |
 | end_pos     | String | 朗读结束时间                |
+
+## 英语作文批改
+
+:::info
+
+该功能需要提前联系商务开通。
+
+:::
+
+**请求headers**
+
+```
+Authorization: Bearer {token}
+Content-Type: application/json
+```
+
+token为设备token
+
+### 接口地址
+
+```
+POST https://api.iflyos.cn/external/ocr_tool/correcting/correct
+```
+
+### 请求参数
+
+| 参数     | 类型   | 说明   | 必填 |
+| :------- | :----- | :----- | :--- |
+| text | String | 批改文本 | 是 |
+| record_id | Integer | 要覆盖的记录id，会覆盖对应id的批改记录，不传时创建新的批改记录 | 否 |
+
+### 返回示例
+
+```json
+{
+    "category": "chapter_learn",
+    "disDimResult": {
+        "adva_word_num": 0,
+        "ccNum": "0",
+        "paraNum": "1",
+        "sentAveLen": "1.000000",
+        "wordAveDiff": "0.000000",
+        "wordAveLen": "5.000000",
+        "wordRichness": "1.000000"
+    },
+    "displayResultList": [
+        {
+            "lineName": "0",
+            "lineResult": [],
+            "lineStr": "22222",
+            "modify_sent": "",
+            "paraType": "1",
+            "startCharPos": "9"
+        }
+    ],
+    "engine_version": "3.5.0.1041",
+    "personalizedComments": "本文词汇量较少;词汇量稍显不足;下次写作希望能够丰富词汇量;加强多种句式结构的学习;增加对高级词汇的运用;",
+    "remarkResultList": [
+        {
+            "comments": "用词水平较高,词汇丰富,缺少高级词汇",
+            "type": "wordFea",
+            "value": 8.333333333333334
+        },
+        {
+            "comments": "句子比较单调,句式较简单",
+            "type": "sentFea",
+            "value": 1.25
+        },
+        {
+            "comments": "全篇脉络不够清晰,没有什么语法错误",
+            "type": "paperFea",
+            "value": 7.5
+        },
+        {
+            "comments": "基本符合题意",
+            "type": "contentFea",
+            "value": 5
+        }
+    ],
+    "rule_version": ""
+}
+```
+
+### 获取当前设备批改记录
+
+#### 接口地址
+
+```
+GET https://api.iflyos.cn/external/ocr_tool/correcting/correct_records
+```
+
+#### 请求headers
+
+```
+Authorization: Bearer {token}
+```
+
+#### 请求参数
+
+| 参数     | 类型   | 说明   | 必填 |
+| :------- | :----- | :----- | :--- |
+| page | String | 页数，默认1 | 否 |
+| size | String | 每页记录数，默认10 | 否 |
+
+#### 返回示例
+
+```json
+{
+    "total": 1,
+    "correct_records": [
+        {
+            "content": "测试课文批改22222",
+            "id": 3,
+            "inserted_at": "2021-11-30T07:31:50Z",
+            "result": {
+                "category": "chapter_learn",
+                "disDimResult": {
+                    "adva_word_num": 0,
+                    "ccNum": "0",
+                    "paraNum": "1",
+                    "sentAveLen": "1.000000",
+                    "wordAveDiff": "0.000000",
+                    "wordAveLen": "5.000000",
+                    "wordRichness": "1.000000"
+                },
+                "displayResultList": [
+                    {
+                        "lineName": "0",
+                        "lineResult": [],
+                        "lineStr": "22222",
+                        "modify_sent": "",
+                        "paraType": "1",
+                        "startCharPos": "9"
+                    }
+                ],
+                "engine_version": "3.5.0.1041",
+                "personalizedComments": "本文词汇量较少;词汇量稍显不足;下次写作希望能够丰富词汇量;加强多种句式结构的学习;增加对高级词汇的运用;",
+                "remarkResultList": [
+                    {
+                        "comments": "用词水平较高,词汇丰富,缺少高级词汇",
+                        "type": "wordFea",
+                        "value": 8.333333333333334
+                    },
+                    {
+                        "comments": "句子比较单调,句式较简单",
+                        "type": "sentFea",
+                        "value": 1.25
+                    },
+                    {
+                        "comments": "全篇脉络不够清晰,没有什么语法错误",
+                        "type": "paperFea",
+                        "value": 7.5
+                    },
+                    {
+                        "comments": "基本符合题意",
+                        "type": "contentFea",
+                        "value": 5
+                    }
+                ],
+                "rule_version": ""
+            }
+        }
+    ]
+}
+```
+
+| 参数      | 类型   | 说明               |
+| :-------- | :----- | :----------------- |
+| content   | String | 批改原文           |
+| inserted_at | String | 批改记录时间       |
+| result      | String | 批改结果 |
+
 
 ## 语速设置
 
