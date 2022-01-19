@@ -1409,7 +1409,7 @@ Authorization: Bearer {token}
 | :------- | :-------- | :---------------------------- |
 | level_id | String    | 难度ID                        |
 | title    | String    | 英文单词类型固定为【en_word】 |
-| types    | String    | 可选题型translate(翻译), answer(问答)，其中level1和leve2只有answer。 |
+| types    | String    | 题型默认为answer(问答) |
 
 ### 获取随机题目
 
@@ -1430,7 +1430,7 @@ Authorization: Bearer {token}
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
 | level_id | String | 难度ID | 是   |
-| type | String | 可选题型translate(翻译)、answer(问答) | 是 |
+| type | String | 题型默认为answer(问答) | 是 |
 
 #### 返回示例
 
@@ -1457,7 +1457,7 @@ Authorization: Bearer {token}
 | :-------- | :----- | :----------------- |
 | answers   | String | 题目答案           |
 | audio_url | String | 题目音频url        |
-| text      | String | 问题文本，可能为空 |
+| text      | String | 当前无作用 |
 | type | String | 题型 |
 
 ### 请求协议（新增）
@@ -1469,7 +1469,7 @@ Authorization: Bearer {token}
 | 参数              | 类型   | 说明                                          | 必填 |
 | :---------------- | :----- | :-------------------------------------------- | :--- |
 | evaluate.category | String | 评测题型，取值见下表。                        | 是   |
-| evaluate.text     | String | 评测题目文本，写法样例[请点击](#试题text格式) | 是   |
+| evaluate.text     | String | 评测题目文本，写法样例请参考[试题text格式](https://doc.iflyos.cn/device/upgrades/evaluate.html#/试题text格式) | 是   |
 
 `evaluate.category` 取值
 
