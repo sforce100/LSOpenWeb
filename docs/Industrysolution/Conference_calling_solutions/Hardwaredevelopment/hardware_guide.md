@@ -22,7 +22,7 @@
 
 | 文件                           | 更新时间   | 操作     |
 | ------------------------------ | ---------- | -------- |
-| 《BT_CSK_Meeting_MB_SCH_V0.9》 | 2021.12.24 | [下载]() |
+| 《BT_CSK_Meeting_MB_SCH_V0.9》 | 2021.12.24 | [下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E9%80%9A%E8%AF%9D%E9%99%8D%E5%99%AA/%E8%93%9D%E7%89%99%E6%96%B9%E6%A1%88%E5%8F%8C%E9%BA%A6%E7%A1%AC%E4%BB%B6%E5%8F%82%E8%80%83%E8%AE%BE%E8%AE%A1.zip) |
 
 
 
