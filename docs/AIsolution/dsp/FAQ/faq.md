@@ -1,279 +1,196 @@
 
 # 常见问题
 
-## 基础功能开发
+## 离在线语音交互
 
-### Lisa项目master源码在哪里？
-项目根目录\node_modules\@source\csk4002\source
+### 如何接入讯飞云端语音识别、语音合成等能力？
 
-### 修改4002源码编译后如何放到Lisa项目中打包？
-1. 需要将4002 source文件拷贝到其他目录下，修改后双击build.bat脚本进行编译，编译生成master.bin，路径：\out\target\master.bin
-2. 将编译生成的master.bin替换Lisa项目根目录下的target\building\master.bin文件
-3. 在LStudio终端使用Lisa task build:package进行lpk打包
-4. 使用Lisa flash 进行烧录
+讯飞云端语音识别、语音合成等能力可通过 SDK、硬件接入、WebSocket API 协议等方式接入。您可按以下文档链接先行开发试用，如需购买更多接口调用次数，请联系讯飞商务购买。
 
-### Lisa flash命令无法烧录，如何解决？
-1.首先确认castor的设备是否能够被电脑正常识别
+[语音听写（流式版）WebAPI 文档 | 讯飞开放平台文档中心 (xfyun.cn)](https://www.xfyun.cn/doc/asr/voicedictation/API.html)
 
-![](./files/lisaflash.png)
+### 云端语音识别效果不符合预期，怎么办？
 
-2.若设备驱动正常识别仍无法使用Lisa flash进行烧录，请提取报错信息通过工单系统反馈给聆思。
+识别效果偏低有如下可能的原因：
 
-### IO口需要设置为上拉输入需要怎样设置？
-1.IO状态：
+- 录音质量差，如有明显底噪、失真严重，此时请拉取本地录音进行分析，排除MIC、本地算法、硬件底噪等问题
+- 本地集成了VAD时，送上云端的音频是截断音频。此时请排查本地VAD模块参数配置是否合理，或优化本地VAD
+- 本地未集成VAD模块，音频被云端VAD截断。请排查测试集音频是否常有停顿，且停顿超过EOS配置的秒数；如认为停顿时间正常，建议将EOS配置时间加长到400ms以上，但不建议无限制加长，EOS配置过长会影响交互响应时间
+- 如您所在的专业领域词汇的识别率稍低，可针对您的应用（产品）中出现的专有词汇，通过上传热词的方式来提高识别率。例如“燕京啤酒”在通用领域可能会被识别成“眼睛啤酒”，但是当您上传了热词后，识别成功率会大概率提升。热词可以直接在我的应用中进行上传配置，生效时间是10~60分钟
+- 其他原因请联系FAE分析
+
+### 云端语义理解未能成功返回结果？
+
+首先请检查目标技能是否已勾选并保存、发布上线。如有，请查看云端是否返回错误码，并根据以下错误码链接排查请求错误：
+
+[错误码查询 - 讯飞开放平台 (xfyun.cn)](https://www.xfyun.cn/document/error-code)
+
+如请求正常，请读取应答码"rc"，该应答码用于标识用户请求响应的状态，如rc=3表示业务操作失败，没搜索到结果或信源异常，此时请求信源有问题，URL的访问出现异常，可能包括网络访问问题、播放格式支持问题、https证书过期等。如rc=4，表示文本没有匹配的技能场景，技能不理解或不能处理该文本，可将文本加入自定义问答列表、自行开发相关技能，或联系聆思FAE解决。
+### CSK+872中，如何制作CSK4002固件？
+
+**步骤1.用lstudio生成工程**
+
+【芯片型号及方案】选择 4002；
+【基础固件版本】选择4.2.0（直接选线上最新的版本即可）；
+【板型模板】选择lskits-csk4002,其他如下：
+
+![image-20220216104511488](.\files\onffline_tone_build.png)
+
+
+
+**步骤2.项目创建成功后，找到 `application.lini` 配置文件，固件的协议模式，修改为“通用双工协议”，如下：**
+
+![image-20220216105905371](.\files\onffline_tone_proto.png)
+
+**步骤3.I2S输出设置，其中选择通道如下:**
+
+![image-20220216110133818](.\files\onffline_tone_audio.png)
+
+**步骤4.UART设置，和上位机的通讯设置：**
+
+   打开`application.lini` 配置文件，删掉默认的TXD2,RXD2,再选择4，5 pin作TXD2，RXD2
+
+![image-20220216113301928](.\files\onffline_tone_hardware1.png)
+
+
+
+![image-20220216113510600](.\files\onffline_tone_hardware2.png)
+
+选择后如下:
+
+![image-20220216113735746](.\files\onffline_tone_hardware3.png)
+
+**步骤5.交互配置**
+
+进入交互配置`interact.lini` 配置文件,加入唤醒词：
+
+![image-20220216114036050](.\files\onffline_tone_wakeup.png)
+
+**步骤6.编译及烧录**
+
+使用如下命令重新打包生成固件：
+
 ```
-// GPIO direction
-#define NDS_GPIO_DIR_INPUT             0x0
-#define NDS_GPIO_DIR_OUTPUT            0x1
+lisa build
 ```
-2.代码中的示例：
+
+使用如下命令烧录固件到对应的硬件设备中：
+
 ```
-void
-factory_check_enter_init(void)
+lisa flash
+```
+
+### CSK+872中，离线命令词在872上如何作对应提示语音？
+
+1.用lstudio生成工程
+
+​    见链接
+
+2.交互配置
+
+进入交互配置`interact.lini` 配置文件,加入唤醒词及命令词：
+
+![image-20220217112622895](.\files\onffline_tone.png)
+
+3.修改提示音
+
+在xr872加入提示音见SDK文档tools\tone_tool\提示音打包说明文档.md：
+
+4.修改xr872代码
+
+修改`evs_client.c` 中代码：
+
+```
+static int
+_runnable_offline_wakeup(void *user_data)
 {
-		int pin = 0;
-		int mux = 0;
-
-		// factory check enter pin initailize
-		pin = factory_config.check_enter.pin;
-		factory_set_pin_as_gpio(pin);
-
-		// set direction in
-		mux = io_mux_table[pin].mux;
-		if (mux &lt; 2) {
-			driver_gpio_table[mux]-&gt;SetDir(1 &lt;&lt; io_mux_table[pin].num, NDS_GPIO_DIR_INPUT);
-			driver_gpio_table[mux]-&gt;Control(
-NDS_GPIO_MODE_PULL_NONE, 1 &lt;&lt; io_mux_table[pin].num);  // pull none
-		} else {
-			CLOGE("PIN(%d) INIT ERROR", pin);
-		}
-}
-```
-
-## 驱动开发
-### 源码中GPIO控制，PWM输出，TIMER控制，IIC通信，IIS通信等使用示例？
-详见：硬件抽象层开发指南。
-[CSK4002硬件抽象层开发指南 V1.5.pdf](https://open.listenai.com/resource/open/doc_resource%2F%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%2FCSK4002%E7%A1%AC%E4%BB%B6%E6%8A%BD%E8%B1%A1%E5%B1%82%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97%20V1.5.pdf)
-
-### 如何对支持以外的ADC进行配置？
-**I2S音频输出格式（以4002为例）：**
-
-- csk：master
-- 上位机：slave
-- mclk：4.096MHz
-- bclk：2MHz(2.048MHz)
-- lrclk：16KHz
-- LRCLK左右声道各2个音频通道，每个通道位深32bit，通道12为mic原始音频，高24位有效，通道34为降噪后音频数据，高16位有效。
-
-![](./files/i2s_1.png)
-
-### 如何开发红外发送功能？
-CSK4002已支持红外码单工发送功能，在LStudio设置对应的工作模式，配置命令词对应的红外码以及PWM频率、占空比即可。
-另外暂无现成红外接收开发代码支持。
-
-### 如何在app_main里实现自定义协议的串口交互？
-
-使用lskit 4002串口功能实践，配置通信串口，当说 打开空调发送“AA0000FF”，关闭空调“AA0001FF”，并在接到命令后分别回复“AA0F80FF”，解析后播放“风扇打开串口功能测试”，“AA0F81FF”解析后播放“风扇关闭串口功能测试”。回复命令通过串口工具模拟就可以。
-
-**1.添加输出指令** 
-![](./files/uart_1.png)
-
-**2.app_main.c逻辑实现**
-``` 
-static void
-uart_task_proc(void *arg)
-{
-    uint8_t data[MAX_CUSTOM_UART_BUF_CNT];
-    uint16_t size = 0;
-    uint16_t to_recv = 0;
-
-    while (true) {
-        // 从 UART 读取数据
-        // size = csk_uart_recv(&amp;data, sizeof(data), portMAX_DELAY);
-        // 3 串口通信处理
-        bool iscur = custom_uart_recv_proc(&amp;data[0], to_recv);
-        if (!iscur) {
-            CLOGD("[APP]ESR uart_task_proc recvice fail.");
-        }
-        // 将数据交给 ScriptEngine 处理
-        // csk_script_handle_uart(data, size);
-    }
-
-    vTaskDelete(NULL);
-}
-
-
-/** 3
- *  上位机发送AA0F80FF，播放打开空调
- *  上位机发送AA0F81FF，播放关闭空调
- */
-static void
-custom_handle_cmd(uint8_t *data)
-{
-    CLOGD("[custom_handle_cmd]");
-    uint16_t pid = -1;
-    uint8_t ttsplay = data[CUSTOM_CMD_TTS];
-    switch (ttsplay) {
-        case 0x80:
-            pid = 1;
-            break;
-        case 0x81:
-            pid = 2;
-            break;
-        default:
-            break;
-    }
-
-    if (pid &gt; 0) {
-        csk_player_start(&amp;pid);
-    }
-}
-
-bool
-custom_uart_recv_proc(uint8_t data[], uint16_t to_recv)
-{
-    int wait_ms = 10;
-    CLOGD("[custom_frame_recv_proc] 1.HDR");
-    // 1. receive HDR
-    to_recv = 1;
-    if (to_recv == csk_uart_recv(&amp;data[0], to_recv, portMAX_DELAY)) {
-        CLOGD("[custom_frame_recv_proc] 1.HDR:0x%02x", data[0]);
-        if (CUSTOM_FRM_HDR_TAG != data[0]) {
-            return false;
-        }
-    } else {
-        goto _CUSTOM_END;
-    }
-
-    CLOGD("[custom_frame_recv_proc] 1.HDR");
-
-    // 2. receive msgid
-    to_recv = 2;
-    if (to_recv == csk_uart_recv(&amp;data[1], to_recv, wait_ms)) {
-        CLOGD("[custom_frame_recv_proc] 2.MSGID:0x%02x", data[2]);
-        msgID = data[2];
-    } else
-        goto _CUSTOM_END;
-
-    CLOGD("[custom_frame_recv_proc] 2.msgid");
-
-    // 3. receive 1 byte: data
-    to_recv = 1;
-    if (to_recv == csk_uart_recv(&amp;data[3], to_recv, wait_ms)) {
-        CLOGD("[custom_frame_recv_proc] 3.frm_data:0x%02x", data[3]);
-        // to-do
-        if (CUSTOM_FRM_TAL_TAG == data[3]) {
-            return false;
-        }
-    } else
-        goto _CUSTOM_END;
-
-    CLOGD("[custom_frame_recv_proc] 3.data");
-    // 4. handler uart command
-    custom_handle_cmd(&amp;data[0]);
-    return true;
-
-_CUSTOM_END:
-    return false;
-}
-
-void
-app_main(void)
-{
-    CLOGD("[APP]Hello world");
-
-    // 唤醒和命令词相关回调，解除注释使用
-    csk_handler_register(CSK_EVENT_WAKE_UP, cb_wake_up);
-    csk_handler_register(CSK_EVENT_ESR_RECOGNITION, cb_esr_recognition);
-    csk_handler_register(CSK_EVENT_ESR_TIMEOUT, cb_esr_timeout);
-
-    // 语音播报相关回调，解除注释使用
-    // csk_handler_register(CSK_EVENT_PLAYER_START, cb_player_start);
-    // csk_handler_register(CSK_EVENT_PLAYER_FINISH, cb_player_finish);
-
-    // 如需要在 custom 模式下使用 UART，解除下面这一行的注释
-    csk_uart_init();
-
-    // 如需要在这里接收 UART，解除下面这一行的注释
-    uart_reader_init();
-}
-
-```
-
-### PA9作为普通IO口无法控制？
-1.hardware.lini去掉pin18 IO配置   
-2.在#include "pin_mux.c"里增加：    
-```C
-void
-gpio_init_add(void)
-{
-	int pin = 18;
-	IOMuxManager_PinConfigure(io_mux_table[pin].mux, io_mux_table[pin].num, NDS_IOMUX_FUNC_DEFAULT);
-	driver_gpio_table[0]-&gt;SetDir(1 &lt;&lt; io_mux_table[pin].num, 1);
-	driver_gpio_table[0]-&gt;PinWrite(1 &lt;&lt; io_mux_table[pin].num, 1);
-}
-```
-
-3.在main.c里调用pin18初始化
-```C  
-hardware_init{
-...
-  adc_init();  // ADC initialize
-   gpio_init_add();
-}
-```
-
-4.gpio控制：  
-pin_mux.c    
-
-```C
-void sys_PA9_ctrl(bool high_low)
-{
-	bool ret;
-	CLOGI("gpio_ctrl PA9 %d", high_low);
-	driver_gpio_table[0]-&gt;PinWrite(1 &lt;&lt; io_mux_table[18].num, high_low);
-}
-```
-
-```C
-	if (key_value == 1) {
-		key_value = 0;
-		sys_PA9_ctrl(true);
-	} else {
-		key_value = 1;
-		sys_PA9_ctrl(false);
+	int *key_id = (int*)user_data;
+#define CASE_MAP(sid, tone_id)                                               \
+	case (sid):                                                              \
+		evs_soundplayer_play(s_client->m_sound_player, get_tone_url(tone_id)); \
+		break;
+	switch (*key_id) {
+		case 501: {
+			uint32_t rand32 = OS_Rand32();
+			int random_value = rand32 % 4;
+			char *wakeup_url = NULL;
+			switch (random_value) {
+				case 0:
+					wakeup_url = get_tone_url(TONE_ID_1);
+					break;
+				case 1:
+					wakeup_url = get_tone_url(TONE_ID_2);
+					break;
+				case 2:
+					wakeup_url = get_tone_url(TONE_ID_3);
+					break;
+				case 3:
+					wakeup_url = get_tone_url(TONE_ID_4);
+					break;
+				default:
+					wakeup_url = get_tone_url(TONE_ID_1);
+					break;
+			}
+			evs_soundplayer_play(s_client->m_sound_player, wakeup_url);
+		} break;
+			CASE_MAP(1, TONE_ID_172)
+			CASE_MAP(2, TONE_ID_173)
+			CASE_MAP(3, TONE_ID_174)
+			CASE_MAP(4, TONE_ID_24)
+		default:
+			break;
 	}
-
+	evs_free(user_data);
+#undef CASE_MAP
+	return EVS_EVENT_NORMAL;
+}
 ```
 
-### 产测触发引脚是否可以设置为其他引脚？
-产测触发引脚可以配置为其他引脚，具体配置方法详见：
-[文档中心产测开发](https://docs.listenai.com/AIsolution/ESR/softwaredevelopment/Advanced_development/factory_config)
+其中CASE_MAP(1, TONE_ID_172)对应上文中“打开风扇”这个词条，依次排后
 
-## 软件和工具
+5.编译CSK及烧录
 
-### LStudio的项目如何导入客户定制的提示音频
-1.导入音频
-点击interact.lini将音频导入：将音频导入Lisa项目根目录/deps/tones_include目录下。
-![](./files/daoruyinpin.png)
+使用如下命令重新打包生成固件：
 
-2.在提示音列表中选择对应的音频。
+```
+lisa build
+```
 
-### LStudio的项目如何切换通信串口
-1.application.lini里实现通信串口和日志串口的设置
-![](./files/qiehuanchuankou_1.png)
+使用如下命令烧录固件到对应的硬件设备中：
 
-2.如果涉及UART口的修改，需要再hardware.lini里将通信串口或日志串口配置到对应引脚上。
-![](./files/qiehuanchuankou_2.png)
+```
+lisa flash
+```
+
+6.编译XR872及烧录
+
+参考XR872文档
+
+### CSK+872中，如何作TCP录音？
+
+1.872烧写特定的可作录音的fw,并按正常配置后连上网络
+
+2.[下载工具](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E5%9C%A8%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/%E7%A6%BB%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/TCP%E5%BD%95%E9%9F%B3%E5%B7%A5%E5%85%B7.7z)，打开工具目录如下。打开record.bat
+
+![img](.\files\tcp_recorder01.png)
 
 
 
-## 调试
+``` 
+server.exe LINGSI-2.4G LS$123456VIP# 18 100
+```
 
-### CSK平台目前提供哪一些调试的手段？
-CSK4002支持串口shell交互式调试，请向FAE获取使用文档。
+其中LINGSI-2.4G为路由名字，LS$123456VIP#为路由密码，18为对应的电脑上的串口号。注意：请保证电脑和待测872板子在同一局域网内
 
-JLINK相关开发工具暂时未对外开放。
+2.运行record.bat
+
+![image-20220212182508185](.\files\tcp_recorder02.png)
+
+3.停止运行record.bat，在目录下发现record.pcm，可用其他工具或目录中的pcm2wav作转换后打开，其格式为16bit16k4通道，如用pcm2wav:
+
+```
+Pcm2Wav.exe record.pcm out.wav 4 16000 16
+```
 
 
 
