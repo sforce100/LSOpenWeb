@@ -34,37 +34,37 @@
 【基础固件版本】选择4.2.0（直接选线上最新的版本即可）；
 【板型模板】选择lskits-csk4002,其他如下：
 
-![image-20220216104511488](.\files\onffline_tone_build.png)
+![image-20220216104511488](./files/onffline_tone_build.png)
 
 
 
 **步骤2.项目创建成功后，找到 `application.lini` 配置文件，固件的协议模式，修改为“通用双工协议”，如下：**
 
-![image-20220216105905371](.\files\onffline_tone_proto.png)
+![image-20220216105905371](./files/onffline_tone_proto.png)
 
 **步骤3.I2S输出设置，其中选择通道如下:**
 
-![image-20220216110133818](.\files\onffline_tone_audio.png)
+![image-20220216110133818](./files/onffline_tone_audio.png)
 
 **步骤4.UART设置，和上位机的通讯设置：**
 
    打开`application.lini` 配置文件，删掉默认的TXD2,RXD2,再选择4，5 pin作TXD2，RXD2
 
-![image-20220216113301928](.\files\onffline_tone_hardware1.png)
+![image-20220216113301928](./files/onffline_tone_hardware1.png)
 
 
 
-![image-20220216113510600](.\files\onffline_tone_hardware2.png)
+![image-20220216113510600](./files/onffline_tone_hardware2.png)
 
 选择后如下:
 
-![image-20220216113735746](.\files\onffline_tone_hardware3.png)
+![image-20220216113735746](./files/onffline_tone_hardware3.png)
 
 **步骤5.交互配置**
 
 进入交互配置`interact.lini` 配置文件,加入唤醒词：
 
-![image-20220216114036050](.\files\onffline_tone_wakeup.png)
+![image-20220216114036050](./files/onffline_tone_wakeup.png)
 
 **步骤6.编译及烧录**
 
@@ -90,7 +90,7 @@ lisa flash
 
 进入交互配置`interact.lini` 配置文件,加入唤醒词及命令词：
 
-![image-20220217112622895](.\files\onffline_tone.png)
+![image-20220217112622895](./files/onffline_tone.png)
 
 3.修改提示音
 
@@ -172,7 +172,7 @@ lisa flash
 
 2.[下载工具](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E5%9C%A8%E7%A6%BB%E7%BA%BF%E8%AF%AD%E9%9F%B3/%E7%A6%BB%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/TCP%E5%BD%95%E9%9F%B3%E5%B7%A5%E5%85%B7.7z)，打开工具目录如下。打开record.bat
 
-![img](.\files\tcp_recorder01.png)
+![img](./files/tcp_recorder01.png)
 
 
 
@@ -184,7 +184,7 @@ server.exe LINGSI-2.4G LS$123456VIP# 18 100
 
 2.运行record.bat
 
-![image-20220212182508185](.\files\tcp_recorder02.png)
+![image-20220212182508185](./files/tcp_recorder02.png)
 
 3.停止运行record.bat，在目录下发现record.pcm，可用其他工具或目录中的pcm2wav作转换后打开，其格式为16bit16k4通道，如用pcm2wav:
 
