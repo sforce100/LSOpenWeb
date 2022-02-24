@@ -1399,7 +1399,7 @@ Authorization: Bearer {token}
         {
             "level_id": "3",
             "title": "高级",
-            "types": ["translate", "answer"]
+            "types": [ "answer","translate"]
         }
     ]
 }
@@ -1409,7 +1409,7 @@ Authorization: Bearer {token}
 | :------- | :-------- | :---------------------------- |
 | level_id | String    | 难度ID                        |
 | title    | String    | 英文单词类型固定为【en_word】 |
-| types    | String    | 题型默认为answer(问答) |
+| types    | String    | 题型默认为answer（听力问答）；**translate（翻译）还未上线。** |
 
 ### 获取随机题目
 
@@ -1460,9 +1460,9 @@ Authorization: Bearer {token}
 | text      | String | 当前无作用 |
 | type | String | 题型 |
 
-### 请求协议（新增）
+### 评测请求
 
-请求协议复用EVS口语评测协议，完整的请求体可参考[线上文档](https://doc.iflyos.cn/device/upgrades/evaluate.html#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E)
+请求协议复用EVS口语评测协议，完整的请求体可参考[中英文语音评测文档](https://doc.iflyos.cn/device/upgrades/evaluate.html#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E)
 
 #### 请求新增参数
 
@@ -1476,6 +1476,32 @@ Authorization: Bearer {token}
 | `category` 取值 | 含义     | 备注       | 内容支持                      |
 | --------------- | -------- | ---------- | ----------------------------- |
 | read_choice     | 口语练习 | 仅英文可用 | 一句话，英文建议100个字符以内 |
+
+试卷示例： 
+
+（1）必要节点：[choice]、[keywords]，注意使用换行符进行分隔。 
+
+（2）采用英文半角字符,.!?；五个进行分句。 
+
+（3）各选项序号要连续，且序号和内容之间以“序号+点号+空格+内容”方式书写。 
+
+（4）任一选项需一行显示，倘若某一选项内容换行，导致第二行无序号，则报错。 
+
+（5）每个choice选项可支持全角字符占整个choice节点内容字节数的大小不能超过10%。 
+
+（6）每个choice选项不支持字符占整个choice节点内容字节数的大小不能超过10%。 
+
+（7）keywords内容必须是choice选项之一，与正确选项内容必须完全连续匹配，缺少内容不可（与情景反应题型choice节点限制不同）。 
+
+（8）单个选项答案可采用五个英文半角字符,.!?；进行分句，多个答案可以竖线|分隔。 
+
+（9）每个choice选项除符号外单词数量不可以超过100。
+
+```json
+{
+  "text": "[choice]\n1. It is blue.\n2. It is a blue shirt.\n3. It is a blue one.\n4. The shirt is blue.\n5. It's blue.\n6. It's a blue shirt.\n7. It's a blue one.\n8. blue\n[keywords]\nblue",
+}
+```
 
 #### 返回说明
 
@@ -1502,10 +1528,36 @@ Authorization: Bearer {token}
 | ----------- | ------ | --------------------------- |
 | version     | String | 评测引擎版本                |
 | type        | String | 评测类型，固定取值为`study` |
-| total_score | Int    | 评测总分                    |
+| total_score | Int    | 评测总分，目前只有0/100分，精准命中keyword后得100分，无命中/模糊命中都作为0分。                    |
 | content     | String | 参考回答                    |
 | beg_pos     | String | 朗读开始时间                |
 | end_pos     | String | 朗读结束时间                |
+
+:::info
+
+当前评分机制不够友好，该功能会持续优化体验。
+
+:::
+
+
+#### 错误码列表
+
+| 错误码 | 错误码描述                                     |
+| ------ | ----------------------------------------------------- |
+| 40007  | 音频解码失败                                          |
+| 10043  | 音频解码失败                                          |
+| 10200  | 读取数据超时，检查是否累计10s未发送数据并且未关闭连接 |
+| 60114  | 评测音频长度过长                                      |
+| 10139  | 参数错误                                              |
+| 40006  | 无效参数                                              |
+| 40037  | 无评测文本                                            |
+| 40038  | 无评测语音                                            |
+| 40040  | 非法数据                                              |
+| 68676  | 乱说                                                  |
+| 68675  | 不正常的语音数据，请检查是否为16k、16bit、单声道音频  |
+| 10109  | 请求文本超过了300个字符  |
+
+
 
 ## 英语作文批改
 
