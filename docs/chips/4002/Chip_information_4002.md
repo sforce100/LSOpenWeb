@@ -26,7 +26,7 @@
 
 | 文件                                            | 更新时间   | 操作                                                         |
 | ----------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| **Castor4002 datasheet - out V2.9.pdf** | 2021.12.16 | [下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E8%8A%AF%E7%89%87%E8%B5%84%E6%96%99/Castor4002%20datasheet%20-%20out%20V2.9.pdf) |
+| **Castor4002 datasheet - out V3.0.pdf** | 2021.12.16 | [下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E8%8A%AF%E7%89%87%E8%B5%84%E6%96%99/Castor4002%20datasheet%20-%20out%20V3.0.pdf) |
 
 
 ## 其他报告
