@@ -163,3 +163,73 @@ uac_desc_name = "LINGSI AI"
 卸载驱动后重新插入设备。
 ![](files/卸载驱动.png)
 
+### 10.flash操作接口使用示例
+**擦除flash接口**
+ ```
+ /**
+ *  @brief Erase flash memory.
+ *
+ *  擦除操作必须按页操作，页大小是0x1000
+ *
+ *
+ *  @param  offset          : offset to erase,must be 0 or 0x1000!
+ *  @param  size            : Number of bytes to erase,must be 0x1000!
+ *
+ *  @return  0 on success, negative errno code on fail.
+ */
+int user_flash_erase(unsigned int offset, unsigned int size);
+ ```
+
+ **写flash接口**
+```
+ /**
+ *  @brief  Write buffer into flash memory.
+ *
+ *  允许操作空间为0~0x2000,写入前必须擦除当前页，否则数据写入不正常
+ *
+ *
+ *  @param  offset          : offset to write
+ *  @param  buf             : data to write
+ *  @param  size            : Number of bytes to write
+ *
+ *  @return  0 on success, negative errno code on fail.
+ */
+int user_flash_write(unsigned int offset, void *buf, unsigned int size);
+```
+
+ **读flash接口**
+```
+/**
+ *  @brief Read flash memory into buffer.
+ *  允许操作空间为0~0x2000
+ *
+ *  @param  offset          : offset to read
+ *  @param  buf             : Buffer to store read data
+ *  @param  size            : Number of bytes to read.
+ */
+int user_flash_read(unsigned int offset, void *buf, unsigned int size);
+```
+ **flash操作封装接口**
+ ```
+ flash_update()
+ ```
+
+ **SN读写示例：**
+```
+char *key_value = "0123456789";
+set_volume(key_value);
+...
+void set_volume(char *value)
+{
+	flash_update_segment_table("SN",FLASH_DATA_STRING, value);
+	CLOGI("[flash] set segment %s[%s]", "SN", value);
+	flash_update();
+	char *result2 = (char *)flash_parse_value_by_tag("SN", FLASH_DATA_STRING);
+	CLOGI("[flash] result2 = %s", result2);
+}
+```
+:::tip 注意
+
+flash擦除操作必须按页操作，页大小是0x1000，flash擦除是耗时操作，注意不能影响主程序的业务，同时在业务逻辑中避免频繁对flash进行读写和擦除。
+
+:::
