@@ -20,11 +20,9 @@ LStudio 主要用于 CSK 固件配置与烧录，在 CSK 项目开发指南中�
 
 安装 LStudio 后，鼠标悬停至顶部菜单栏的【项目】，选择【新建】，如下图；选择【固件开发项目】；
 
-【芯片型号及方案】选择 **4002**；
-
-【基础固件版本】选择**3.0.2**（直接选线上最新的版本即可）；
-
-【板型模板】选择**聆思开发板V1.0**；
+【芯片型号及方案】选择 4002；
+【基础固件版本】选择4.2.0（直接选线上最新的版本即可）；
+【板型模板】选择lskits-csk4002,其他如下：
 
 ![](./files/Create_project.png)
 
@@ -34,17 +32,27 @@ LStudio 主要用于 CSK 固件配置与烧录，在 CSK 项目开发指南中�
 
 项目创建成功后，找到 `application.lini` 配置文件，文件具体路径如下： `./config/environment/application.lini`；
 
-首先，你需要设置固件的协议模式，在文件中找到  `sys_mode` 字段，并将值设置为 `public`  。如下图：
+首先，你需要设置固件的协议模式，在文件中找到 `协议模式` 字段，并将值设置为 `通用双工协议`  。如下图：
 
 ![](./files/System_mode.png)
 
-之后，你需要修改 CSK 输出的音频通道，4002 固件默认输出的音频通道分别是 **[1,2,5,6]**   ，在离在线项目中，需要修改为  **[1.2,8,3]** 。CSK 总共可输出 8 路音频，可选择 4 路输出给上位机。8 路音频分别的含义可参考《LISA API》中 `/Modules/CSK/csk_record_set_i2s_ch` 的定义。
+之后，你需要修改 CSK 输出的音频通道，4002 固件默认输出的音频通道分别是 **[1,2,5,6]**   ，在离在线项目中，需要修改为  **[1,2,8,3]** 。CSK 总共可输出 8 路音频，可选择 4 路输出给上位机。8 路音频分别的含义可参考《LISA API》中 `/Modules/CSK/csk_record_set_i2s_ch` 的定义。
 
 ![](./files/I2S_out_chs.png)
 
+### 4.UART设置，和上位机的通讯设置
 
+打开`application.lini` 配置文件，删掉默认的TXD2,RXD2,再选择4，5 pin作TXD2，RXD2
 
-### 4.交互配置
+![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set.png)
+
+![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set2.png)
+
+修改后如下
+
+![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set3.png)
+
+### 5.交互配置
 
 进入交互配置，由于目前离在线项目中，尚不支持离线识别，所有交互都为在线交互。且播放器由上位机控制，CSK不直接播放音频，所以此处可不设置离线命令词以及对应回复语。如何在上位机设置自定义回复语，可参考[《上位机固件二次开发文档》](/AIsolution/dsp/firmware_development/xr872_evs)。
 
@@ -52,10 +60,18 @@ LStudio 主要用于 CSK 固件配置与烧录，在 CSK 项目开发指南中�
 
 
 
-### 5.固件打包与烧录
+### 6.固件打包与烧录
 
-一切配置就绪后，可点击 LSTudio 上的【打包】按钮，如下图
+一切配置就绪后，使用如下命令重新打包生成固件：
 
-![](./files/packaging.png)
+```
+lisa build
+```
 
-点击打包，并等待打包过程完毕。之后将 LSKits 与电脑通过 USB 线连接，同时按住 LSKits 上的【CSK UPDATE】键，最后点击 LStudio 上的【烧录】键，进入固件烧录模式，等待固件烧录完毕后，重启 LSKits 即可。
+使用如下命令烧录固件到设备中：
+
+```
+lisa flash
+```
+
+将 LSKits 与电脑通过 USB 线连接，同时按住 LSKits 上的【CSK UPDATE】键，进入固件烧录模式，等待固件烧录完毕后，重启 LSKits 即可。

@@ -28,7 +28,57 @@
 如请求正常，请读取应答码"rc"，该应答码用于标识用户请求响应的状态，如rc=3表示业务操作失败，没搜索到结果或信源异常，此时请求信源有问题，URL的访问出现异常，可能包括网络访问问题、播放格式支持问题、https证书过期等。如rc=4，表示文本没有匹配的技能场景，技能不理解或不能处理该文本，可将文本加入自定义问答列表、自行开发相关技能，或联系聆思FAE解决。
 ### CSK+872中，如何制作CSK4002固件？
 
-离在线方案中，制作csk4002的固件是非常简单的，可以查看[制作离在线项目的CSK固件](http://docs.listenai.com/AIsolution/dsp/firmware_development/CSK_online_firmware)章节。
+**步骤1.用lstudio生成工程**
+
+【芯片型号及方案】选择 4002；
+【基础固件版本】选择4.2.0（直接选线上最新的版本即可）；
+【板型模板】选择lskits-csk4002,其他如下：
+
+![image-20220216104511488](./files/onffline_tone_build.png)
+
+
+
+**步骤2.项目创建成功后，找到 `application.lini` 配置文件，固件的协议模式，修改为“通用双工协议”，如下：**
+
+![image-20220216105905371](./files/onffline_tone_proto.png)
+
+**步骤3.I2S输出设置，其中选择通道如下:**
+
+![image-20220216110133818](./files/onffline_tone_audio.png)
+
+**步骤4.UART设置，和上位机的通讯设置：**
+
+   打开`application.lini` 配置文件，删掉默认的TXD2,RXD2,再选择4，5 pin作TXD2，RXD2
+
+![image-20220216113301928](./files/onffline_tone_hardware1.png)
+
+
+
+![image-20220216113510600](./files/onffline_tone_hardware2.png)
+
+选择后如下:
+
+![image-20220216113735746](./files/onffline_tone_hardware3.png)
+
+**步骤5.交互配置**
+
+进入交互配置`interact.lini` 配置文件,加入唤醒词：
+
+![image-20220216114036050](./files/onffline_tone_wakeup.png)
+
+**步骤6.编译及烧录**
+
+使用如下命令重新打包生成固件：
+
+```
+lisa build
+```
+
+使用如下命令烧录固件到对应的硬件设备中：
+
+```
+lisa flash
+```
 
 ### CSK+872中，离线命令词在872上如何作对应提示语音？
 

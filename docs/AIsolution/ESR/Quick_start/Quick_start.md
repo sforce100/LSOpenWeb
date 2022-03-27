@@ -78,21 +78,23 @@ LISA（Listenai Independent Software Architecture）是聆思智能提供的软�
 - `-t` 代表使用模板（template）创建项目
 - `@generator/csk` 是CSK语音交互项目的标准模板
 
-请依次选择 `@source/csk4002`、`3.1.4`（可选最新版本）、`@board/lskits-csk4002`、`@algo/csk4002-cae-mlp`
+请依次选择 `@source/csk4002`、`4.2.0`（可选最新版本）、`@board/lskits-csk4002`、`通用`、`@algo/general`
 
 ```shell
 > lisa create newProject -t @generator/csk
-  √ 项目创建准备
-  √ 初始化安装依赖
+✔ 启动创建...
+……
 ? 选择芯片方案 @source/csk4002
-? 选择基础固件版本 3.1.4
+? 选择基础固件版本 4.2.0
+✔ 创建csk开发项目目录/文件
+✔ 安装源码
 ? 选择板型模版 @board/lskits-csk4002
-? 选择算法模  @algo/csk4002-cae-mlp
-  √ 创建csk开发项目目录/文件
-  √ 安装源码/必要依赖
-  √ 源码初始化
-  √ lskit配置准备
-  √ 算法配置准备
+? 选择项目语言 中文
+? 选择项目品类 通用
+? 选择算法模型 @algo/general
+✔ 安装必要依赖
+✔ 源码初始化
+✔ lskit配置准备
 ```
 
 完成项目创建之后，LStudio 会自动打开新项目。

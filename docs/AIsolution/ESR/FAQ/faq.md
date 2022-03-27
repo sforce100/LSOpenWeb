@@ -266,7 +266,25 @@ void sys_PA9_ctrl(bool high_low)
 2.如果涉及UART口的修改，需要再hardware.lini里将通信串口或日志串口配置到对应引脚上。
 ![](./files/qiehuanchuankou_2.png)
 
+### 使用Lisa Flash指令下载不了固件，如图所示
 
+![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\ESR\FAQ\files\burn.png)                  1、确认PB16正常拉低，且先拉低后上电； 
+
+2、检查烧录驱动正常安装，可以短接PB16的时候看设备管理是否有caster_libusb0的设备; 
+
+3、确认使用的usb线是数据线，不是充电线，因有些usb线只有充电功能，没有传输数据的功能，且线与烧录点接触正常
+
+### 如何查看CSK4002固件中使用的封装库版本号，前端版本号，后端版本号等信息
+
+可以通过输出的初始化日志，查看算法库版本信息，如下图日志打印标记，从日志可获知版本信息如下：
+
+封装库版本：4002.aiwrap.v1000.2.0.3 beta (May 22 2021 14:37:57)
+
+前端CAE库版本：4002.B1009.v1.beta5
+
+后端ESR库版本：4002.miniesr.v1266.1.0.2 beta (May 11 2021 16:55:15)
+
+![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\ESR\FAQ\files\view_version.png)
 
 ## 调试
 
