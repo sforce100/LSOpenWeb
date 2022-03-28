@@ -268,7 +268,7 @@ void sys_PA9_ctrl(bool high_low)
 
 ### 使用Lisa Flash指令下载不了固件，如图所示
 
-![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\ESR\FAQ\files\burn.png)                  1、确认PB16正常拉低，且先拉低后上电； 
+![](./files/burn.png)                  1、确认PB16正常拉低，且先拉低后上电； 
 
 2、检查烧录驱动正常安装，可以短接PB16的时候看设备管理是否有caster_libusb0的设备; 
 
@@ -284,7 +284,7 @@ void sys_PA9_ctrl(bool high_low)
 
 后端ESR库版本：4002.miniesr.v1266.1.0.2 beta (May 11 2021 16:55:15)
 
-![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\ESR\FAQ\files\view_version.png)
+![](./files/view_version.png)
 
 ## 调试
 

@@ -44,13 +44,13 @@ LStudio 主要用于 CSK 固件配置与烧录，在 CSK 项目开发指南中�
 
 打开`application.lini` 配置文件，删掉默认的TXD2,RXD2,再选择4，5 pin作TXD2，RXD2
 
-![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set.png)
+![](./files/uart_pin_set.png)
 
-![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set2.png)
+![](./files/uart_pin_set2.png)
 
 修改后如下
 
-![](D:\聆思资料\listenweb\LSOpenWeb\docs\AIsolution\dsp\firmware_development\files\uart_pin_set3.png)
+![](./files/uart_pin_set3.png)
 
 ### 5.交互配置
 
