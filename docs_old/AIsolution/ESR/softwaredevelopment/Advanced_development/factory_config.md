@@ -200,9 +200,94 @@ check_enter_level = false
 check_gpios_delay = 2
 ```
 
-## 4.量产烧录流程
+## 4.产线烧录流程
 
-量产烧录流程包括CSK烧录器配置指引，烧录器使用指引和固件制作介绍，具体请查看[量产工具介绍](https://docs.listenai.com/tools/mass_production/readme)。
+产线烧录流程包括`固件烧录`和`SN烧录`，均在`CastorFactoryTool`量产工具上完成。
+
+### 4.1 获取量产包
+
+用户可从LStudio工程根目录`release`目录获取到量产包`release.zip`
+
+![](./files/factory_config/1614685884552.png)
+
+将`release.zip`解压，解压后的目录中找到量产固件包，量产固件包的命名规则为`项目名-版本号-factory.csk`
+
+![](./files/factory_config/1614763016767.png)
+
+
+### 4.2 打开量产烧录工具
+
+![](./files/factory_config/1614686136267.png)
+
+### 4.3 安装USB驱动
+
+![](./files/factory_config/1614686244775.png)
+![](./files/factory_config/1614686264149.png)
+
+### 4.4 选择USB烧录
+
+![](./files/factory_config/1614686289984.png)
+
+### 4.5 选择并导入量产固件包
+
+![](./files/factory_config/1614762594992.png)
+
+### 4.6 准备SN序列号文件
+
+SN序列号列表文件格式说明如下:
+
+1. SN列表采用以半角`,`分隔的`.csv`文件储存
+2. 每行存一个SN号，共两列信息：
+   - 列1：SN号，列1的字符串格式为`键值对`的形式，一个合法的SN号格式应为`SN={SN号};`
+     - 键：`SN`
+     - 键值：`{SN号}`
+     - 键值对分割符：半角的`;`表示结束，作为键值对分割符。
+   - 列2：SN号烧录标志位，表示是否已经烧录
+     - 0（表示未烧录）
+     - 1（表示已烧录）
+3. 每行以Windows下的CRLF结尾。
+
+示例：
+
+```shell
+SN=0001;,0
+SN=0002;,0
+```
+
+当SN1被烧录后，文件内容变为：
+
+```shell
+SN=0001;,1
+SN=0002;,0
+```
+
+一个符合标准的`SN.csv`文件内容如下图：
+![](./files/factory_config/1614687828568.png)
+
+:::note
+
+注意：原始的.csv必须包含两列，且列2的取值是0，以用于占位
+
+:::
+
+### 4.7 导入SN序列号文件
+
+![](./files/factory_config/1614686772552.png)
+![](./files/factory_config/1614687997155.png)
+
+### 4.8 填写SN烧录地址
+
+- 3002的SN烧录地址为`0x3ff000`(4M Flash中最后一页，共计4K空间)
+- 4002的SN烧录地址为`0x7ff000`(8M Flash中最后一页，共计4K空间)
+
+### 4.9 开始烧录
+
+![](./files/factory_config/1614688581999.png)
+![](./files/factory_config/1614688617339.png)
+
+### 4.10 烧录完成
+
+![](./files/factory_config/1614688651062.png)
 
 ## 5.产测流程
 
@@ -255,6 +340,6 @@ taskcreate(log_task): 00017cc0~0001bcc0
        ##  ##      ##    ##   ##    ##       ##
        ##  ##      ##    ## ######  #######  ##
        ########################################
-       
+
        ```
    - 硬件通断性检测: 对`check_gpios`中配置的GPIO引脚的默认逻辑电平取反
