@@ -1376,7 +1376,8 @@ Authorization: Bearer {token}
 
 :::info
 
-该功能需要提前联系商务开通。
+1. 该功能需要提前联系商务开通。
+2. 接入该能力时，必须参考聆思提供《扫描笔产品设计指南》中关于作文批改一节，否则不保证接入效果。
 
 :::
 
@@ -1406,53 +1407,196 @@ POST https://api.iflyos.cn/external/ocr_tool/correcting/correct
 
 ```json
 {
-    "category": "chapter_learn",
-    "disDimResult": {
-        "adva_word_num": 0,
-        "ccNum": "0",
-        "paraNum": "1",
-        "sentAveLen": "1.000000",
-        "wordAveDiff": "0.000000",
-        "wordAveLen": "5.000000",
-        "wordRichness": "1.000000"
+    "category": "chapter_learn", //业务类型码
+    "disDimResult": {   // 多维度统计结果
+      "adva_word_num": 4,
+      "ccNum": "3", // 篇章连接词个数
+      "paraNum": "1", // 段落个数：段落数依赖于输入的段落标记，对于txt输入，段落固定为1；json输入根据输入的段落信息进行计数；
+      "sentAveLen": "16.500000",// 篇章句子的平均长度
+      "wordAveDiff": "0.000000",// 词汇平均难度（初高中及CET单词）
+      "wordAveLen": "3.757576", //篇章单词平均长度
+      "wordRichness": "0.676768" //词汇丰富度
     },
-    "displayResultList": [
-        {
-            "lineName": "0",
-            "lineResult": [],
-            "lineStr": "22222",
-            "modify_sent": "",
-            "paraType": "1",
-            "startCharPos": "9"
-        }
+    "displayResultList": [  //篇章全部结果
+      {
+        "lineName": "0", //句子编号
+        "lineResult": [], // 当前句子的批改结果
+        "lineStr": "As we know, the Internet is a convenient tool to improve our knowledge and skills.", //句子内容
+        "modify_sent": "",
+        "paraType": "1", //是否为首句
+        "startCharPos": "0"  // 当前句子起始字符，在整篇文章中的位置。注意是字符位置，该位置相比输入的原始文章可能有轻微偏移，建议采用滑动匹配方案
+      },
+      {
+        "lineName": "1",
+        "lineResult": [
+          {
+            "candidates": [],  // 纠错结果
+            "comment": "[高级表达]be addicted to意为沉溺于...，属于高中高分短语，用得很棒！   Sometimes , we choose to be addicted to TV series or games to kill time.有些时候，我们选择电视连续剧或游戏来打发时间。",  // 当前批改结果的评语
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good", // Error: 错误 Warn: 警示 Info: 一般信息 Good: 亮点表达，当前主要针对短语
+            "muti_position": [
+              {
+                "endPos": "147",
+                "startPos": "132"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "147",
+                "startPos": "132"
+              }
+            ],
+            "prob": 1,  //当前批改的置信度（往往是默认为1）
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "be addicted to",  //当前批改命中的关键词，如果需要高亮批改命中字段，需要关注该字段
+            "token_word": "",
+            "type": "高级表达"  // 批改结果类型，以负面结果为主。正面结果有：高级表达、短语学习2类；负面结果42类，主要有：书写不规范、中式英语、主谓一致错误、名词单复数错误等；如果内容为乱填内容，没有该值
+          }
+        ],
+        "lineStr": "However, our life will be greatly affected if we are addicted to it.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "83"
+      },
+      {
+        "lineName": "2",
+        "lineResult": [
+          {
+            "candidates": [],
+            "comment": "[高级表达]短语go from bad to worse意为：每况愈下，属于高中水平短语",
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good",
+            "muti_position": [
+              {
+                "endPos": "235",
+                "startPos": "212"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "235",
+                "startPos": "212"
+              }
+            ],
+            "prob": 1,
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "go from bad to worse",
+            "token_word": "",
+            "type": "高级表达"
+          }
+        ],
+        "lineStr": "For example your grades may go down and your health will be going from bad to worse.",
+        "modify_sent": "For example , your grades may go down and your health will be going from bad to worse .",
+        "paraType": "0",
+        "startCharPos": "152"
+      },
+      {
+        "lineName": "3",
+        "lineResult": [],
+        "lineStr": "To make things worse, it can also damage the relationship with your family.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "237"
+      },
+      {
+        "lineName": "4",
+        "lineResult": [
+          {
+            "candidates": [],
+            "comment": "[高级表达]短语get rid of意为：摆脱；除掉；除去，属于高中水平短语",
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good",
+            "muti_position": [
+              {
+                "endPos": "359",
+                "startPos": "349"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "359",
+                "startPos": "349"
+              }
+            ],
+            "prob": 1,
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "get rid of",
+            "token_word": "",
+            "type": "高级表达"
+          }
+        ],
+        "lineStr": "So I think it is high time that you got rid of the bad habit.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "313"
+      },
+      {
+        "lineName": "5",
+        "lineResult": [],
+        "lineStr": "It is a good idea for you to read some meaningful books and do some physical exercise.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "375"
+      }
     ],
-    "engine_version": "3.5.0.1041",
-    "personalizedComments": "本文词汇量较少;词汇量稍显不足;下次写作希望能够丰富词汇量;加强多种句式结构的学习;增加对高级词汇的运用;",
+    "engine_version": "3.5.0.1046",  //引擎版本号
+    "personalizedComments": "文章内容丰富;连词however等使用的较好;使用部分高级词汇(如：relationship,be addicted to,get rid of)等;下次写作希望能够加强多种句式结构的学习;", // 个性化总评
     "remarkResultList": [
-        {
-            "comments": "用词水平较高,词汇丰富,缺少高级词汇",
-            "type": "wordFea",
-            "value": 8.333333333333334
-        },
-        {
-            "comments": "句子比较单调,句式较简单",
-            "type": "sentFea",
-            "value": 1.25
-        },
-        {
-            "comments": "全篇脉络不够清晰,没有什么语法错误",
-            "type": "paperFea",
-            "value": 7.5
-        },
-        {
-            "comments": "基本符合题意",
-            "type": "contentFea",
-            "value": 5
-        }
-    ],
-    "rule_version": ""
-}
+      {
+        "comments": "能够使用一些长难词,词汇丰富,词语讲究,颇显功底", // 分维度评语
+        "type": "wordFea", // 维度类型；wordFea –词汇, sentFea –句子, paperFea –篇章, contentFea –内容
+        "value": 12.104226666666667 // 满分15分，一般高于10分才应该是正常作文水平，低于10分评语评语准确率较低
+      },
+      {
+        "comments": "句子长短错落有致,句式复杂多变,状语从句用的不错",
+        "type": "sentFea",
+        "value": 12.91665
+      },
+      {
+        "comments": "全篇连接紧凑,没有什么语法错误",
+        "type": "paperFea",
+        "value": 12.083335
+      },
+      {
+        "comments": "基本符合题意",
+        "type": "contentFea",
+        "value": 12
+      }
+    ], 
+    "rule_version": "",  //引擎使用的规则版本号
+    "typeResultList": [  // 整篇文章结果类型统计，以负面结果为主。正面结果有：高级表达、短语学习2类；负面结果42类，主要有：书写不规范、中式英语、主谓一致错误、名词单复数错误等；
+      {
+        "comment": "高级表达3个", 
+        "level": "Good",
+        "num": 3,
+        "type": "高级表达"
+      }
+    ]
+  }
 ```
+
+:::info
+当前引擎没有对请求结果的正确与否进行判断，请在设备端完成不正确请求结果的拦截（如非英文作文的中文内容、电话号码等）。
+:::
+
+
+
+
 
 ### 获取当前设备批改记录
 
