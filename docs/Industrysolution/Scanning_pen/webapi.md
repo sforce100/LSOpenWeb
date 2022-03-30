@@ -1361,13 +1361,15 @@ Authorization: Bearer {token}
 
 ## 口语练习
 
+
 :::info
-
 1. 该功能需要提前联系商务开通。
-2. 复用语音评测协议，点击查看：[语音评测](https://doc.iflyos.cn/device/upgrades/evaluate.html)
-
+2. 该功能复用语音评测，点击查看接入协议：[语音评测](https://doc.iflyos.cn/device/upgrades/evaluate.html)，使用方法：
+    1. 通过`口语练习题目请求接口`，获取口语练习题目。
+    2. 按照口语试题text格式填写要求。
+    3. 请求口语评测接口：`evaluate.category`取值`read_choice`。
+    4. 参考口语练习示例返回，实现前端UI交互界面。
 :::
-
 
 
 ## 英语作文批改
