@@ -1361,209 +1361,23 @@ Authorization: Bearer {token}
 
 ## 口语练习
 
-:::info
-
-该功能需要提前联系商务开通。
-
-:::
-
-### 获取难度列表
-
-#### 接口地址
-
-```
-GET https://api.iflyos.cn/external/ocr/evaluate/levels
-```
-
-#### 请求headers
-
-```
-Authorization: Bearer {token}
-```
-
-#### 返回示例
-
-```json
-{
-    "levels": [
-        {
-            "level_id": "1",
-            "title": "初级",
-            "types": ["answer"]
-        },
-        {
-            "level_id": "2",
-            "title": "中级",
-            "types": ["answer"]
-        },
-        {
-            "level_id": "3",
-            "title": "高级",
-            "types": [ "answer","translate"]
-        }
-    ]
-}
-```
-
-| 参数     | 类型      | 说明                          |
-| :------- | :-------- | :---------------------------- |
-| level_id | String    | 难度ID                        |
-| title    | String    | 英文单词类型固定为【en_word】 |
-| types    | String    | 题型默认为answer（听力问答）；**translate（翻译）还未上线。** |
-
-### 获取随机题目
-
-#### 接口地址
-
-```
-GET https://api.iflyos.cn/external/ocr/evaluate/get_question
-```
-
-#### 请求headers
-
-```
-Authorization: Bearer {token}
-```
-
-#### 请求参数
-
-| 参数     | 类型   | 说明   | 必填 |
-| :------- | :----- | :----- | :--- |
-| level_id | String | 难度ID | 是   |
-| type | String | 题型默认为answer(问答) | 是 |
-
-#### 返回示例
-
-```json
-{
-    "question": {
-        "type": "answer",
-        "answers": [
-            "Saturday.",
-            "It is Saturday.",
-            "It's Saturday today.",
-            "It is Saturday today.",
-            "It's Saturday.",
-            "Today is Saturday."
-        ],
-        "audio_url": "https://etbox.oss-accelerate.aliyuncs.com/sourceaudio/se/102243ques1askaudio.wav",
-        "id": 865,
-        "text": "今天是星期六，现在是早上九点钟，你和妈妈一起在家打扫卫生。"
-    }
-}
-```
-
-| 参数      | 类型   | 说明               |
-| :-------- | :----- | :----------------- |
-| answers   | String | 题目答案           |
-| audio_url | String | 题目音频url        |
-| text      | String | 当前无作用 |
-| type | String | 题型 |
-
-### 评测请求
-
-请求协议复用EVS口语评测协议，完整的请求体可参考[中英文语音评测文档](https://doc.iflyos.cn/device/upgrades/evaluate.html#%E8%AF%B7%E6%B1%82%E8%AF%B4%E6%98%8E)
-
-#### 请求新增参数
-
-| 参数              | 类型   | 说明                                          | 必填 |
-| :---------------- | :----- | :-------------------------------------------- | :--- |
-| evaluate.category | String | 评测题型，取值见下表。                        | 是   |
-| evaluate.text     | String | 评测题目文本，写法样例请参考[试题text格式](https://doc.iflyos.cn/device/upgrades/evaluate.html#/试题text格式) | 是   |
-
-`evaluate.category` 取值
-
-| `category` 取值 | 含义     | 备注       | 内容支持                      |
-| --------------- | -------- | ---------- | ----------------------------- |
-| read_choice     | 口语练习 | 仅英文可用 | 一句话，英文建议100个字符以内 |
-
-试卷示例： 
-
-（1）必要节点：[choice]、[keywords]，注意使用换行符进行分隔。 
-
-（2）采用英文半角字符,.!?；五个进行分句。 
-
-（3）各选项序号要连续，且序号和内容之间以“序号+点号+空格+内容”方式书写。 
-
-（4）任一选项需一行显示，倘若某一选项内容换行，导致第二行无序号，则报错。 
-
-（5）每个choice选项可支持全角字符占整个choice节点内容字节数的大小不能超过10%。 
-
-（6）每个choice选项不支持字符占整个choice节点内容字节数的大小不能超过10%。 
-
-（7）keywords内容必须是choice选项之一，与正确选项内容必须完全连续匹配，缺少内容不可（与情景反应题型choice节点限制不同）。 
-
-（8）单个选项答案可采用五个英文半角字符,.!?；进行分句，多个答案可以竖线|分隔。 
-
-（9）每个choice选项除符号外单词数量不可以超过100。
-
-```json
-{
-  "text": "[choice]\n1. It is blue.\n2. It is a blue shirt.\n3. It is a blue one.\n4. The shirt is blue.\n5. It's blue.\n6. It's a blue shirt.\n7. It's a blue one.\n8. blue\n[keywords]\nblue",
-}
-```
-
-#### 返回说明
-
-```json
-{
-    "read_choice":{
-        "version":"7.0.0.1008",
-        "type":"study",
-        "rec_paper":{
-            "free_choice":{
-                "total_score":"0.000000",
-                "except_info":"0",
-                "end_pos":"998",
-                "content":"1. A book. 2. They are going to buy a book for Mike. 3. They are going to buy Mike a book.",
-                "beg_pos":"0"
-            }
-        },
-        "lan":"en"
-    }
-}
-```
-
-| 参数        | 类型   | 说明                        |
-| ----------- | ------ | --------------------------- |
-| version     | String | 评测引擎版本                |
-| type        | String | 评测类型，固定取值为`study` |
-| total_score | Int    | 评测总分，目前只有0或100分，精准命中keyword（不可多，不可少）后得100分，无命中/模糊命中都作为0分。                    |
-| content     | String | 相似回答，该处的回答并非命中了即可得分，只是回答的参考，目前口语练习的得分机制还是需要用户的回答完全精准命中keyword（不可多，不可少）才能得到100分。                    |
-| beg_pos     | String | 朗读开始时间                |
-| end_pos     | String | 朗读结束时间                |
 
 :::info
-
-当前评分机制不够友好，该功能会持续优化体验。
-
+1. 该功能需要提前联系商务开通。
+2. 该功能复用语音评测，点击查看接入协议：[语音评测](https://doc.iflyos.cn/device/upgrades/evaluate.html)，使用方法：
+    1. 通过`口语练习题目请求接口`，获取口语练习题目。
+    2. 按照口语试题text格式填写要求。
+    3. 请求口语评测接口：`evaluate.category`取值`read_choice`。
+    4. 参考口语练习示例返回，实现前端UI交互界面。
 :::
-
-
-#### 错误码列表
-
-| 错误码 | 错误码描述                                     |
-| ------ | ----------------------------------------------------- |
-| 40007  | 音频解码失败                                          |
-| 10043  | 音频解码失败                                          |
-| 10200  | 读取数据超时，检查是否累计10s未发送数据并且未关闭连接 |
-| 60114  | 评测音频长度过长                                      |
-| 10139  | 参数错误                                              |
-| 40006  | 无效参数                                              |
-| 40037  | 无评测文本                                            |
-| 40038  | 无评测语音                                            |
-| 40040  | 非法数据                                              |
-| 68676  | 乱说                                                  |
-| 68675  | 不正常的语音数据，请检查是否为16k、16bit、单声道音频  |
-| 10109  | 请求文本超过了300个字符  |
-
 
 
 ## 英语作文批改
 
 :::info
 
-该功能需要提前联系商务开通。
+1. 该功能需要提前联系商务开通。
+2. 接入该能力时，必须参考聆思提供《扫描笔产品设计指南》中关于作文批改一节，否则不保证接入效果。
 
 :::
 
@@ -1593,53 +1407,202 @@ POST https://api.iflyos.cn/external/ocr_tool/correcting/correct
 
 ```json
 {
-    "category": "chapter_learn",
-    "disDimResult": {
-        "adva_word_num": 0,
-        "ccNum": "0",
-        "paraNum": "1",
-        "sentAveLen": "1.000000",
-        "wordAveDiff": "0.000000",
-        "wordAveLen": "5.000000",
-        "wordRichness": "1.000000"
+    "category": "chapter_learn", //业务类型码
+    "disDimResult": {   // 多维度统计结果
+      "adva_word_num": 4,
+      "ccNum": "3", // 篇章连接词个数
+      "paraNum": "1", // 段落个数：段落数依赖于输入的段落标记，对于txt输入，段落固定为1；json输入根据输入的段落信息进行计数；
+      "sentAveLen": "16.500000",// 篇章句子的平均长度
+      "wordAveDiff": "0.000000",// 词汇平均难度（初高中及CET单词）
+      "wordAveLen": "3.757576", //篇章单词平均长度
+      "wordRichness": "0.676768" //词汇丰富度
     },
-    "displayResultList": [
-        {
-            "lineName": "0",
-            "lineResult": [],
-            "lineStr": "22222",
-            "modify_sent": "",
-            "paraType": "1",
-            "startCharPos": "9"
-        }
+    "displayResultList": [  //篇章全部结果
+      {
+        "lineName": "0", //句子编号
+        "lineResult": [], // 当前句子的批改结果
+        "lineStr": "As we know, the Internet is a convenient tool to improve our knowledge and skills.", //句子内容
+        "modify_sent": "",
+        "paraType": "1", //是否为首句
+        "startCharPos": "0"  // 当前句子起始字符，在整篇文章中的位置。注意是字符位置，该位置相比输入的原始文章可能有轻微偏移，建议采用滑动匹配方案
+      },
+      {
+        "lineName": "1",
+        "lineResult": [
+          {
+            "candidates": [],  // 纠错结果
+            "comment": "[高级表达]be addicted to意为沉溺于...，属于高中高分短语，用得很棒！   Sometimes , we choose to be addicted to TV series or games to kill time.有些时候，我们选择电视连续剧或游戏来打发时间。",  // 当前批改结果的评语
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good", // Error: 错误 Warn: 警示 Info: 一般信息 Good: 亮点表达，当前主要针对短语
+            "muti_position": [
+              {
+                "endPos": "147",
+                "startPos": "132"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "147",
+                "startPos": "132"
+              }
+            ],
+            "prob": 1,  //当前批改的置信度（往往是默认为1）
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "be addicted to",  //当前批改命中的关键词，如果需要高亮批改命中字段，需要关注该字段
+            "token_word": "",
+            "type": "高级表达"  // 批改结果类型，以负面结果为主。正面结果有：高级表达、短语学习2类；负面结果42类，主要有：书写不规范、中式英语、主谓一致错误、名词单复数错误等；如果内容为乱填内容，没有该值
+          }
+        ],
+        "lineStr": "However, our life will be greatly affected if we are addicted to it.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "83"
+      },
+      {
+        "lineName": "2",
+        "lineResult": [
+          {
+            "candidates": [],
+            "comment": "[高级表达]短语go from bad to worse意为：每况愈下，属于高中水平短语",
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good",
+            "muti_position": [
+              {
+                "endPos": "235",
+                "startPos": "212"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "235",
+                "startPos": "212"
+              }
+            ],
+            "prob": 1,
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "go from bad to worse",
+            "token_word": "",
+            "type": "高级表达"
+          }
+        ],
+        "lineStr": "For example your grades may go down and your health will be going from bad to worse.",
+        "modify_sent": "For example , your grades may go down and your health will be going from bad to worse .",
+        "paraType": "0",
+        "startCharPos": "152"
+      },
+      {
+        "lineName": "3",
+        "lineResult": [],
+        "lineStr": "To make things worse, it can also damage the relationship with your family.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "237"
+      },
+      {
+        "lineName": "4",
+        "lineResult": [
+          {
+            "candidates": [],
+            "comment": "[高级表达]短语get rid of意为：摆脱；除掉；除去，属于高中水平短语",
+            "cur_pos": -1,
+            "know_id": "",
+            "know_keys": "",
+            "know_str": "",
+            "level": "Good",
+            "muti_position": [
+              {
+                "endPos": "359",
+                "startPos": "349"
+              }
+            ],
+            "obj3_content": "",
+            "position": [
+              {
+                "endPos": "359",
+                "startPos": "349"
+              }
+            ],
+            "prob": 1,
+            "raterCategory": "",
+            "rule_id": "-1",
+            "str": "get rid of",
+            "token_word": "",
+            "type": "高级表达"
+          }
+        ],
+        "lineStr": "So I think it is high time that you got rid of the bad habit.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "313"
+      },
+      {
+        "lineName": "5",
+        "lineResult": [],
+        "lineStr": "It is a good idea for you to read some meaningful books and do some physical exercise.",
+        "modify_sent": "",
+        "paraType": "0",
+        "startCharPos": "375"
+      }
     ],
-    "engine_version": "3.5.0.1041",
-    "personalizedComments": "本文词汇量较少;词汇量稍显不足;下次写作希望能够丰富词汇量;加强多种句式结构的学习;增加对高级词汇的运用;",
+    "engine_version": "3.5.0.1046",  //引擎版本号
+    "personalizedComments": "文章内容丰富;连词however等使用的较好;使用部分高级词汇(如：relationship,be addicted to,get rid of)等;下次写作希望能够加强多种句式结构的学习;", // 个性化总评
     "remarkResultList": [
-        {
-            "comments": "用词水平较高,词汇丰富,缺少高级词汇",
-            "type": "wordFea",
-            "value": 8.333333333333334
-        },
-        {
-            "comments": "句子比较单调,句式较简单",
-            "type": "sentFea",
-            "value": 1.25
-        },
-        {
-            "comments": "全篇脉络不够清晰,没有什么语法错误",
-            "type": "paperFea",
-            "value": 7.5
-        },
-        {
-            "comments": "基本符合题意",
-            "type": "contentFea",
-            "value": 5
-        }
-    ],
-    "rule_version": ""
-}
+      {
+        "comments": "能够使用一些长难词,词汇丰富,词语讲究,颇显功底", // 分维度评语
+        "type": "wordFea", // 维度类型；wordFea –词汇, sentFea –句子, paperFea –篇章, contentFea –内容
+        "value": 12.104226666666667 // 满分15分，一般高于10分才应该是正常作文水平，低于10分评语准确率较低。
+      },
+      {
+        "comments": "句子长短错落有致,句式复杂多变,状语从句用的不错",
+        "type": "sentFea",
+        "value": 12.91665
+      },
+      {
+        "comments": "全篇连接紧凑,没有什么语法错误",
+        "type": "paperFea",
+        "value": 12.083335
+      },
+      {
+        "comments": "基本符合题意",
+        "type": "contentFea",
+        "value": 12
+      }
+    ], 
+    "rule_version": "",  //引擎使用的规则版本号
+    "typeResultList": [  // 整篇文章结果类型统计，以负面结果为主。正面结果有：高级表达、短语学习2类；负面结果42类，主要有：书写不规范、中式英语、主谓一致错误、名词单复数错误等；
+      {
+        "comment": "高级表达3个", 
+        "level": "Good",
+        "num": 3,
+        "type": "高级表达"
+      }
+    ]
+  }
 ```
+
+:::info
+1. 当前引擎没有对请求结果的正确与否进行判断，请在设备端完成不正确请求结果的拦截（如非英文作文的中文内容、电话号码等）。
+- 作文批改页面，如判断到非英文和英文标点符号内容，不填入作文扫描结果页面中。
+- 如判断请求批改的英文单词低于10个，不允许请求作文批改。
+2. 字段取值注意：由于作文批改引擎返回结果非常多，计算方式也十分复杂，设备端无需将引擎返回结果全部返回，只需要显示关键内容即可：
+- 个性化总评 `personalizedComment` 
+- 篇章句子有效的评分结果 `displayResultList.lineResult`中的批改结果的评语`comment`，批改命中关键词`str`、批改类型`type。
+3. `remarkResultList.value`低于10分已不再可信。
+:::
+
+
+
+
 
 ### 获取当前设备批改记录
 
