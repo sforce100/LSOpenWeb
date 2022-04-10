@@ -274,19 +274,19 @@
                     "pipes": [
                         {
                             "label": "方案介绍",
-                            "to": "/Industrysolution/Conference_calling_solutions/Quick_start/Scheme_introduction"
+                            "to": "/Industrysolution/CloudView_solution/Quick_start/Scheme_introduction"
                         },
                         {
                             "label": "快速入门",
-                            "to": "/Industrysolution/Conference_calling_solutions/softwaredevelopment/create_project"
+                            "to": "/Industrysolution/CloudView_solution/softwaredevelopment/create_project"
                         },
                         {
                             "label": "硬件设计",
-                            "to": "/Industrysolution/Conference_calling_solutions/Hardwaredevelopment/hardware_guide"
+                            "to": "/Industrysolution/CloudView_solution/Hardwaredevelopment/hardware_guide"
                         },
                         {
                             "label": "FAQ",
-                            "to":"/Industrysolution/Conference_calling_solutions/Optimization/faq"
+                            "to":"/Industrysolution/CloudView_solution/FAQ/faq"
                         }
                     ]
                 }
