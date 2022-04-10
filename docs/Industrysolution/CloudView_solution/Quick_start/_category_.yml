@@ -2,4 +2,4 @@ label: '方案介绍'
 # 排序
 position: 1
 # 是否默认展开
-collapsed: true 
+# collapsed: false 
