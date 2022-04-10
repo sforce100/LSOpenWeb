@@ -163,6 +163,10 @@ module.exports = {
             to: "/Industrysolution/Conference_calling_solutions/Quick_start/Scheme_introduction",//跳转哪个目录
             label: '会议机',
           },
+          {
+            to: "/Industrysolution/CloudView_solution/Quick_start/Scheme_introduction",//跳转哪个目录
+            label: '云台',
+          },
         ],
       },
       {
