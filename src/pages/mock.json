@@ -264,6 +264,31 @@
                             "to":"/Industrysolution/Conference_calling_solutions/Optimization/auto_optimize"
                         }
                     ]
+                },
+                {
+                    "icon": {
+                        "src": "img/h_interact_light.svg",
+                        "srcDark": "img/h_interact_dark.svg"
+                    },
+                    "title": "云台 Turnkey 方案",
+                    "pipes": [
+                        {
+                            "label": "方案介绍",
+                            "to": "/Industrysolution/Conference_calling_solutions/Quick_start/Scheme_introduction"
+                        },
+                        {
+                            "label": "快速入门",
+                            "to": "/Industrysolution/Conference_calling_solutions/softwaredevelopment/create_project"
+                        },
+                        {
+                            "label": "硬件设计",
+                            "to": "/Industrysolution/Conference_calling_solutions/Hardwaredevelopment/hardware_guide"
+                        },
+                        {
+                            "label": "FAQ",
+                            "to":"/Industrysolution/Conference_calling_solutions/Optimization/faq"
+                        }
+                    ]
                 }
             ]
         }
