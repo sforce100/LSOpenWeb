@@ -13,5 +13,5 @@ https://cloud.listenai.com/private/AI-video/shoushi0117
 
 2.用Google Chrome打开\CSK_View_Finder_v1.1.0\CSK_View_Finder\src\index 如下：
 
-![image-20220322192052448](files\sit07.png)
+![image-20220322192052448](./files/sit07.png)
 

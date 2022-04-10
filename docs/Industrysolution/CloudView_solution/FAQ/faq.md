@@ -7,20 +7,20 @@
 
 1.用Google Chrome打开tools/csk_view_finder/src/index.html
 
-![image-20220321154928531](files\sit02.png)
+![image-20220321154928531](./files/sit02.png)
 
 2.在Google Chrome中打开使用必读：
 
-![image-20220321155039427](files\sit03.png)
+![image-20220321155039427](./files/sit03.png)
 
 3.选译下载并安装
 
-![image-20220321155133696](files\sit04.png)
+![image-20220321155133696](./files/sit04.png)
 
 
 4.安装后在电脑设备管理中确认如下设备:
 
-![image-20220321155213355](files\sit05.png)
+![image-20220321155213355](./files/sit05.png)
 
 ### 如何对电机速度作微调
 
@@ -52,7 +52,7 @@ motor_move_smooth(int16_t offset)
 
 1.用Google Chrome打开tools/csk_view_finder/src/index.html
 
-![image-20220322193250437](files\sit09.png)
+![image-20220322193250437](./files/sit09.png)
 
 
 
