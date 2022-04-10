@@ -52,21 +52,21 @@ motor_move_smooth(int16_t offset)
 
 1.用Google Chrome打开tools/csk_view_finder/src/index.html
 
-![image-20220322193250437](./files/sit09.png)
+![](./files/sit09.png)
 
 
 
 2.选取设备，然后连接：
 
-![image-20220322193822856](files\sit10.png)
+![](./files/sit10.png)
 
 3.在出现在界面中点开始记录
 
-![image-20220322193947134](files\sit11.png)
+![](./files/sit11.png)
 
 4.然后再停止记录：
 
-![image-20220322194114367](files\sit12png)
+![](./files/sit12.png)
 
 
 
