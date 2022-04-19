@@ -91,6 +91,11 @@ module.exports = {
             to: "/chips/4002/Chip_information_4002",
             label: 'CSK4002',
           },
+          {
+            activeBasePath: "/chips/600X/",
+            to: "/chips/600X/index",
+            label: 'CSK600X',
+          },
 //          {
 //            activeBasePath: "/chips/4002NC/",
 //            to: "/chips/4002NC/Chip_information_4002NC",

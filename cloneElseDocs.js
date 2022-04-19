@@ -40,6 +40,7 @@ function shellExecLog(cmd) {
 (async () => {
     const basePath = path.resolve('.')
     for (let i = 0; i <= ELSE_DOCS_LIST.length - 1; i++) {
+        shell.cd(basePath);
         const {projectName, targetDir} = ELSE_DOCS_LIST[i]
         const toPath = path.resolve(targetDir)
         const REMOTE_BRANCH = `${REMOTE_BRANCH_PREFIX}${projectName}.git`
