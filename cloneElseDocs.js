@@ -12,8 +12,8 @@ const ELSE_DOCS_LIST = DEPLOY_ENV === 'staging' ? [
         targetDir: './docs/tools/LISA_LPM/development/API'
     },
     {
-        projectName: 'zephyr-sdk-api-docs',
-        targetDir: './docs/chips/600X/API'
+        projectName: 'docs-csk6',
+        targetDir: './docs/chips/600X'
     }
 ] : [
     {
