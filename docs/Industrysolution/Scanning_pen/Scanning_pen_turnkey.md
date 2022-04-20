@@ -1,9 +1,9 @@
 ---
-sidebar_label: 扫描笔Turnkey介绍
+sidebar_label: 扫描笔Turnkey开发流程介绍
 sidebar_position: 2
 ---
 
-# 扫描笔Turnkey介绍
+# 扫描笔Turnkey开发流程介绍
 
 > 阅读本文，你可以了解到：
 1. 聆思扫描笔方案开发流程。
