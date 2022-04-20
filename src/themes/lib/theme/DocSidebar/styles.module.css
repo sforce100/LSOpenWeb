@@ -62,7 +62,7 @@
   }
 
   .menuWithAnnouncementBar {
-    margin-bottom: var(--docusaurus-announcement-bar-height);
+    /* margin-bottom: var(--docusaurus-announcement-bar-height); */
   }
 
   .collapseSidebarButton {
@@ -116,9 +116,13 @@
 :global(.menu__list) :global(.menu__list) {
   overflow-y: hidden;
   will-change: height;
-  transition: height var(--ifm-transition-fast) linear;
+  /* transition: height var(--ifm-transition-fast) linear; */
 }
 
 :global(.menu__list-item--collapsed) :global(.menu__list) {
   height: 0 !important;
+}
+
+.menu__list-item--current {
+  background-color: #c9c9c9;
 }

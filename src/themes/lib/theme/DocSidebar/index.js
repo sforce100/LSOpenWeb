@@ -136,7 +136,8 @@ function DocSidebarItemCategory({
   }
 
   return <li className={(0, _clsx.default)('menu__list-item', {
-    'menu__list-item--collapsed': collapsed
+    'menu__list-item--collapsed': collapsed,
+    'menu__list-item--current': collapsible && isActive
   })}>
       <a className={(0, _clsx.default)('menu__link', {
       'menu__link--first': first,

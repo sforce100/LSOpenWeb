@@ -119,6 +119,7 @@ function DocSidebarItemCategory({
     <li
       className={clsx('menu__list-item', {
         'menu__list-item--collapsed': collapsed,
+        'menu__list-item--current': collapsible && isActive
       })}>
       <a
         className={clsx('menu__link', {
@@ -308,9 +309,21 @@ function DocSidebar({
     closeResponsiveSidebar,
     toggleResponsiveSidebar,
   } = useResponsiveSidebar();
+
+  const [tohide, setTohide] = useState(false);
+  useScrollPosition(({scrollY}) => {
+    if (scrollY < 200) {
+      setTohide(false)
+    } else {
+      setTohide(true)
+    }
+  });
+
+
   return (
     <div
       className={clsx(styles.sidebar, {
+        [styles.noNavbarSidebar]: tohide,
         [styles.sidebarWithHideableNavbar]: hideOnScroll,
         [styles.sidebarHidden]: isHidden,
       })}>

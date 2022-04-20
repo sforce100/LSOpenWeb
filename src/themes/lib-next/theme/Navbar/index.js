@@ -13,6 +13,7 @@ import useThemeContext from '@theme/hooks/useThemeContext';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import useHideableNavbar from '@theme/hooks/useHideableNavbar';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
+import useScrollPosition from '@theme/hooks/useScrollPosition';
 import useWindowSize, {windowSizes} from '@theme/hooks/useWindowSize';
 import NavbarItem from '@theme/NavbarItem';
 import Logo from '@theme/Logo';
@@ -43,6 +44,17 @@ function Navbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
   const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
   const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
+  
+  const [tohide, setTohide] = useState(false);
+  useScrollPosition(({scrollY}) => {
+    console.log('navbar-->', scrollY)
+    if (scrollY < 200) {
+      setTohide(false)
+    } else {
+      setTohide(true)
+    }
+  });
+
   useLockBodyScroll(sidebarShown);
   const showSidebar = useCallback(() => {
     setSidebarShown(true);
@@ -70,7 +82,7 @@ function Navbar() {
         'navbar--primary': style === 'primary',
         'navbar-sidebar--show': sidebarShown,
         [styles.navbarHideable]: hideOnScroll,
-        [styles.navbarHidden]: hideOnScroll && !isNavbarVisible,
+        [styles.navbarHidden]: hideOnScroll && !isNavbarVisible || tohide,
       })}>
       <div className="navbar__inner">
         <div className="navbar__items">

@@ -17,7 +17,6 @@ const useScrollPosition = (effect, deps = []) => {
 
   const handleScroll = () => {
     const currentScrollPosition = getScrollPosition();
-
     if (effect) {
       effect(currentScrollPosition, scrollPosition.current);
     }

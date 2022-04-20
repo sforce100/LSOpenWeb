@@ -21,7 +21,9 @@
     width: var(--doc-sidebar-width);
     transition: opacity 50ms ease;
   }
-
+  .noNavbarSidebar {
+    padding-top: var(--ifm-subnavbar-height);
+  }
   .sidebarWithHideableNavbar {
     padding-top: 0;
   }
@@ -50,7 +52,7 @@
 
   .menu {
     flex-grow: 1;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
   }
 
   .menuLinkText {
@@ -62,7 +64,7 @@
   }
 
   .menuWithAnnouncementBar {
-    margin-bottom: var(--docusaurus-announcement-bar-height);
+    /* margin-bottom: var(--docusaurus-announcement-bar-height); */
   }
 
   .collapseSidebarButton {
@@ -116,7 +118,7 @@
 :global(.menu__list) :global(.menu__list) {
   overflow-y: hidden;
   will-change: height;
-  transition: height var(--ifm-transition-fast) linear;
+  /* transition: height var(--ifm-transition-fast) linear; */
 }
 
 :global(.menu__list-item--collapsed) :global(.menu__list) {

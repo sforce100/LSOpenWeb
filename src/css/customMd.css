@@ -52,11 +52,11 @@ html[data-theme ='dark'] {
 }
 
 .padding-bottom--lg, .padding-vert--lg {
-  padding-bottom: 80px !important;
+  /* padding-bottom: 80px !important; */
 }
 
 .padding-top--md, .padding-verg--md {
-  padding-top: 80px !important;
+  /* padding-top: 80px !important; */
 }
 
 .h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module {
