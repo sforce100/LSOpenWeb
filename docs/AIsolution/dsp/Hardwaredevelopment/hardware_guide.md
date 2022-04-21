@@ -80,12 +80,8 @@
 | **语音模组产线操作规范参考文档.pdf**        | 2021.01.21 | [下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95%2F%E8%AF%AD%E9%9F%B3%E6%A8%A1%E7%BB%84%E4%BA%A7%E7%BA%BF%E6%93%8D%E4%BD%9C%E8%A7%84%E8%8C%83%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3.pdf) |
 | **语音模组产线生产测试流程指导.pdf**        | 2021.01.21 | [下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95%2F%E8%AF%AD%E9%9F%B3%E6%A8%A1%E7%BB%84%E4%BA%A7%E7%BA%BF%E7%94%9F%E4%BA%A7%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E6%8C%87%E5%AF%BC.pdf) |
 | **Soundcheck使用说明.pdf**                  | 2021.01.21 | [下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95%2FSoundcheck%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.pdf) |
-| **castor-factory-tool-setup-v1.0.0.10.exe** | 2021.01.20 |[下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95%2Fcastor-factory-tool-setup-v1.0.0.10.exe)|
-| **产测工具使用指导手册.docx** | 2021.01.20 |[下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95%2F%E4%BA%A7%E6%B5%8B%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC%E6%89%8B%E5%86%8C.docx)|
-| **芯片烧录.zip** | 2021.04.09 |[下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E8%8A%AF%E7%89%87%E7%83%A7%E5%BD%95.zip)|
-| **模组烧录.zip** | 2021.01.21 |[下载](https://open.listenai.com/resource/open/doc_resource%2F%E9%87%8F%E4%BA%A7%E6%8C%87%E5%8D%97%2F%E6%A8%A1%E7%BB%84%E7%83%A7%E5%BD%95.zip)|
 
-
+详细的量产烧录工具方案，请参照[量产烧录方案](/tools/mass_production/readme)。
 
 
 ## 拓展材料下载
