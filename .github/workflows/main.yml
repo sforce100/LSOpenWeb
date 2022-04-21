@@ -11,7 +11,9 @@ jobs:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
@@ -26,7 +28,5 @@ jobs:
         run: |
           git config --global user.email "docs@listenai.com"
           git config --global user.name "listenai-docs"
-          git submodule init
-          git submodule update
           npm i
           npm run deploy
