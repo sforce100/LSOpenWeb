@@ -26,7 +26,7 @@ jobs:
           DEPLOY_ENV: prod
         run: |
           cp static/CNAME_PROD static/CNAME
-          sed -i "s/projectName: 'LSOpenWeb'/projectName: 'LSOpenWebStatic'/" docusaurus.config.js
+          sed -i "s/projectName: 'LSOpenWeb'/projectName: 'LSOpenWebStatic'/" default.config.js
           git config --global user.email "docs@listenai.com"
           git config --global user.name "listenai-docs"
           npm install
