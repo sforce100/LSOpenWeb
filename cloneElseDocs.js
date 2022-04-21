@@ -11,10 +11,10 @@ const ELSE_DOCS_LIST = DEPLOY_ENV === 'staging' ? [
         projectName: 'lisa-core',
         targetDir: './docs/tools/LISA_LPM/development/API'
     },
-    {
-        projectName: 'docs-csk6',
-        targetDir: './docs/chips/600X'
-    },
+    // {
+    //     projectName: 'docs-csk6',
+    //     targetDir: './docs/chips/600X'
+    // },
     {
         projectName: 'docs-micropython',
         targetDir: './docs/chips/micropython'

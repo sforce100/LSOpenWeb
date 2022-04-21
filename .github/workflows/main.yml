@@ -26,5 +26,7 @@ jobs:
         run: |
           git config --global user.email "docs@listenai.com"
           git config --global user.name "listenai-docs"
+          git submodule init
+          git submodule update
           npm i
           npm run deploy
