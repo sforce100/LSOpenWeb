@@ -1603,7 +1603,7 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/menu_content?type=Mi
 ##### 接口地址
 
 ```
-GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/sections
+GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/category
 ```
 
 ##### 返回示例
@@ -1611,18 +1611,15 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/sections
 ```json
 [
     {
-        "desc": "",
-        "id": 8,
+        "category": "story",
         "name": "精选故事"
     },
     {
-        "desc": "",
-        "id": 6,
+        "category": "nursery_rhyme",
         "name": "快乐儿歌"
     },
     {
-        "desc": "",
-        "id": 14,
+        "category": "enlightenment",
         "name": "儿童启蒙"
     }
 ]
@@ -1630,9 +1627,8 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/sections
 
 | 参数      | 说明   | 类型           |
 | :-------- | :----- | :----------------- |
-| desc | 描述 | String |
-| id | id，目前有三种类型可选择 | Number |
-| name | 类型标题 | Object |
+| category | 分类-story: 精选故事；nursery_rhyme: 快乐儿歌；enlightenment: 儿童启蒙 | String |
+| name | 标题 | Object |
 
 
 ### 二级资源分类列表
@@ -1640,105 +1636,85 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/sections
 #### 接口地址
 
 ```
-GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/section?id=14
+GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/section?category=nursery_rhyme&page=1&size=10
 ```
 
 ##### 请求参数
 
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
-| id | Number | 分类id：快乐儿歌-6；精选故事-8；儿童启蒙-14 | 是 |
+| id | Number | 类-story: 精选故事；nursery_rhyme: 快乐儿歌；enlightenment: 儿童启蒙 | 是 |
+| page | Integer | 页码 | 否 |
+| size | Integer | 每页条数（默认一页10条） | 否 |
 
 ##### 返回示例
 
 ```json
 {
-    "desc": "",
-    "id": 14,
     "items": [
         {
-            "cover": "https://cdn.iflyos.cn/public/app_found_image/HTThonbSyFViGSdCJMAPFLJf",
-            "id": 6916,
-            "name": "水木宝宝器乐篇"
-        },
-        {
-            "cover": "https://cdn.iflyos.cn/public/app_found_image/6d7PrpneveKSgnSsqb5DpT2Z",
-            "id": 4689,
-            "name": "三字经"
-        },
-        {
-            "cover": "https://cdn.iflyos.cn/public/app_found_image/DmoyG4VPCwXWQVoLWN53ZGCA",
-            "id": 6914,
-            "name": "葫芦丝学堂"
-        },
-        {
-            "cover": "https://cdn.iflyos.cn/public/app_found_image/uhrMPZzyPmQH3NMpHh6kLQ8M",
-            "id": 6912,
-            "name": "跟我学钢琴"
-        },
-        {
-            "cover": "https://staging-console.iflyos.cn/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9CIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--582f33e9b59a59b03b370388fc1b1c3a3030d34f/%E5%BC%80%E5%BF%83%E5%84%BF%E6%AD%8C-%E9%A1%BA%E5%8F%A3%E5%AD%A6%E8%8B%B1%E6%96%87.jpg",
-            "id": 6809,
-            "name": "开心儿歌 顺口学英文"
-        },
-        {
-            "cover": "https://cdn.iflyos.cn/public/app_found_image/SjcGALKuPPzEHk6ovoexrmBh",
-            "id": 6911,
-            "name": "钢琴-拜厄基础"
-        },
-        ……
+            "category": "nursery_rhyme",
+            "cover": "http://xxxxx.jpg",
+            "hash": "xxxxxxx",
+            "name": "说英文",
+            "type": "media"
+        }
     ],
-    "name": "儿童启蒙"
+    "total": 44
 }
 ```
 
-| 参数      | 说明   | 类型           |
+| 参数      | 类型   | 说明               |
 | :-------- | :----- | :----------------- |
+| total | 总数 | Integer |
 | items.cover | 封面 | String |
-| items.id | id | Number |
-| items.name | 标题 | Object |
+| items.hash | hash | String |
+| items.name | 标题 | String |
 
 ### 音频内容详情
 
 ##### 接口地址
 
 ```
-GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/items?id=6916
+GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/items?hash=xxxx&page=1&size=10
 ```
 
 ##### 请求参数
 
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
-| id | Number | 内容id | 是 |
+| hash | String | 内容hash | 是 |
+| page | Integer | 页码 | 否 |
+| size | Integer | 每页条数（默认一页10条） | 否 |
+
 
 ##### 返回示例
 
 ```json
 {
-    "cover": "https://xxxxx",
-    "id": 6916,
-    "name": "水木宝宝器乐篇",
-    "playlists": [
+    "items": [
         {
-            "cover": "https://xxxxx",
-            "id": "456116fac0eb5097a841eaaecd6b2e40",
+            "cover": "https://xxxxxx",
+            "hash": "MTUxNA==",
+            "key": "xxxxx",
             "subtitle": "",
-            "title": "水木宝宝器乐篇-竹板",
-            "url": "http://xxxxx"
-        }
-    ],
-    "name": "儿童启蒙"
+            "title": "xxxx",
+            "url": "http://xxxxxx"
+        },
+    "total": 100
 }
 ```
 
-| 参数      | 说明   | 类型           |
+
+| 参数      | 类型   | 说明               |
 | :-------- | :----- | :----------------- |
-| playlists.cover | 封面 | String |
-| playlists.id | id | String |
-| playlists.subtitle | 副标题 | String |
-| playlists.title | 标题 | String |
-| playlists.url | 播放链接 | String |
+| total | 总数 | Integer |
+| items.hash | hash | String |
+| items.cover | 封面 | String |
+| items.key | key | String |
+| items.subtitle | 副标题 | String |
+| items.title | 标题 | String |
+| items.url | 播放链接 | String |
 
 ## 加入/删除生词本/摘抄
 
