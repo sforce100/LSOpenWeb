@@ -49,7 +49,7 @@ for (let index in submodulesPath) {
             subConfig.subNavbar.activeBasePath = `${path.replace('docs', '')}/`
             subConfig.subNavbar.to = `${path.replace('docs', '')}/${subConfig.subNavbar.to}`
         }
-        if (isProd && !subConfig.hiddenInProd) {
+        if (!isProd || (isProd && !subConfig.hiddenInProd)) {
             subConfigs.push(subConfig);
         }
     } catch (err) {
