@@ -1,3 +1,6 @@
 [submodule "LISTENAI/docs-csk6"]
 	path = docs/chips/600X
 	url = https://github.com/LISTENAI/docs-csk6.git
+[submodule "LISTENAI/docs-micropython"]
+	path = docs/chips/micropython
+	url = https://github.com/LISTENAI/docs-micropython.git

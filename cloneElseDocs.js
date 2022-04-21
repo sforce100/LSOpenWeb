@@ -15,10 +15,6 @@ const ELSE_DOCS_LIST = DEPLOY_ENV === 'staging' ? [
     //     projectName: 'docs-csk6',
     //     targetDir: './docs/chips/600X'
     // },
-    {
-        projectName: 'docs-micropython',
-        targetDir: './docs/chips/micropython'
-    }
 ] : [
     {
         projectName: 'lisa-core',
