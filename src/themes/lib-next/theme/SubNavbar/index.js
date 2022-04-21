@@ -46,7 +46,7 @@ function SubNavbar() {
         <div className="navbar__inner subnavbar__inner">
           <div className="navbar__items">
             {subNavbar.map((sub) => {
-              if (location.pathname.indexOf(sub.dirName || '') >= 0) {
+              if (location.pathname.startsWith(sub.dirName || '')) {
                 return sub.items.map((item, i) => (
                   <SubNavbarItem dirname={sub.dirName} {...item} key={i} />
                 ));
