@@ -12,6 +12,7 @@ const submodulesPath = shellRes.split('\n').map(item => {
 
 const sidebars = {};
 const subConfigs = [];
+const isProd = process.env.DEPLOY_ENV === 'prod'
 
 function handleSideBar(sidebar, path) {
     for (let key in sidebar) {
@@ -44,22 +45,13 @@ for (let index in submodulesPath) {
     }
     try {
         const subConfig = require(join(__dirname, path, '.lsopen', 'config.json'));
-
-        // {
-        //     "dirName":"/workorder",
-        //     "items":[
-        //         {
-        //             "to":"/workorder/workorder",
-        //             "label":"提交工单"
-        //         }
-        //     ]
-        // },
-
         if (subConfig.subNavbar) {
             subConfig.subNavbar.activeBasePath = `${path.replace('docs', '')}/`
             subConfig.subNavbar.to = `${path.replace('docs', '')}/${subConfig.subNavbar.to}`
         }
-        subConfigs.push(subConfig);
+        if (isProd && !subConfig.hiddenInProd) {
+            subConfigs.push(subConfig);
+        }
     } catch (err) {
 
     }
