@@ -102,7 +102,7 @@ EQ又称为均衡器，用于调节音调，补偿高、中、低音的频率。
 
 #### 3.1上行EQ调节
 **安装Spyder软件**
-辅助工具下载[Spyder下载]()
+辅助工具下载[Spyder下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E9%80%9A%E8%AF%9D%E9%99%8D%E5%99%AA/Spyder_64bit_full.exe)
 
 ![img](./files/工具.png)
 
