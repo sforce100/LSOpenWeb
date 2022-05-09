@@ -26,21 +26,23 @@
 mic增益请参考-[设备调优指导](http://docs.listenai.com/Industrysolution/Conference_calling_solutions/Optimization/auto_optimize)
 
 - 使用工具配置adc增益
-会议宝调优文档-[下载](files/会议宝调优指导.pdf)
-会议宝调优工具[-下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E9%80%9A%E8%AF%9D%E9%99%8D%E5%99%AA/%E4%BC%9A%E8%AE%AE%E5%AE%9D%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7.7z)
-自动调优工具仅适用 **蓝牙会议机方案**
+会议宝调优文档-[下载](files/会议宝调优指导.pdf)    
+会议宝调优工具[-下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E9%80%9A%E8%AF%9D%E9%99%8D%E5%99%AA/%E4%BC%9A%E8%AE%AE%E5%AE%9D%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7.7z)     
+**注意**:自动调优工具仅适用 **蓝牙会议机方案**
 
 ### 2.CAE算法模块
-CAE全称：麦克风阵列语音增强
-CAE算法包含的基本功能：
+CAE全称：麦克风阵列语音增强  
+CAE算法包含的基本功能：  
+
 - **回声消除AEC**
 ```
-回声消除能力可调参数：cae_aes_floor
-可调范围：0~6, 0最强,6最弱
+回声消除能力可调参数：cae_aes_floor  
+可调范围：0~6, 0最强,6最弱  
 
-默认配置：cae_aes_floor:0
+默认配置：cae_aes_floor:0  
 ```
 - **自动增益控制AGC**
+
 
 ```
 targetLevelDbfs：AGC增益控制目标幅值
@@ -62,14 +64,17 @@ limiterLevelDbfs：AGC增益控制最大幅值
 默认配置：
 cae_nn_denoise_floor:0
 ```
+
 键盘敲击噪声环境下，噪声抑制功能打开和关闭前后对比：
 关闭：
 ![](./files/4.png)
+
 打开：
 ![](./files/5.png)
 从上图对比可以看到，当噪声抑制功能打开后，键盘敲击噪声被很好的抑制了。
 
-- **去混响**
+- **去混响**   
+
 什么是混响？
 混响，是在一个空间内，声源停止发音后，声音继续存在、反射的声学现象。即直达声与经过多次反射的声音叠加在一起，会影响语音的清晰度和可懂度。
 
@@ -83,25 +88,29 @@ cae_low_delay
 默认配置：
 cae_low_delay: 0
 ```
-- **CAE关键能力参考指标：**
-**混响能力：**
-- 主观效果：
-1.5s混响环境，基本无回声泄露，清晰通话；
-- 客观效果：
-0.25~0.45s （Zoom）0.4~0.7s (Teams）环境，测试满足通话效果要求
-**降噪能力**
-- 客观效果：
-噪声抑制能力10-25dB
-N-Mos分4.2-4.3分
-**回声消除能力：**
-- 客观效果
-喇叭到麦克风出能量，小于92-95dB可控制（电声结构达到算法准入门槛）
+**CAE关键能力参考指标：**  
+
+**混响能力：**  
+- 主观效果：  
+1.5s混响环境，基本无回声泄露，清晰通话；  
+- 客观效果：  
+0.25~0.45s （Zoom）0.4~0.7s (Teams）环境，测试满足通话效果要求  
+
+**降噪能力**  
+- 客观效果：  
+噪声抑制能力10-25dB  
+N-Mos分4.2-4.3分  
+
+**回声消除能力：**  
+- 客观效果  
+喇叭到麦克风出能量，小于92-95dB可控制（电声结构达到算法准入门槛）  
 
 ### 3.EQ模块
-EQ又称为均衡器，用于调节音调，补偿高、中、低音的频率。
+EQ又称为均衡器，用于调节音调，补偿高、中、低音的频率。  
 
 #### 3.1上行EQ调节
-**安装Spyder软件**
+**安装Spyder软件**  
+
 辅助工具下载[Spyder下载](https://iflyos-external.oss-cn-shanghai.aliyuncs.com/public/lsopen/%E9%80%9A%E8%AF%9D%E9%99%8D%E5%99%AA/Spyder_64bit_full.exe)
 
 ![img](./files/工具.png)
@@ -134,8 +143,9 @@ def SEND_PATH():
 
 ```
 
-**EQ曲线**
-EQ基础文件通过Spyder可以预览曲线图
+**EQ曲线**  
+EQ基础文件通过Spyder可以预览曲线图  
+
 **导入文件：**
 ![img](./files/spyder.png)
 **曲线图**
@@ -143,7 +153,7 @@ EQ基础文件通过Spyder可以预览曲线图
 
 
 **EQ调节示例**
-上行EQ曲线FAIL示例：
+上行EQ曲线不达标示例：
 ![img](./files/示例.png)
 
 调整方向：
@@ -188,23 +198,23 @@ Args:
     Q: Q factor (Q值越大频弧度越大)
 ```
 **常用滤波器：**
-    allpass ：全通滤波器
-    bandpass：带通滤波器，允许一定频率内通过。
-    notch filter：陷波滤波器，压制中心频率的增益和频率响应。
-    Lowpass(high-cut)：低通滤波器
-    highpass(low-cut)：高通滤波器
-    low shelf：低架滤波器，切断中心频率以下的频率：可调节增益。
-    high shelf：高架滤波器，切断中心频率以上的频率：可调节增益。
-    peak(Bell)：尖峰滤波，拉高中心频率增益和频率响应。
+    allpass ：全通滤波器   
+    bandpass：带通滤波器，允许一定频率内通过。    
+    notch filter：陷波滤波器，压制中心频率的增益和频率响应。  
+    Lowpass(high-cut)：低通滤波器    
+    highpass(low-cut)：高通滤波器    
+    low shelf：低架滤波器，切断中心频率以下的频率：可调节增益。  
+    high shelf：高架滤波器，切断中心频率以上的频率：可调节增益。  
+    peak(Bell)：尖峰滤波，拉高中心频率增益和频率响应。  
 
-    替换EQ头文件到固件编译烧录
-    将eq_param.py运行生成的头文件eq_param.h替换源码src/algos/eq_param.h后编译烧录即可生效。
+    替换EQ头文件到固件编译烧录   
+    将eq_param.py运行生成的头文件eq_param.h替换源码src/algos/eq_param.h后编译烧录即可生效。  
 
 #### 3.2下行EQ调节
-下行EQ调节方式和上行EQ调节方法基本原理相同，在项目中的修改点略有差异。
+下行EQ调节方式和上行EQ调节方法基本原理相同，在项目中的修改点略有差异。  
 
 **eq基础文件**
-[eq_param.py](./files/eq_param.py)
+[eq_param.py](./files/eq_param.py)  
 
 **首先 通过Spyder工具导入eqpython文件生成EQ配置**
 ```
@@ -246,7 +256,7 @@ static float32_t coeff[MAX_CASCADE_STAGE*5] = {
 ```
 
 ### 4.DRC模块
-DRC 基本信息：
+DRC 基本信息：  
 Dynamic Range Control (DRC)动态范围控制提供压缩和放大能力，可以使声音听起来更柔和或更大声，即一种信号幅度调节方式.
 DRC 可以做的事情：
 - 根据环境匹配音频信号电平：也就是杜比volume leveler的作用；
@@ -256,9 +266,9 @@ DRC 可以做的事情：
 
 DRC的增益调整基本上是三段：对底噪，中等幅度信号，幅度较大的信号的三段不同的处理，比如：
 
-底噪：Cutoff，attenuation
-中等幅度信号：Expander
-幅度较大，防止削顶的：Limiter
+底噪：Cutoff，attenuation   
+中等幅度信号：Expander   
+幅度较大，防止削顶的：Limiter  
 
 以上是DRC的基本信息，在会议降噪项目中，我们采用了国内领先的DRC算法，实现了音频动态范围的精准控制。
 
@@ -322,22 +332,23 @@ DRC的增益调整基本上是三段：对底噪，中等幅度信号，幅度�
 ```
 "dot_w":0 //拐点的宽度
 ```
-当我们不确定需要的拐点宽度时，我们可以先设置为0即硬拐点，在at和rt值为0的调节下去确认临界点。
+当我们不确定需要的拐点宽度时，我们可以先设置为0即硬拐点，在at和rt值为0的调节下去确认临界点。  
+
 **DRC段数设置**
 
 ```
 "segnum": 3,//int SegNum DRC段数设置
 ```
 
-**验收指标示例：**
+**验收指标示例：**  
 播放1KHZ 0db 喇叭输出的额定功率：2W
 播放1KHZ -6db 喇叭输出额定功率：2W
 DRC需要把喇叭最高的输出功率控制在2W以内
 
-**DRC曲线调节步骤：**
-1.确定DRC压制的临界点
-- 搭建基本的硬件条件
-- 设备功放接负载（用电阻取代喇叭），关闭DRC （bypass）测量达到额定功率时需要的1Khz 信号的幅值（例如1KHZ 0db -6db）能达到这个功率。
+**DRC曲线调节步骤：**    
+1.确定DRC压制的临界点  
+- 搭建基本的硬件条件  
+- 设备功放接负载（用电阻取代喇叭），关闭DRC （bypass）测量达到额定功率时需要的1Khz 信号的幅值（例如1KHZ 0db -6db）能达到这个功率。  
 
 2.确定临界点的坐标
 - DRC曲线坐标(x,y) --x代表音频的分贝，y-x =n n>0则增强 n = 0 则维持现状 n<1 则压制 
