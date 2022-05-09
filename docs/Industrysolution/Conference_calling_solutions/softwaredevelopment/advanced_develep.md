@@ -137,7 +137,7 @@ def SEND_PATH():
 **EQ曲线**
 EQ基础文件通过Spyder可以预览曲线图
 **导入文件：**
-![img](./files/Spyder.png)
+![img](./files/spyder.png)
 **曲线图**
 ![img](./files/曲线.png)
 
@@ -275,11 +275,6 @@ DRC的增益调整基本上是三段：对底噪，中等幅度信号，幅度�
                     "dot_w": 0
                 },
                 {
-                    "dot_x":-40,
-                    "dot_y":-40,
-                    "dot_w":0
-                },
-                {
                     "dot_x": -20,
                     "dot_y": -17,
                     "dot_w": 0
@@ -303,7 +298,12 @@ DRC的增益调整基本上是三段：对底噪，中等幅度信号，幅度�
                     "dot_x": 0,
                     "dot_y": -6,
                     "dot_w": 0
-                }
+                },
+                {
+                    "dot_x":0,
+                    "dot_y":-6,
+                    "dot_w":0
+                },
         	]
         }
     },
