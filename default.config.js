@@ -231,6 +231,9 @@ module.exports = {
       copyright: `Copyright © 安徽聆思智能科技有限公司皖ICP备05001217号`,
     },
     zoomSelector: '.markdown :not(em) > img',
+     prism: {
+       additionalLanguages: ['powershell'],
+    },
   },
   presets: [
     [

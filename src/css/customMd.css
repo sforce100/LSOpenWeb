@@ -7,26 +7,26 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1D99FF;
-  --ifm-color-primary-dark: #1B66A3;
-  --ifm-color-primary-darker: #1B405F;
-  --ifm-color-primary-darkest: #1A2631;
-  --ifm-color-primary-light: #77C2FF;
-  --ifm-color-primary-lighter: #BBE0FF;
-  --ifm-color-primary-lightest: #E8F4FF;
-  --ifm-color-info: #1D99FF;
-  --ifm-color-info-lightest: #E8F4FF;
-  --ifm-color-success: #00DBCB;
-  --ifm-color-success-lightest: #E5FBF9;
-  --ifm-color-warning: #FFA253;
-  --ifm-color-warning-lightest: #FFF5ED;
-  --ifm-color-danger: #FF4B5F;
-  --ifm-color-danger-lightest: #FFECEF;
-  --ifm-color-secondary: #F2F2F2;
-  --ifm-color-secondary-light: #F7F7F7;
-  --ifm-color-secondary-dark: #E6E6E6;
+  --ifm-color-primary: #1d99ff;
+  --ifm-color-primary-dark: #1b66a3;
+  --ifm-color-primary-darker: #1b405f;
+  --ifm-color-primary-darkest: #1a2631;
+  --ifm-color-primary-light: #77c2ff;
+  --ifm-color-primary-lighter: #bbe0ff;
+  --ifm-color-primary-lightest: #e8f4ff;
+  --ifm-color-info: #1d99ff;
+  --ifm-color-info-lightest: #e8f4ff;
+  --ifm-color-success: #00dbcb;
+  --ifm-color-success-lightest: #e5fbf9;
+  --ifm-color-warning: #ffa253;
+  --ifm-color-warning-lightest: #fff5ed;
+  --ifm-color-danger: #ff4b5f;
+  --ifm-color-danger-lightest: #ffecef;
+  --ifm-color-secondary: #f2f2f2;
+  --ifm-color-secondary-light: #f7f7f7;
+  --ifm-color-secondary-dark: #e6e6e6;
   --ifm-alert-color: #333333;
-  --ifm-heading-color: #1A1A1A;
+  --ifm-heading-color: #1a1a1a;
   --ifm-table-head-color: #1a1a1a;
   --ifm-font-color-base: #333333;
   --ifm-blockquote-color: #808080;
@@ -34,28 +34,36 @@
   --ifm-line-hight-base: 1.7;
   --ifm-heading-font-weight: 600;
   --ifm-code-font-size: 95%;
+  --ifm-font-color-active: #1d99ff;
+  --ifm-bg-color-active: #ddf0ff;
+  --ifm-bg-block-active: #f2f9ff;
 }
 
-html[data-theme ='dark'] {
-  --ifm-color-info-lightest: #1A2631;
-  --ifm-color-success-lightest: #172D2B;
-  --ifm-color-warning-lightest: #31271F;
-  --ifm-color-danger-lightest: #311E21;
+html[data-theme="dark"] {
+  --ifm-color-info-lightest: #1a2631;
+  --ifm-color-success-lightest: #172d2b;
+  --ifm-color-warning-lightest: #31271f;
+  --ifm-color-danger-lightest: #311e21;
   --ifm-color-secondary: #262626;
   --ifm-color-secondary-light: #212121;
   --ifm-color-secondary-dark: #333333;
-  --ifm-alert-color: #CCCCCC;
-  --ifm-heading-color: #E6E6E6;
-  --ifm-table-head-color: #E6E6E6;
-  --ifm-font-color-base: #CCCCCC;
+  --ifm-alert-color: #cccccc;
+  --ifm-heading-color: #e6e6e6;
+  --ifm-table-head-color: #e6e6e6;
+  --ifm-font-color-base: #cccccc;
   --ifm-blockquote-color: #999999;
+  --ifm-font-color-active: #1d99ff;
+  --ifm-bg-color-active: #192e3f;
+  --ifm-bg-block-active: #19232b;
 }
 
-.padding-bottom--lg, .padding-vert--lg {
+.padding-bottom--lg,
+.padding-vert--lg {
   /* padding-bottom: 80px !important; */
 }
 
-.padding-top--md, .padding-verg--md {
+.padding-top--md,
+.padding-verg--md {
   /* padding-top: 80px !important; */
 }
 
@@ -65,33 +73,34 @@ html[data-theme ='dark'] {
   margin-bottom: 56px !important;
 }
 
-.markdown>h2 {
+.markdown > h2 {
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 32px;
   margin-top: 56px;
 }
 
-.markdown>h3 {
+.markdown > h3 {
   font-size: 20px;
   line-height: 28px;
   margin-bottom: 16px;
   margin-top: 40px;
 }
 
-.markdown>h4 {
+.markdown > h4 {
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 12px;
   margin-top: 24px;
 }
 
-.markdown>p {
+.markdown > p {
   margin: 0 0 12px;
 }
 
-ul, ol {
-  margin:0 0 16px;
+ul,
+ol {
+  margin: 0 0 16px;
 }
 
 img {
@@ -127,7 +136,7 @@ img {
   fill: var(--ifm-color-info);
 }
 
-.alert--success{
+.alert--success {
   --ifm-alert-background-color: var(--ifm-color-success-lightest);
   --ifm-alert-border-color: var(--ifm-color-success-lightest);
 }
@@ -136,7 +145,7 @@ img {
   fill: var(--ifm-color-success);
 }
 
-.alert--warning{
+.alert--warning {
   --ifm-alert-background-color: var(--ifm-color-warning-lightest);
   --ifm-alert-border-color: var(--ifm-color-warning-lightest);
 }
@@ -145,7 +154,7 @@ img {
   fill: var(--ifm-color-warning);
 }
 
-.alert--danger{
+.alert--danger {
   --ifm-alert-background-color: var(--ifm-color-danger-lightest);
   --ifm-alert-border-color: var(--ifm-color-danger-lightest);
 }
@@ -154,14 +163,13 @@ img {
   fill: var(--ifm-color-danger);
 }
 
-.alert--secondary{
+.alert--secondary {
   --ifm-alert-color: var(--ifm-font-color-base);
 }
 
 .alert--secondary .admonition-icon svg {
   fill: var(--ifm-font-color-base);
 }
-
 
 blockquote {
   border-left: 6px solid var(--ifm-color-secondary-dark);
@@ -188,7 +196,6 @@ td {
   line-height: 1.4;
 }
 
-
 .docusaurus-highlight-code-line {
   background-color: rgb(72, 77, 91);
   display: block;
@@ -199,6 +206,6 @@ td {
 .table-of-contents {
   font-size: 0.9rem !important;
 }
-.white{
-  color:#fff!important;
+.white {
+  color: #fff !important;
 }
