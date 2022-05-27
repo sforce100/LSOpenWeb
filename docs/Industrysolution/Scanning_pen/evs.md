@@ -79,8 +79,9 @@ sidebar_position: 4
       "image_metadata":{
         "reverse": true,
         "tokenization":true,
-        "dictionary":true, // 0917新增: 词典开关
-        "resources":true, // 0917新增: 教育内容开关
+        "dictionary":true, // 20210917新增: 词典开关
+	"dict_type":xuewang, // 20220520新增: 词典类型
+        "resources":true, // 20210917新增: 教育内容开关
       	"height": 128,
       	"image_data_debug": false,
       	"debug": false
@@ -104,6 +105,7 @@ sidebar_position: 4
 | image_metadata.reverse | boolean     | 竖向拼接图片，默认为`false`                                           | 否   |
 | image_metadata.tokenization | Boolean | 中文分词，设置为`true`且原文为中文，则返回中文分词结果。若未开启或原文为英文，则返回原文原始文本。 |  |
 | image_metadata.dictionary | Boolean | 词典开关，设置为`true`时调用词典接口 | 否 |
+| image_metadata.dict_type | Boolean | 词典类型 | 否 |
 | image_metadata.resources | Boolean | 教育内容开关，设置为`true`时调用教育内容接口 | 否 |
 | image_metadata.image_debug | boolean     | 设置为`true`时，云端暂存设备上报的数据用于从调试接口获取图片等数据，仅供开发调试使用。此时请务必将原图使用jpeg算法压缩后传输。默认为`false`      | 否   |
 | image_metadata.debug | boolean     | 设置为`true`时，云端收集ocr相关信息用于算法调试，仅供开发调试使用，默认为`false` 。处于debug模式时扫描图片，云端不会返回识别结果，只会将采集后的图片保存，用于后续算法优化。 | 否   |
