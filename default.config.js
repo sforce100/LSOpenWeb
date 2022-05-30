@@ -233,6 +233,7 @@ module.exports = {
     zoomSelector: '.markdown :not(em) > img',
      prism: {
        additionalLanguages: ['powershell'],
+       theme: require('prism-react-renderer/themes/vsDark'),
     },
   },
   presets: [
