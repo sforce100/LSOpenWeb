@@ -147,6 +147,47 @@ sidebar_position: 4
 
 当图像格式为JPEG（0x30）时，保留数据为数据帧长度: uint16, 小端字节序
 
+### 请求协议text_in
+
+```json
+{
+  "iflyos_header": {...},
+  "iflyos_context": {...},
+  "iflyos_request": {
+    "header": {
+      "name": "recognizer.text_in",
+      "request_id": "xxxxxxxx"
+    },
+    "payload": {
+      "query": "请求的文本",
+      "with_tts": true,
+      "reply_key": "xxxxxx"
+      "profile": "OCR_TRANS_TTS", //0614新增
+    }
+  }
+}
+
+```
+
+| 参数                  | 类型    | 说明                                                         | 必填 |
+| :-------------------- | :------ | :----------------------------------------------------------- | :--- |
+| iflyos_header         | Object  | 构建的通用 iflyos_header                                     | 是   |
+| iflyos_context        | Object  | 构建的通用 iflyos_context                                    | 是   |
+| query              | String | 需要请求的文本	 | 是   |
+| profile               | String  | 请求操作，具体取值见下表（不填则默认请求云端语义链路）                               | 否   |
+| with_tts    | Bool  | 是否需要语音回复，如果你希望用户点击按钮的时候，不要出现提示音，那么可以设置为 false，默认为：true	                    | 否   |
+| reply_key	    |String  | 如果接收到 name 为 recognizer.expect_reply 的响应的话，重新打开麦克风识别的时候，需要填入响应中返回的 reply_key 中的取值  | 否   |
+
+`profile`取值
+
+| `profile` 取值 | 说明                                   |
+| :------------- | :------------------------------------- |
+| OCR_TRANS_TTS          | 返回翻译结果、原文TTS结果、译文TTS结果、中文分词结果                 |
+| OCR_TRANS_TTS_DIC       | 返回翻译结果、原文TTS结果、译文TTS结果、词典结果、教育内容结果、中文分词结果             |
+| OCR_TRAN_DIC     | 返回翻译结果、词典结果、教育内容结果、中文分词结果             |
+| OCR_TTS_DIC  | 原文TTS结果、词典结果、教育内容结果、中文分词结果 |
+
+
 ### 返回示例
 
 
