@@ -2416,6 +2416,7 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/section?catego
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
 | id | Number | 类-story: 精选故事；nursery_rhyme: 快乐儿歌；enlightenment: 儿童启蒙 | 是 |
+| type | String | 类型，默认为音频数据<br>video: 视频数据 | 否 |
 | page | Integer | 页码 | 否 |
 | size | Integer | 每页条数（默认一页10条） | 否 |
 
