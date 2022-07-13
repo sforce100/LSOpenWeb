@@ -533,19 +533,3 @@ sidebar_position: 1
 - [扫描笔云端协议开发文档](https://docs.listenai.com/Industrysolution/Scanning_pen/evs)
 - [扫描笔云端API接口开发文档](https://docs.listenai.com/Industrysolution/Scanning_pen/api)
 
-
-### 语音助手
-
-# 一级标题
-
-## 二级标题
-
-### 三级标题
-
-### CSK3001纯在线
-
-### 纯在线C
-
-### csk3001纯在线
-
-# csk3001纯在线1
