@@ -2,8 +2,9 @@
 const { exec } = require('shelljs')
 const { join } = require('path');
 
-const shellRes = exec(`git submodule foreach`)
-        .stdout.trim();
+const shellRes = exec(`git submodule foreach`, {
+    cwd: __dirname,
+}).stdout.trim();
 
 const submodulesPath = shellRes.split('\n').map(item => {
     const reg = /\'(.*?)\'/;
