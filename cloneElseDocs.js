@@ -5,7 +5,7 @@ const os = require('os')
 
 const DEPLOY_ENV = process.env.DEPLOY_ENV || 'staging'
 const DEPLOYMENT_BRANCH = `docs-${DEPLOY_ENV}`
-const REMOTE_BRANCH_PREFIX = 'git@github.com:LISTENAI/'
+const REMOTE_BRANCH_PREFIX = 'https://github.com/LISTENAI/'
 const ELSE_DOCS_LIST = DEPLOY_ENV === 'staging' ? [
     {
         projectName: 'lisa-core',
