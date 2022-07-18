@@ -402,12 +402,7 @@ Authorization: Bearer {token}
     "details": [
         {
             "appreciation": "此诗通过对古原上野草的描绘，抒发送别友人时的依依惜别之情。它可以看成是一曲野草颂，进而是生命的颂歌。全诗章法谨严，用语自然流畅，对仗工整，写景抒情水乳交融，意境浑成，是“赋得体”中的绝唱。原上草或有所指，但喻意并无确定。“野火烧不尽，春风吹又生，”却作为一种“韧劲”而有口皆碑，传诵千古。诗的首句“离离原上草”，紧紧扣住题目“古原草”三字，并用叠字“离离”描写春草的茂盛。第二句“一岁一枯荣”，进而写出原上野草秋枯春荣，岁岁循环，生生不已的规律。第三、四句“野火烧不尽，春风吹又生”，一句写“枯”，一句写“荣”，是“枯荣”二字意思的发挥。不管烈火怎样无情地焚烧，只要春风一吹，又是遍地青青的野草，极为形象生动地表现了野草顽强的生命力。",
-            "articles_num": [
-                "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_001.mp3?sign=B43FFB9958BDF24837C169E0B8CF28B2&time=1652975005",
-                "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_002.mp3?sign=A17E6FC7CD06605C72021BBACB5A5D93&time=1652975005",
-                "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_003.mp3?sign=9F6FEF9E25F47A1318E42DD62ACDCC10&time=1652975005",
-                "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_004.mp3?sign=247BDE376B2167D8D3F9D4034967926F&time=1652975005"
-            ],
+            "poetry_url":  "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_001.mp3?sign=B43FFB9958BDF24837C169E0B8CF28B2&time=1652975005",
             "author": "白居易",
             "author_id": "ZZ0001",
             "author_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E4%BD%9C%E8%80%85/ID00023_ZZ.mp3?sign=45821FF33ED8F6311A97C8DAB7D59A29&time=1652975005",
