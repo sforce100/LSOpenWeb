@@ -397,3 +397,6 @@ a.menu__link.menu__link--sublist.menu__link--active {
 .menu__list .menu__list .menu__list .menu__link {
   padding-left: 54px;
 }
+.menu__list .menu__list .menu__list .menu__list .menu__link {
+  padding-left: 68px;
+}
