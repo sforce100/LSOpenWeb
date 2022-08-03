@@ -322,5 +322,27 @@ uac_desc_name = "LINGSI AI"
   uac_desc_name = "LINGSI AI"
 ```
 
+### 组织ID获取方式
 
+#### 说明
+
+组织ID是公司企业在聆思开发者平台的唯一凭证，通过组织ID，系统会自动把聆思的FAE拉入该组织下，以便实现工单问题的跟踪和回复。
+
+
+
+#### ID获取步骤
+
+1. 注册并登录LSCloud，链接：https://cloud.listenai.com
+
+<img src="./files/1.png" alt="1" style="zoom:50%;" />
+
+
+
+2. 点击“组织 → 创建组织”进行组织创建，若已有组织则在组织列表点击公司名称进入组织详情。
+
+   <img src="./files/2.png" alt="2" style="zoom:50%;" />
+
+2. 在组织详情页面复制此处的组织ID，提供给对接的销售即可。
+
+<img src="./files/3.png" alt="3" style="zoom:50%;" />
 
