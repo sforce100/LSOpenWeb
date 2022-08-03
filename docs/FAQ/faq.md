@@ -334,15 +334,13 @@ uac_desc_name = "LINGSI AI"
 
 1. 注册并登录LSCloud，链接：https://cloud.listenai.com
 
-<img src="./files/1.png" alt="1" style="zoom:50%;" />
 
-
+![](./files/1.png)
 
 2. 点击“组织 → 创建组织”进行组织创建，若已有组织则在组织列表点击公司名称进入组织详情。
 
-   <img src="./files/2.png" alt="2" style="zoom:50%;" />
+![](./files/2.png)
 
 2. 在组织详情页面复制此处的组织ID，提供给对接的销售即可。
 
-<img src="./files/3.png" alt="3" style="zoom:50%;" />
-
+![](./files/3.png)
