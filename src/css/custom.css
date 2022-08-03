@@ -225,7 +225,7 @@ html[data-theme="dark"] {
   z-index: 9999;
 }
 
-@media (max-width: 1256px) {
+@media (max-width: 1255px) {
   .center-container {
     margin-left: 0;
   }
