@@ -10,16 +10,16 @@ sidebar_position: 4
 
 | 版本 | 更新说明                                                     | 责任人 | 日期      |
 | ---- | ------------------------------------------------------------ | ------ | --------- |
-| 1.0  | 初版定义                                                     | 李逸卿 | 2021.1.14 |
-| 1.1  | 新增文本翻译接口，用于收藏夹中的句子翻译                     | 李逸卿 | 2021.1.19 |
-| 1.2  | 修改语音翻译和文本翻译协议，新增`translation`字段            | 李逸卿 | 2021.1.25 |
-| 1.3  | 新增图像帧数据协议说明                                       | 梁展晖 | 2021.2.02 |
-| 1.4  | 新增多行扫描请求方式                                         | 李逸卿 | 2021.3.2  |
-| 1.5  | 多行扫描请求更改为实时扫描参数，修改多行扫描交互方式         | 梁展晖 | 2021.3.7  |
-| 1.6  | 增加翻译语种字段：recognizer.visual_result增加data.from、data.to字段，recognizer.trans_result增加data.from、data.to字段 | 梁展晖 | 2021.3.9  |
-| 1.7  | 更新单词查询接口地址 | 梁展晖 | 2021.3.11  |
-| 1.8  | 增加jpeg格式协议说明。帧头数据格式FMT增加JPEG: 0x30，保留数据添加jpeg说明 | 梁展晖 | 2021.3.22  |
-| 1.9  | visuale_in请求增加参数image_metadata.reverse，支持竖向拼接图片 | 梁展晖 | 2021.3.24 |
+| 1.00  | 初版定义                                                     | 李逸卿 | 2021.1.14 |
+| 1.01  | 新增文本翻译接口，用于收藏夹中的句子翻译                     | 李逸卿 | 2021.1.19 |
+| 1.02  | 修改语音翻译和文本翻译协议，新增`translation`字段            | 李逸卿 | 2021.1.25 |
+| 1.03  | 新增图像帧数据协议说明                                       | 梁展晖 | 2021.2.02 |
+| 1.04  | 新增多行扫描请求方式                                         | 李逸卿 | 2021.3.2  |
+| 1.05  | 多行扫描请求更改为实时扫描参数，修改多行扫描交互方式         | 梁展晖 | 2021.3.7  |
+| 1.06  | 增加翻译语种字段：recognizer.visual_result增加data.from、data.to字段，recognizer.trans_result增加data.from、data.to字段 | 梁展晖 | 2021.3.9  |
+| 1.07  | 更新单词查询接口地址 | 梁展晖 | 2021.3.11  |
+| 1.08  | 增加jpeg格式协议说明。帧头数据格式FMT增加JPEG: 0x30，保留数据添加jpeg说明 | 梁展晖 | 2021.3.22  |
+| 1.09  | visuale_in请求增加参数image_metadata.reverse，支持竖向拼接图片 | 梁展晖 | 2021.3.24 |
 | 1.10 | visual_in请求添加debug, image_debug字段用于调试 | 梁展晖 | 2021.5.27 |
 | 1.11 | 增加请求上限限制：翻译上限：256字符，ocr上限：4090px | 李逸卿 | 2021.6.3 |
 | 1.12 | 1. visual_in增加tokenization字段，用于**开启/关闭中文分词**；2. visual_result增加segs字段，用于返回中文分词结果 | 胡星晨 | 2021.7.16 |
@@ -29,8 +29,9 @@ sidebar_position: 4
 | 1.16 | **词典查询**的英文单词返回新增`details_us_pronunce`美式发音字段。 | 刘钟蔚 | 2021.9.28 |
 | 1.17 | 更新**口语练习**相关协议和接口说明 | 张毅 | 2021.10.22 |
 | 1.18 | 更新词典**诗词**返回相关协议和接口说明 | 刘钟蔚 | 2021.12.13 |
-| 1.19 | 增加语速设置接口说明 | 刘钟蔚 | 2021.12.15 |
-
+| 1.19 | 新增语速设置接口说明 | 刘钟蔚 | 2021.12.15 |
+| 2.00 | 精简文档，只保留EVS协议部分 | 刘钟蔚 | 2022.05.01 |
+| 2.01 | 新增`visual_in`中`profile`字段`CUSTOM_JXW_SEARCHTOPIC`，用于云端搜题 | 刘钟蔚 | 2022.07.14 |
 
 
 
@@ -79,8 +80,9 @@ sidebar_position: 4
       "image_metadata":{
         "reverse": true,
         "tokenization":true,
-        "dictionary":true, // 0917新增: 词典开关
-        "resources":true, // 0917新增: 教育内容开关
+        "dictionary":true, // 20210917新增: 词典开关
+	"dict_type":xuewang, // 20220520新增: 词典类型
+        "resources":true, // 20210917新增: 教育内容开关
       	"height": 128,
       	"image_data_debug": false,
       	"debug": false
@@ -104,6 +106,7 @@ sidebar_position: 4
 | image_metadata.reverse | boolean     | 竖向拼接图片，默认为`false`                                           | 否   |
 | image_metadata.tokenization | Boolean | 中文分词，设置为`true`且原文为中文，则返回中文分词结果。若未开启或原文为英文，则返回原文原始文本。 |  |
 | image_metadata.dictionary | Boolean | 词典开关，设置为`true`时调用词典接口 | 否 |
+| image_metadata.dict_type | Boolean | 词典类型 | 否 |
 | image_metadata.resources | Boolean | 教育内容开关，设置为`true`时调用教育内容接口 | 否 |
 | image_metadata.image_debug | boolean     | 设置为`true`时，云端暂存设备上报的数据用于从调试接口获取图片等数据，仅供开发调试使用。此时请务必将原图使用jpeg算法压缩后传输。默认为`false`      | 否   |
 | image_metadata.debug | boolean     | 设置为`true`时，云端收集ocr相关信息用于算法调试，仅供开发调试使用，默认为`false` 。处于debug模式时扫描图片，云端不会返回识别结果，只会将采集后的图片保存，用于后续算法优化。 | 否   |
@@ -116,6 +119,7 @@ sidebar_position: 4
 | OCR_TTS        | 图像识别，语音合成识别结果             |
 | OCR_TRANS      | 图像识别，翻译识别结果                 |
 | OCR_TRANS_TTS  | 图像识别，翻译识别结果，合成原文和译文 |
+| CUSTOM_JXW_SEARCHTOPIC | 用于云端搜题（注：目前只调用搜题服务，不返回搜题结果，搜题结果在公众号显示） |
 | TEXTBOOK       | 教材指读，暂未开放                     |
 
 ##### 发送图像数据
@@ -144,6 +148,47 @@ sidebar_position: 4
 ###### JPEG
 
 当图像格式为JPEG（0x30）时，保留数据为数据帧长度: uint16, 小端字节序
+
+### 请求协议text_in
+
+```json
+{
+  "iflyos_header": {...},
+  "iflyos_context": {...},
+  "iflyos_request": {
+    "header": {
+      "name": "recognizer.text_in",
+      "request_id": "xxxxxxxx"
+    },
+    "payload": {
+      "query": "请求的文本",
+      "with_tts": true,
+      "reply_key": "xxxxxx"
+      "profile": "OCR_TRANS_TTS", //0614新增
+    }
+  }
+}
+
+```
+
+| 参数                  | 类型    | 说明                                                         | 必填 |
+| :-------------------- | :------ | :----------------------------------------------------------- | :--- |
+| iflyos_header         | Object  | 构建的通用 iflyos_header                                     | 是   |
+| iflyos_context        | Object  | 构建的通用 iflyos_context                                    | 是   |
+| query              | String | 需要请求的文本	 | 是   |
+| profile               | String  | 请求操作，具体取值见下表（不填则默认请求云端语义链路）                               | 否   |
+| with_tts    | Bool  | 是否需要语音回复，如果你希望用户点击按钮的时候，不要出现提示音，那么可以设置为 false，默认为：true	                    | 否   |
+| reply_key	    |String  | 如果接收到 name 为 recognizer.expect_reply 的响应的话，重新打开麦克风识别的时候，需要填入响应中返回的 reply_key 中的取值  | 否   |
+
+`profile`取值
+
+| `profile` 取值 | 说明                                   |
+| :------------- | :------------------------------------- |
+| OCR_TRANS_TTS          | 返回翻译结果、原文TTS结果、译文TTS结果、中文分词结果                 |
+| OCR_TRANS_TTS_DIC       | 返回翻译结果、原文TTS结果、译文TTS结果、词典结果、教育内容结果、中文分词结果             |
+| OCR_TRAN_DIC     | 返回翻译结果、词典结果、教育内容结果、中文分词结果             |
+| OCR_TTS_DIC  | 原文TTS结果、词典结果、教育内容结果、中文分词结果 |
+
 
 ### 返回示例
 

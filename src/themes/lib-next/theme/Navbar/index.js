@@ -47,7 +47,7 @@ function Navbar() {
   
   const [tohide, setTohide] = useState(false);
   useScrollPosition(({scrollY}) => {
-    console.log('navbar-->', scrollY)
+    // console.log('navbar-->', scrollY)
     if (scrollY < 200) {
       setTohide(false)
     } else {

@@ -10,6 +10,7 @@ import clsx from 'clsx'; // import useThemeContext from '@theme/hooks/useThemeCo
 import useScrollPosition from '@theme/hooks/useScrollPosition';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useWindowSize, {windowSizes} from '@theme/hooks/useWindowSize';
 import SubNavbarItem from '@theme/SubNavbarItem';
 import {useLocation} from 'react-router-dom';
@@ -20,10 +21,13 @@ function SubNavbar() {
   const {subNavbar} = useThemeConfig();
   const location = useLocation();
   const [sidebarShown, setSidebarShown] = useState(false); // const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
+  const {
+    baseUrl
+  } = useDocusaurusContext().siteConfig;
 
   const [tohide, setTohide] = useState(false);
   useScrollPosition(({scrollY}) => {
-    console.log('navbar-->', scrollY)
+    // console.log('navbar-->', scrollY)
     if (scrollY < 200) {
       setTohide(false)
     } else {
@@ -46,7 +50,7 @@ function SubNavbar() {
         <div className="navbar__inner subnavbar__inner">
           <div className="navbar__items">
             {subNavbar.map((sub) => {
-              if (location.pathname.startsWith(sub.dirName || '')) {
+              if (location.pathname.startsWith((baseUrl + (sub.dirName || '')).replace(/\/\//g, '\/'))) {
                 return sub.items.map((item, i) => (
                   <SubNavbarItem dirname={sub.dirName} {...item} key={i} />
                 ));

@@ -204,7 +204,7 @@ export default function CodeBlock({
                 [styles.codeBlockWithTitle]: codeBlockTitle,
               })}
               style={style}>
-              <code className={styles.codeBlockLines}>
+              <div className={styles.codeBlockLines}>
                 {tokens.map((line, i) => {
                   if (line.length === 1 && line[0].content === '') {
                     line[0].content = '\n'; // eslint-disable-line no-param-reassign
@@ -233,7 +233,7 @@ export default function CodeBlock({
                     </span>
                   );
                 })}
-              </code>
+              </div>
             </pre>
 
             <button

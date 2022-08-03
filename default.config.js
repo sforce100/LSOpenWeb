@@ -177,6 +177,10 @@ module.exports = {
             to: "/Industrysolution/CloudView_solution/Quick_start/Scheme_introduction",//跳转哪个目录
             label: '云台',
           },
+          {
+            to: "/Industrysolution/Posture_solution/Posture_introduction",//跳转哪个目录
+            label: '坐姿检测',
+          },
         ],
       },
       {
@@ -227,6 +231,10 @@ module.exports = {
       copyright: `Copyright © 安徽聆思智能科技有限公司皖ICP备05001217号`,
     },
     zoomSelector: '.markdown :not(em) > img',
+     prism: {
+       additionalLanguages: ['powershell'],
+       theme: require('prism-react-renderer/themes/vsDark'),
+    },
   },
   presets: [
     [

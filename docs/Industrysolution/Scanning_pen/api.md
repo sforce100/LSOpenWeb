@@ -5,14 +5,12 @@ sidebar_position: 5
 
 # 扫描笔云端接口说明
 
-
 ## 更新记录
 
 | 版本 | 更新说明                                                     | 责任人 | 日期      |
 | ---- | ------------------------------------------------------------ | ------ | --------- |
 | 1.0  | 将扫描笔api接口能力与EVS标准协议内容作区分；新增学习园地、学情数据等云端接口    | 刘钟蔚 | 2022.04.20 |
-
-
+| 1.1  | 新增学王词典接口请求和返回示例    | 刘钟蔚 | 2022.05.20 |
 
 ## 词典查询接口
 
@@ -26,21 +24,790 @@ sidebar_position: 5
 GET https://api.iflyos.cn/external/ocr/dict
 ```
 
-#### 请求headers
+#### 请求header
 
 ```
 Authorization: Bearer {token}
 ```
 
-{token}为设备端token
+> {token}为设备端token
 
 #### 请求参数
 
 | 参数名 | 类型   | 说明               |
 | ------ | ------ | ------------------ |
-| q      | string | 指定翻译单词、单词 |
+| q     | string | 指定翻译单词、单词 |
+| type  | string | 词典类型：youdao、xuewang，新设备默认选择xuewang不可更改，没填写时默认使用云端配置xuewang |
 
-### 中文单字返回示例
+### 单字返回示例（学王词典）
+
+```
+{
+    "analyzing": "象形字",
+    "content": "小",
+    "details": [
+        {
+            "antonyms": [
+                "大"
+            ],
+            "definition": [
+                {
+                    "description": "在体积、面积、数量、力量、强度等方面不及一般或不及比较的对象",
+                    "sample": [
+                        "「小山」",
+                        "「小厂」",
+                        "「帽子小了一点。」"
+                    ]
+                },
+                {
+                    "description": "短时间地",
+                    "sample": [
+                        "「小睡」",
+                        "「小坐」。"
+                    ]
+                },
+                {
+                    "description": "稍微",
+                    "sample": [
+                        "「小有才干」",
+                        "「牛刀小试」。"
+                    ]
+                },
+                {
+                    "description": "略微少于、将近",
+                    "sample": [
+                        "「小五十的人了。」"
+                    ]
+                },
+                {
+                    "description": "排行最末的",
+                    "sample": [
+                        "「小女儿」",
+                        "「小弟弟」。"
+                    ]
+                },
+                {
+                    "description": "年纪小的人",
+                    "sample": [
+                        "「上有老，下有小。」"
+                    ]
+                },
+                {
+                    "description": "妾",
+                    "sample": [
+                        "「小妾」。"
+                    ]
+                },
+                {
+                    "description": "称自己或跟自己有关的人或事物",
+                    "sample": [
+                        "「小人」",
+                        "「小女」。"
+                    ]
+                },
+                {
+                    "description": "称人、排行次序、某些人等",
+                    "sample": [
+                        "「小李」",
+                        "「小王」。"
+                    ]
+                }
+            ],
+            "grade": 3,
+            "pronounce": {
+                "symbol": "xiǎo",
+                "url": "http://ksyundata.zhinengtongbu.com/hanzizidian/pymp3/xi%C7%8Eo.mp3?sign=6D3819656696C9C7404F3A037659A30E&time=1652970549"
+            },
+            "related": {
+                "idiom": [
+                    "黄口小儿",
+                    "家道小康",
+                    "因小失大",
+                    "短小精干",
+                    "小肚鸡肠",
+                    "大呼小叫",
+                    "非同小可",
+                    "小康之家",
+                    "大同小异",
+                    "区区小事"
+                ],
+                "prefix": [
+                    "小孩",
+                    "小道",
+                    "小看"
+                ],
+                "suffix": [
+                    "细小"
+                ]
+            },
+            "sample": [
+                "他是个阳奉阴违的【小人】。",
+                "这部【小说】歌颂了子弟兵的英雄事迹。"
+            ],
+            "spelling": [
+                {
+                    "section": [
+                        0
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/char_spelling/ee88d2cac3090e3cec1426dcc5f602f1"
+                },
+                {
+                    "section": [
+                        1
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/char_spelling/f5a2ae1a23af036e204361c01676eeb3"
+                },
+                {
+                    "section": [
+                        2,
+                        3
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/char_spelling/3a4717fed5341951974fbde6a7deca44"
+                }
+            ],
+            "synonyms": [
+                "稍"
+            ]
+        }
+    ],
+    "grade": 3,
+    "level": "一级",
+    "riddle": "尘土飞扬(打一汉字)",
+    "side": "小",
+    "stroke_orders": null,
+    "strokes": {
+        "gif": "http://ksyundata.zhinengtongbu.com/hanzizidian/gif/%E5%B0%8F.gif?sign=1756E0DCED750D5A2ED36D2AE5C25DFF&time=1652970549",
+        "storkes_medians": [],
+        "strokescount": 3,
+        "strokesorder": [],
+        "strokespath": []
+    },
+    "structures": "独体结构",
+    "traditional": "小",
+    "type": "characters"
+}
+```
+
+
+| 参数                           | 类型      | 说明                                                         |
+| :----------------------------- | :-------- | :----------------------------------------------------------- |
+| analyzing | String    |  解形                   |
+| content                        | String    | 汉字内容        |
+| details                        | JSONArray | 汉字详细信息，若汉字有多个发音，且多个发音有不同含义，则此处details会有多个； |
+| details_synonyms               | String    | 近义词                                                       |
+| details_antonyms               | String    | 反义词                                                       |
+| details_definition             | JSONArray | 汉字解释                                                     |
+| details_definition_description | String    | 释义                                                         |
+| details_definition_sample      | JSONArray | 示例                                                         |
+| details_pronunce_symbol        | String    | 拼音                                                         |
+| details_pronunce_url           | String    | 拼音音频链接                                                 |
+| details_related                | JSONArray | 相关词                                                       |
+| details_related_idiom          | JSONArray | 相关成语                                                     |
+| details_related_Prefix         | JSONArray | 相关词语（词首）                                             |
+| details_related_suffix         | JSONArray | 相关词语（词尾）                                             |
+| details_sample                 | String    | 例句                                                         |
+| details_spelling               | JSONArray | 汉字拼读信息                                                 |
+| details_spelling_section       | JSONArray | 拼音分区，如[0,1]表示拼音的前两个字符                        |
+| details_spelling_url           | String    | 分区后，各部分对应的发音url                                  |
+| grade                          | String    | 年级                                                         |
+| level                          | String    | 字级                                                         |
+| riddle                         | String    | 字谜                                                         |
+| side                           | String    | 偏旁                                                         |
+| stroke_orders                  | String    | 笔画                                                       |
+| strokes                        | JSONArray | 汉字笔画信息                                                 |
+| strokes_gif                    | String    | 笔画gif图                  |
+| strokes_strokescount           | String    | 笔画数                                                       |
+| strokes_strokesorder           | JSONArray | 笔画名称（已无用）                                                     |
+| strokes_strokespath            | JSONArray | 每一笔画svg路径  （已无用）                                             |
+| strokes_storkes_medians        | JSONArray | 笔画坐标列表，用于展示每一笔画的动画（已无用）  |
+| type                           | String    | 汉字类型固定值为【characters】                               |
+| structures                     | String    | 结构                                                         |
+| traditional                    | String    | 繁体                                                         |
+
+### 词语返回示例（学王词典）
+
+```
+{
+    "content": "美丽",
+    "details": [
+        {
+            "antonyms": [
+                "难看",
+                "丑陋",
+                "黯淡",
+                "丑恶"
+            ],
+            "definition": [
+                {
+                    "description": "好看；能给人美感的。",
+                    "sample": [
+                        "美丽的容貌。",
+                        "让青春更美丽。"
+                    ]
+                }
+            ],
+            "pronounce": [
+                {
+                    "symbol": [
+                        "měi",
+                        "lì"
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/chinese_url/da4cb7ad18731fd1f1766e46b36f0ffb"
+                }
+            ],
+            "sentence": [
+                "远远望去，天山山脉层峦叠嶂，美丽极了。",
+                "翡翠是一种美丽的小鸟，毛色好看极了。",
+                "美丽的三峡风光，像一幅幅绚丽的图画。",
+                "绿树和鲜花把广场点缀得格外美丽。",
+                "看那彩霞满天的壮景，真是美丽极了。",
+                "仰望灿烂的星空，我的脑海里充满了美丽的遐想。",
+                "美丽富饶的洞庭之滨是我的家乡。",
+                "紫色的山峰衬托着几朵白云，美丽极了。",
+                "公园里的荷花，有的绽开了笑脸，有的含苞欲放，美丽极了。",
+                "我的故乡太湖之滨，是富饶美丽的鱼米之乡。",
+                "这姑娘不但容貌美丽，心地也很善良。",
+                "关于牵牛星和织女星，民间有个美丽的传说。",
+                "这幢别墅中西浑然一体，实在是美丽！",
+                "她那双明媚的大眼睛多么美丽动人！",
+                "日出的时候，海上的景色特别美丽。",
+                "全校师生群策群力，把校园建设得非常美丽。",
+                "她望着闪烁的星空，沉浸在美丽的幻想之中。",
+                "我仰望星空，心中充满美丽的遐想。",
+                "百花盛开的春天是美丽的，果实累累的金秋更加迷人。",
+                "我们要多栽树多种花，让校园变得更加美丽。"
+            ],
+            "synonyms": [
+                "漂亮",
+                "标致",
+                "俊俏",
+                "富丽",
+                "秀美",
+                "美观",
+                "美貌",
+                "俏丽",
+                "优美",
+                "奇丽",
+                "素丽",
+                "文雅",
+                "美艳",
+                "斑斓",
+                "大度",
+                "锦绣",
+                "瑰丽",
+                "俊美",
+                "秀丽",
+                "时髦"
+            ]
+        }
+    ],
+    "type": "word"
+}
+```
+
+| 参数                           | 类型      | 说明                     |
+| :----------------------------- | :-------- | :----------------------- |
+| content                        | String    | 词语内容                 |
+| type                           | String    | 中文词语固定值为【word】 |
+| details                        | JSONArray | 词语详情                 |
+| details_pronunce               | JSONArray | 词语发音信息             |
+| details_pronunce_symbol        | String    | 词语拼音                 |
+| details_pronunce_url           | String    | 词语发音url              |
+| details_definition             | JSONArray | 词语解释                 |
+| details_definition_description | String    | 词语释义                 |
+| details_definition_sample      | String    | 词语例句                 |
+| details_synonyms               | String    | 近义词                   |
+| details_antonyms               | String    | 反义词                   |
+| sentence      | String    | 词语例句                 |
+
+
+### 成语返回示例（学王词典）
+
+```
+{
+    "content": "光彩夺目",
+    "details": [
+        {
+            "antonyms": [
+                "暗淡无光",
+                "黯然无光",
+                "黯然失色",
+                "一团漆黑"
+            ],
+            "appraise": "褒义词",
+            "definition": [
+                {
+                    "description": "夺目：耀眼。形容鲜艳耀眼。也用来形容某些艺术作品和艺术形象的极高成就。"
+                }
+            ],
+            "id": 7892,
+            "origin": "明·凌濛初《初刻拍案惊奇》第一卷：“玉台翠树，光彩夺目。”",
+            "poem": [],
+            "pronounce": [
+                {
+                    "symbol": [
+                        "guāng",
+                        "cǎi",
+                        "duó",
+                        "mù"
+                    ],
+                    "url": "http://ksyundata.zhinengtongbu.com/chengyucidian/mp3/%E5%85%89%E5%BD%A9%E5%A4%BA%E7%9B%AE.mp3?sign=F2B62EBD0B6871EDF685C74DB5265C30&time=1652974627"
+                }
+            ],
+            "sentence": [
+                "1.国庆之夜，天安门广场燃放礼花，五彩缤纷，光彩夺目。"
+            ],
+            "story": "　　西晋时期，有一个人叫做石崇。石崇原本在荆州担任刺史，他靠着抢劫外地商人，积累了很多的钱。后来石崇被调到京城去做卫尉，在京城，石崇开始大量花费自己之前积累的钱。晋国的君主有一个舅舅叫做王凯。王恺也像石崇一样，非常地铺张浪费，他竟然还想办法与石崇比谁更富有。有一次，王恺得到了一株珊瑚，他十分得意，拿到石崇家去炫耀，“你看，我最近的得到的一株珊瑚，很好看吧？这可是非常少见的！”但是没想到石崇却拿出了六七株珊瑚，一株株都非常的鲜艳耀眼，让人移不开眼睛。石崇说：“刚好我最近也得到了几株，这些送给你吧。”王恺感叹说：“哎，我还是不如石崇有钱啊！”\n　　“光彩夺目”这个成语就用来指某些东西非常的耀眼出众。",
+            "synonyms": [
+                "光彩射人",
+                "光采夺目",
+                "光华夺目",
+                "光彩照人",
+                "光彩溢目",
+                "光辉灿烂"
+            ],
+            "usage": "联合式；作谓语、定语；形容颜色鲜艳耀眼",
+            "usage_frequency": "常用"
+        }
+    ],
+    "type": "idiom"
+}
+```
+
+| 参数                           | 类型      | 说明                  |
+| :----------------------------- | :-------- | :-------------------- |
+| content                        | String    | 成语内容              |
+| type                           | String    | 成语固定值为【idiom】 |
+| details                        | JSONArray | 成语详情              |
+| details_pronunce               | JSONArray | 成语发音信息          |
+| details_pronunce_symbol        | String    | 成语拼音              |
+| details_pronunce_url           | String    | 成语发音url           |
+| details_definition             | JSONArray | 成语解释              |
+| details_definition_description | String    | 成语释义              |
+| details_origin                 | String    | 成语来源              |
+| details_synonyms               | String    | 近义词                |
+| details_antonyms               | String    | 反义词                |
+| details_story                  | String    | 成语故事              |
+| details_poem                   | JSONArray | 成语相关诗歌          |
+| details_story                  | String    | 成语故事              |
+| appraise                | String    | 褒义/贬义             |
+| usageFrequency                 | String    | 常用程度             |
+| usage                  | String    | 成语用法           |
+
+### 古诗词返回示例（学王词典）
+
+```
+{
+    "content": "赋得古原草送别（节选）",
+    "details": [
+        {
+            "appreciation": "此诗通过对古原上野草的描绘，抒发送别友人时的依依惜别之情。它可以看成是一曲野草颂，进而是生命的颂歌。全诗章法谨严，用语自然流畅，对仗工整，写景抒情水乳交融，意境浑成，是“赋得体”中的绝唱。原上草或有所指，但喻意并无确定。“野火烧不尽，春风吹又生，”却作为一种“韧劲”而有口皆碑，传诵千古。诗的首句“离离原上草”，紧紧扣住题目“古原草”三字，并用叠字“离离”描写春草的茂盛。第二句“一岁一枯荣”，进而写出原上野草秋枯春荣，岁岁循环，生生不已的规律。第三、四句“野火烧不尽，春风吹又生”，一句写“枯”，一句写“荣”，是“枯荣”二字意思的发挥。不管烈火怎样无情地焚烧，只要春风一吹，又是遍地青青的野草，极为形象生动地表现了野草顽强的生命力。",
+            "poetry_url":  "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023_001.mp3?sign=B43FFB9958BDF24837C169E0B8CF28B2&time=1652975005",
+            "author": "白居易",
+            "author_id": "ZZ0001",
+            "author_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E4%BD%9C%E8%80%85/ID00023_ZZ.mp3?sign=45821FF33ED8F6311A97C8DAB7D59A29&time=1652975005",
+            "dynasties": "唐",
+            "dynasties_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E6%9C%9D%E4%BB%A3/ID00023_CD.mp3?sign=64409FB3245C1D22107E66803E6BD4BF&time=1652975005",
+            "keyword": "二年级，咏物，写景",
+            "poem": [
+                "离离原上草，一岁一枯荣。",
+                "野火烧不尽，春风吹又生。"
+            ],
+            "title": "赋得古原草送别（节选）",
+            "title_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%8F%A4%E8%AF%97%E6%96%87%E8%AF%8D%E5%85%B8/%E8%AF%97%E8%AF%8D/ID00023.mp3?sign=855E232D57F10BBF6E5B5C8AC271FD19&time=1652975005",
+            "translation": "古原上长满茂盛的青草，年年岁岁枯萎了又昌荣。原野上的大火无法烧尽，春风一吹它又遍地滋生。",
+            "type": "诗",
+            "word_interpretation": "【离离】青草茂盛的样子。【枯】枯萎。荣，茂盛。野草每年都会茂盛一次，枯萎一次。"
+        }
+    ],
+    "type": "poem"
+}
+```
+
+| 参数                           | 类型      | 说明                  |
+| :----------------------------- | :-------- | :-------------------- |
+| title                 | String    | 标题 |
+| titleNum                      | String    | 标题mp3地址           |
+| dynasties             | JSONArray | 朝代          |
+| dynastiesNum                      | JSONArray | 朝代mp3地址             |
+| author        | String    | 作者            |
+| authorId  | String    | 作者id           |
+| authorNum          | String    | 作者MP3地址           |
+| articles  | String    | 原文         |
+| articlesNum  | String    | 原文MP3地址           |
+| translation | String    | 译文         |
+| wordInterpretation   | String    | 字解      |
+| appreciation   | String    | 赏析     |
+| keyword  | String    | 关键字    |
+
+
+### 单词返回示例（学王词典）
+
+```
+{
+    "content": "cool",
+    "details": [
+        {
+            "anton": [
+                "warm",
+                "increase",
+                "excited",
+                "friendly"
+            ],
+            "definition": [
+                {
+                    "description": [
+                        "凉爽的",
+                        "冷静的",
+                        "出色的"
+                    ],
+                    "property": "adj",
+                    "tag": null
+                },
+                {
+                    "description": [
+                        "使……冷却",
+                        "使……平静下来"
+                    ],
+                    "property": "vt",
+                    "tag": null
+                },
+                {
+                    "description": [
+                        "变凉",
+                        "平息"
+                    ],
+                    "property": "vi",
+                    "tag": null
+                },
+                {
+                    "description": [
+                        "凉爽",
+                        "凉爽的空气"
+                    ],
+                    "property": "n",
+                    "tag": null
+                },
+                {
+                    "description": [
+                        "冷静地"
+                    ],
+                    "property": "adv",
+                    "tag": null
+                },
+                {
+                    "description": [
+                        "(Cool)人名",
+                        "(法)科尔",
+                        "(英)库尔"
+                    ],
+                    "property": "n",
+                    "tag": null
+                }
+            ],
+            "derivation": [
+                {
+                    "description": " 冷却器；清凉剂",
+                    "property": "n.",
+                    "word": "cooler"
+                },
+                {
+                    "description": " 冷静地；沉着地",
+                    "property": "n.",
+                    "word": "coolly"
+                },
+                {
+                    "description": " 冷；凉爽；冷静",
+                    "property": "n.",
+                    "word": "coolness"
+                },
+                {
+                    "description": " 冷却剂",
+                    "property": "v.",
+                    "word": "coolant"
+                }
+            ],
+            "example": [],
+            "example_url_list": [
+                "http://ksyundata.zhinengtongbu.com/onlinedic/%E5%8D%95%E8%AF%8D%E4%BE%8B%E5%8F%A5/cool_LJ01.mp3?sign=BE5CFB0E23419A8959C66F5B08ECA57A&time=1652975097",
+                "http://ksyundata.zhinengtongbu.com/onlinedic/%E5%8D%95%E8%AF%8D%E4%BE%8B%E5%8F%A5/cool_LJ02.mp3?sign=0C5F10374F921E6C0F6788EBA0A7078D&time=1652975097",
+                "http://ksyundata.zhinengtongbu.com/onlinedic/%E5%8D%95%E8%AF%8D%E4%BE%8B%E5%8F%A5/cool_LJ03.mp3?sign=F4D9ECFF8EE1059EE44577F8CD86586D&time=1652975097"
+            ],
+            "expressions": [
+                {
+                    "description": [
+                        "保持冷静"
+                    ],
+                    "expression": "stay cool "
+                },
+                {
+                    "description": [
+                        "真酷"
+                    ],
+                    "expression": "so cool "
+                },
+                {
+                    "description": [
+                        "冷却",
+                        "平静下来"
+                    ],
+                    "expression": "cool down "
+                },
+                {
+                    "description": [
+                        "变凉",
+                        "平静下来"
+                    ],
+                    "expression": "cool off "
+                },
+                {
+                    "description": [
+                        "凉爽的微风"
+                    ],
+                    "expression": "cool breeze "
+                },
+                {
+                    "description": [
+                        "抑制住感情，沉着冷静"
+                    ],
+                    "expression": "play it cool "
+                },
+                {
+                    "description": [
+                        "保持冷静",
+                        "保持凉爽",
+                        "镇定自若"
+                    ],
+                    "expression": "keep cool "
+                },
+                {
+                    "description": [
+                        "冷静的头脑"
+                    ],
+                    "expression": "cool head "
+                },
+                {
+                    "description": [
+                        "十分冷静"
+                    ],
+                    "expression": "cool as a cucumber "
+                },
+                {
+                    "description": [
+                        "寒色"
+                    ],
+                    "expression": "cool color "
+                },
+                {
+                    "description": [
+                        "冒失鬼"
+                    ],
+                    "expression": "cool hand "
+                },
+                {
+                    "description": [
+                        "冷色"
+                    ],
+                    "expression": "cool colour "
+                },
+                {
+                    "description": [
+                        "沉不住气"
+                    ],
+                    "expression": "blow one"
+                }
+            ],
+            "gif": "cool.gif",
+            "high_textbook_paraphrase": "",
+            "is_level4": 1,
+            "is_level6": 1,
+            "middle_textbook_paraphrase": "adj. 酷的；凉爽的；绝妙的；凉快的；妙极的n. 酷",
+            "natural_spell_url": "http://ksyundata.zhinengtongbu.com/onlinedic/%E8%87%AA%E7%84%B6%E6%8B%BC%E8%AF%BB/cool_ZRPD.mp3?sign=E711598A582726D82ED2CBFA807EAE71&time=1652975097",
+            "picture": "http://ksyundata.zhinengtongbu.com/onlinedic/%E5%8A%A8%E6%BC%AB%E5%8D%95%E8%AF%8D/cool.gif?sign=82F4415F40633A96E84F7A2DB435742A&time=1652975097",
+            "primary_textbook_paraphrase": "int. 太妙了；酷；真棒adj. 令人满意的；绝妙的；凉爽的；凉快的；冷静的；沉着的；酷的；极好的；妙极的；很棒的；一流的；[非正式]极有魅力的；时髦的v. 使变凉",
+            "pronounce": [
+                {
+                    "property": "adj.",
+                    "symbol": "[kuːl]",
+                    "url": "http://ksyundata.zhinengtongbu.com/onlinedic/%E8%8B%B1%E5%BC%8F%E5%8F%91%E9%9F%B3/ys01144.mp3?sign=DA2FD8BA1ABECE02D9D1CBEAB52815B9&time=1652975097"
+                }
+            ],
+            "related": [
+                {
+                    "description": "微风；和风轻而易举的事",
+                    "word": "breeze"
+                },
+                {
+                    "description": "寒冷的；凉飕飕的；阴冷的不友好的；冷淡的",
+                    "word": "chilly"
+                },
+                {
+                    "description": "气候",
+                    "word": "climate"
+                },
+                {
+                    "description": "云；云朵云状物（如尘雾、烟雾、一群飞行的昆虫）",
+                    "word": "cloud"
+                },
+                {
+                    "description": "冷；寒冷；（尤指）低气温感冒；伤风冷的；寒冷的；冰凉的冷淡的；冷漠的；不热情的（食物，饮料）未热过的，已凉的",
+                    "word": "cold"
+                },
+                {
+                    "description": "潮湿的；潮乎乎的",
+                    "word": "damp"
+                },
+                {
+                    "description": "细雨；零星小雨；毛毛雨下毛毛雨；下细雨",
+                    "word": "drizzle"
+                },
+                {
+                    "description": "（气候）少雨的，干旱的干的；干燥的（使）变干；弄干；吹干",
+                    "word": "dry"
+                },
+                {
+                    "description": "雾迷惘；困惑使雾气笼罩使迷惘；使困惑",
+                    "word": "fog"
+                },
+                {
+                    "description": "霜结霜",
+                    "word": "frost"
+                }
+            ],
+            "spelling": [
+                {
+                    "section": [
+                        0
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/to_chinese_spelling/e1694f74cde2d13fdaa7b711d6b13050"
+                },
+                {
+                    "section": [
+                        1,
+                        2
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/to_chinese_spelling/19ae734aa05e57edb0645b22d1905923"
+                },
+                {
+                    "section": [
+                        3
+                    ],
+                    "url": "https://cdn.iflyos.cn/public/dictionary_youdao/to_chinese_spelling/ac0c911fb0f6bbb53cd47600d85db536"
+                }
+            ],
+            "syllabification": "c-oo-l",
+            "synon": [
+                "refrigerate",
+                "wane",
+                "cold",
+                "chilly",
+                "calm",
+                "unfriendly",
+                "fashionable"
+            ],
+            "tenses": {
+                "comparative": "cooler",
+                "highest": "coolest",
+                "past": "cooled",
+                "pastParticiple": "cooled",
+                "presentParticiple": "cooling",
+                "thirdPersonSingular": "cools"
+            },
+            "update_date": null,
+            "us_pronounce": [
+                {
+                    "property": null,
+                    "symbol": "[kul]",
+                    "url": "http://ksyundata.zhinengtongbu.com/onlinedic/%E7%BE%8E%E5%BC%8F%E5%8F%91%E9%9F%B3/ms01144.mp3?sign=75D5E9F665C61D9B47FF57797A9B9903&time=1652975097"
+                }
+            ],
+            "word_attr": 443
+        }
+    ],
+    "type": "en_word"
+}
+```
+
+| 参数                               | 类型      | 说明                                  |
+| :--------------------------------- | :-------- | :------------------------------------ |
+| content                            | String    | 单词文本内容                          |
+| type                               | String    | 英文单词类型固定为【en_word】         |
+| details                            | JSONArray | 英文单词详情                          |
+| details_pronunce                   | JSONArray | 发音信息                              |
+| details_pronunce_symbol            | JSONArray | 音标                                  |
+| details_pronunce_url               | String    | 单词发音url                           |
+| details_us_pronunce                   | JSONArray | 美式发音信息                              |
+| details_us_pronunce_symbol            | JSONArray | 美式音标                                  |
+| details_us_pronunce_url               | String    | 单词美式发音url                           |
+| details_spelling                   | JSONArray | 拼读信息                              |
+| details_spelling_section           | String    | 音标分区，如[0,1]表示音标的前两个字符 |
+| details_spelling_url               | String    | 分区后，各部分对应的发音url           |
+| details_definition                 | JSONArray | 单词解释                              |
+| details_definition_property        | String    | 词性                                  |
+| details_definition_description     | String    | 释义                                  |
+| details_definition_tag             | String    | 标签                                  |
+| details_derivation                 | JSONArray | 派生词信息                            |
+| details_derivation_word            | String    | 派生词内容                            |
+| details_derivation_property        | String    | 派生词词性                            |
+| details_derivation_description     | String    | 派生词释义                            |
+| details_tenses                     | JSONArray | 时态                                  |
+| details_tenses_presentParticiple   | String    | 现在分词                              |
+| details_tenses_past                | String    | 过去时态                              |
+| details_tenses_pastParticiple      | String    | 过去分词                              |
+| details_tenses_thirdPersonSingular | String    | 第三人称单数                          |
+| details_expressions                | JSONArray | 短语                                  |
+| details_expressions_expression     | String    | 短语内容                              |
+| details_expressions_description    | String    | 短语解释                              |
+| details_related                    | JSONArray | 相关词汇                              |
+| details_related_word               | String    | 相关词汇内容                          |
+| details_related_description        | String    | 相关词汇描述                          |
+| details_picture                    | String    | 单词主题图片                          |
+| isLevel4              | String    | 是否四级                             |
+| isLevel6     | String    | 是否六级                       |
+| wordAttr | String    | 单词属性(位运算)                         |
+| primaryTextbookParaphrase            | JSONArray | 小学词性+释义                               |
+| middleTextbookParaphrase    | String    | 中学词性+释义                        |
+| highTextbookParaphrase   | String    |  高中词性+释义                             |
+| syllabification              | JSONArray | 音节划分                           |
+| synon        | String    | 近义词                        |
+| anton        | String    | 反义词               |
+| naturalSpellUrl                   | String    | 拼读发音链接                          |
+| example                   | String    | 例句                 |
+| exampleUrlList                | String    | 例句音频                |
+| picture  | String    | 插图url                | 
+
+### 拼音返回示例（学王词典）
+
+```
+{
+    "content": "zōu",
+    "details": [
+        {
+            "all_read_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%8B%BC%E9%9F%B3%E5%BA%93/%E6%95%B4%E9%9F%B3/ZD01357.mp3?sign=A25D574A05268B78EDFAD0ABB550456D&time=1653042494",
+            "all_tone": "zōu",
+            "chinese_character": "",
+            "id": 2118,
+            "spell_num": "http://ksyundata.zhinengtongbu.com/%E5%9B%BA%E5%8C%96%E6%95%B0%E6%8D%AE/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%8B%BC%E9%9F%B3%E5%BA%93/%E6%8B%BC%E8%AF%BB/PD01357.mp3?sign=F836BB84B29135219E316B960B125596&time=1653042494",
+            "spell_split": "zōu-z-ōu-zōu",
+            "update_date": null
+        }
+    ],
+    "type": "pinyin"
+}
+```
+
+
+| 参数                               | 类型      | 说明                                  |
+| :--------------------------------- | :-------- | :------------------------------------ |
+| content                            | String    | 拼音文本内容                          |
+| all_read_num                              | String    | 拼音发音链接         |
+| all_tone                            | JSONArray | 拼音                        |
+| spell_num                  | JSONArray | 拼音拼读链接                              |
+| spell_split            | JSONArray | 拼读方法                                  |
+
+
+
+中文单字返回示例（有道词典，已不使用）
 
 ```json
 {
@@ -462,7 +1229,7 @@ Authorization: Bearer {token}
 | strokes_strokespath            | JSONArray | 每一笔画svg路径                                              |
 | strokes_storkes_medians        | JSONArray | 笔画坐标列表，用于展示每一笔画的动画，参见：https://www.skishore.me/makemeahanzi/ |
 
-### 中文词语返回示例
+中文词语返回示例（有道词典，已不使用）
 
 ```json
 {
@@ -514,7 +1281,7 @@ Authorization: Bearer {token}
 | details_synonyms               | String    | 近义词                   |
 | details_antonyms               | String    | 反义词                   |
 
-### 中文成语返回示例
+中文成语返回示例（有道词典，已不使用）
 
 ```json
 {
@@ -576,7 +1343,7 @@ Authorization: Bearer {token}
 | details_story                  | String    | 成语故事              |
 | details_poem                   | JSONArray | 成语相关诗歌          |
 
-### 中文诗词返回示例
+中文诗词返回示例（有道词典，已不使用）
 
 ```json
 {
@@ -594,7 +1361,7 @@ Authorization: Bearer {token}
 ```
 
 
-### 英文单词返回示例
+英文单词返回示例（有道词典，已不使用）
 
 ```json
 {
@@ -1644,6 +2411,7 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/section?catego
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
 | id | Number | 类-story: 精选故事；nursery_rhyme: 快乐儿歌；enlightenment: 儿童启蒙 | 是 |
+| type | String | 类型，默认为音频数据（MP3格式），可选填为video（视频数据，MP4格式） | 否 |
 | page | Integer | 页码 | 否 |
 | size | Integer | 每页条数（默认一页10条） | 否 |
 
