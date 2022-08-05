@@ -10,7 +10,7 @@
 
 代码放在聆思服务器上的git仓库，请确认你已经与聆思签署NDA协议以及聆思相关人员已经为你开通了权限，代码仓库路径如下：[点击跳转到代码仓库](https://cloud.listenai.com/private/AI-audio/4002nc-sourcecode)，如果你跳转后的路径显示不正常，请联系聆思为你开通对应权限。显示正常的页面可以看到如下内容：
 
-![git_clone_path](.\files\git_clone_path.png)
+![git_clone_path](./files/git_clone_path.png)
 
 代码页面最下面可以看到README.md文件，如下图所示：
 
