@@ -248,7 +248,7 @@
                     "title": "会议机 Turnkey 方案",
                     "pipes": [
                         {
-                            "label": "快速入门",
+                            "label": "方案介绍",
                             "to": "/Industrysolution/Conference_calling_solutions/Quick_start/Scheme_introduction"
                         },
                         {
@@ -256,8 +256,8 @@
                             "to": "/Industrysolution/Conference_calling_solutions/Hardwaredevelopment/hardware_guide"
                         },
                         {
-                            "label": "创建项目",
-                            "to": "/Industrysolution/Conference_calling_solutions/softwaredevelopment/create_project"
+                            "label": "快速入门",
+                            "to": "/Industrysolution/Conference_calling_solutions/softwaredevelopment/quick_start"
                         },
                         {
                             "label": "效果调优",
