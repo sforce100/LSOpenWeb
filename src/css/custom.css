@@ -401,6 +401,6 @@ a.menu__link.menu__link--sublist.menu__link--active {
   padding-left: 68px;
 }
 
-td > p {
+td > p, td > ul {
   margin: 0px;
 }
