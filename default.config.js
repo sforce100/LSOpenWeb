@@ -57,7 +57,7 @@ module.exports = {
           position: 'left'
         },
         {
-          to: '/FAQ/faq',
+          to: '/FAQ/front_page',
           label: 'FAQ',
           position: 'right'
         },
@@ -187,7 +187,7 @@ module.exports = {
         dirName: '/FAQ',//对应的一级目录
         items: [
           {
-            to: "/FAQ/faq",//跳转哪个目录
+            to: "/FAQ/front_page",//跳转哪个目录
             label: '常见问题',
           },
         ],
