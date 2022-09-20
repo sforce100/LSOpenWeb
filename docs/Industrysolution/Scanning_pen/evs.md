@@ -32,6 +32,7 @@ sidebar_position: 4
 | 1.19 | 新增语速设置接口说明 | 刘钟蔚 | 2021.12.15 |
 | 2.00 | 精简文档，只保留EVS协议部分 | 刘钟蔚 | 2022.05.01 |
 | 2.01 | 新增`visual_in`中`profile`字段`CUSTOM_JXW_SEARCHTOPIC`，用于云端搜题 | 刘钟蔚 | 2022.07.14 |
+| 2.01 | 搜题字段修改为`SEARCHTOPIC`，用于云端搜题；增加小蛙搜题服务 | 刘钟蔚 | 2022.09.20 |
 
 
 
@@ -76,16 +77,18 @@ sidebar_position: 4
     },
     "payload": {
       "profile": "OCR_TRANS_TTS",
-      "realtime": true,
+      "realtime": "true",
       "image_metadata":{
-        "reverse": true,
-        "tokenization":true,
-        "dictionary":true, // 20210917新增: 词典开关
-	"dict_type":xuewang, // 20220520新增: 词典类型
-        "resources":true, // 20210917新增: 教育内容开关
-      	"height": 128,
-      	"image_data_debug": false,
-      	"debug": false
+        "reverse": "true",
+        "tokenization":"true",
+        "dictionary":"true", // 20210917新增: 词典开关
+	"dict_type":"xuewang", // 20220520新增: 词典类型
+        "resources":"true", // 20210917新增: 教育内容开关
+      	"height": "128",
+      	"image_data_debug": "false",
+      	"debug": "false"
+	"searchtopic_ability": "01", // 20210920新增：搜题能力
+      	"searchtopic_service": "XW01" // 20210920新增：搜题服务方
       }
     }
   }
@@ -110,6 +113,9 @@ sidebar_position: 4
 | image_metadata.resources | Boolean | 教育内容开关，设置为`true`时调用教育内容接口 | 否 |
 | image_metadata.image_debug | boolean     | 设置为`true`时，云端暂存设备上报的数据用于从调试接口获取图片等数据，仅供开发调试使用。此时请务必将原图使用jpeg算法压缩后传输。默认为`false`      | 否   |
 | image_metadata.debug | boolean     | 设置为`true`时，云端收集ocr相关信息用于算法调试，仅供开发调试使用，默认为`false` 。处于debug模式时扫描图片，云端不会返回识别结果，只会将采集后的图片保存，用于后续算法优化。 | 否   |
+| image_metadata.searchtopic_ability | string   | 01：扫描搜题； | 否   |
+| image_metadata.searchtopic_service | string   | JXW01：学王搜题，需要申请商务授权；XW01：小蛙搜题，不返回搜题结果 | 否   |
+
 
 `profile`取值
 
@@ -119,7 +125,7 @@ sidebar_position: 4
 | OCR_TTS        | 图像识别，语音合成识别结果             |
 | OCR_TRANS      | 图像识别，翻译识别结果                 |
 | OCR_TRANS_TTS  | 图像识别，翻译识别结果，合成原文和译文 |
-| CUSTOM_JXW_SEARCHTOPIC | 用于云端搜题（注：目前只调用搜题服务，不返回搜题结果，搜题结果在公众号显示） |
+| SEARCHTOPIC | 用于云端搜题（注：具体请求服务需要在`image_metadata.searchtopic`中定义） |
 | TEXTBOOK       | 教材指读，暂未开放                     |
 
 ##### 发送图像数据
