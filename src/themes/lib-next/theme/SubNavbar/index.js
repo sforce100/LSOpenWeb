@@ -4,34 +4,32 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React, {useState, useEffect} from 'react';
-import clsx from 'clsx'; // import useThemeContext from '@theme/hooks/useThemeContext';
+import React, { useState, useEffect } from "react";
+import clsx from "clsx"; // import useThemeContext from '@theme/hooks/useThemeContext';
 // import useHideableNavbar from '@theme/hooks/useHideableNavbar';
-import useScrollPosition from '@theme/hooks/useScrollPosition';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useWindowSize, {windowSizes} from '@theme/hooks/useWindowSize';
-import SubNavbarItem from '@theme/SubNavbarItem';
-import {useLocation} from 'react-router-dom';
-import './styles.css';
-import styles from './styles.module.css'; // retrocompatible with v1
+import useScrollPosition from "@theme/hooks/useScrollPosition";
+import { useThemeConfig } from "@docusaurus/theme-common";
+import useLockBodyScroll from "@theme/hooks/useLockBodyScroll";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useWindowSize, { windowSizes } from "@theme/hooks/useWindowSize";
+import SubNavbarItem from "@theme/SubNavbarItem";
+import { useLocation } from "react-router-dom";
+import "./styles.css";
+import styles from "./styles.module.css"; // retrocompatible with v1
 
 function SubNavbar() {
-  const {subNavbar} = useThemeConfig();
+  const { subNavbar } = useThemeConfig();
   const location = useLocation();
   const [sidebarShown, setSidebarShown] = useState(false); // const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
-  const {
-    baseUrl
-  } = useDocusaurusContext().siteConfig;
+  const { baseUrl } = useDocusaurusContext().siteConfig;
 
   const [tohide, setTohide] = useState(false);
-  useScrollPosition(({scrollY}) => {
+  useScrollPosition(({ scrollY }) => {
     // console.log('navbar-->', scrollY)
     if (scrollY < 200) {
-      setTohide(false)
+      setTohide(false);
     } else {
-      setTohide(true)
+      setTohide(true);
     }
   });
 
@@ -44,13 +42,27 @@ function SubNavbar() {
   }, [windowSize]);
   return (
     <>
-      <nav className={clsx('navbar', 'subnavbar--fixed-top', 'sub-navbar', {
-        [styles.navbarHidden]: tohide,
-      })}>
+      <nav
+        className={clsx("navbar", "subnavbar--fixed-top", "sub-navbar", {
+          [styles.navbarHidden]: tohide,
+        })}
+        style={{ padding: 0 }}
+      >
         <div className="navbar__inner subnavbar__inner">
-          <div className="navbar__items">
+          <div
+            className="navbar__items"
+            style={{
+              overflowX: "auto",
+              padding:
+                " var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal)",
+            }}
+          >
             {subNavbar.map((sub) => {
-              if (location.pathname.startsWith((baseUrl + (sub.dirName || '')).replace(/\/\//g, '\/'))) {
+              if (
+                location.pathname.startsWith(
+                  (baseUrl + (sub.dirName || "")).replace(/\/\//g, "/")
+                )
+              ) {
                 return sub.items.map((item, i) => (
                   <SubNavbarItem dirname={sub.dirName} {...item} key={i} />
                 ));
