@@ -44,7 +44,7 @@ export default (function () {
 
   return {
 
-    onRouteUpdate({ location }) {
+    onRouteDidUpdate({ location }) {
       // window.location.origin
       upload(location, window.location.origin.indexOf('staging') >= 0 ? 'https://staging-open.listenai.com' : 'https://open.listenai.com');
     },
