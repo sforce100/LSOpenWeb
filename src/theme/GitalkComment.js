@@ -187,7 +187,7 @@ class GitalkComment extends Component{
             <ul className="gitalk-option">
               <li  onClick={()=>{this.likeDocHandle('like')}} className={`like ${hasLike ? 'hover' : ''}`}><i className= {`icon like-icon ${acting ?"bounce-up":''}`} ></i> <span id="like_num">有帮助  {likeNum}</span></li>
               <li  onClick={()=>{this.likeDocHandle('unlike')}}  className={`unlike ${hasUnlike ? 'hover' : ''}`}><i className={`icon unlike-icon ${unlikeActing ?"bounce-down":''}`} ></i> <span id="unlike_num">没帮助 {unlikeNum}</span></li>
-              <li onClick={this.showGitalkModal.bind(this)} >文档反馈{gitalkVisble}</li>
+              {/* <li onClick={this.showGitalkModal.bind(this)} >文档反馈{gitalkVisble}</li> */}
             </ul>
             <Modal title="文档意见反馈"  width="640px" visible={gitalkVisble} footer={null}  destroyOnClose={true} maskClosable={false} onCancel={this.closeGitalkModal.bind(this)}>
               <div id="gitalk-container" className="gitalk-container"></div>

@@ -9,13 +9,24 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 async function upload(location, origin) {
   const { pathname } = location;
   console.log("upload1", pathname, origin);
+
+  let title = ''
+
+  try {
+    title += `${document.getElementsByClassName('navbar__link--active')[0].textContent}`
+    title += `-${document.getElementsByClassName('subnavbar__link--active')[0].textContent}`
+    for (let i =0; i < document.getElementsByClassName('menu__link--active').length; i++) {
+      title += `-${document.getElementsByClassName('menu__link--active')[i].textContent}`
+    }
+  } catch (error) {}
+
   try {
     const response = await axios({
       method: "post",
       url: `${origin}/event_upload`,
       data: {
         event_type: "lsopen_pageview",
-        title: pathname,
+        title,
         url: window.location.origin + pathname,
       },
     });
