@@ -58,6 +58,12 @@ module.exports = {
           position: 'left'
         },
         {
+          activeBasePath: "/AIEcology",
+          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          label: 'AI生态', 
+          position: 'left'
+        },
+        {
           to: '/FAQ/front_page',
           label: 'FAQ',
           position: 'right'
@@ -181,6 +187,21 @@ module.exports = {
           {
             to: "/Industrysolution/Posture_solution/Posture_introduction",//跳转哪个目录
             label: '坐姿检测',
+          },
+        ],
+      },
+      {
+        dirName: '/AIEcology',
+        items: [
+          {
+            activeBasePath: "/AIEcology/Linger/",
+            to: "/AIEcology/Linger/readme",
+            label: 'Linger',
+          },
+          {
+            activeBasePath: "/AIEcology/Thinker/",
+            to: "/AIEcology/Thinker/readme",
+            label: 'Thinker',
           },
         ],
       },
