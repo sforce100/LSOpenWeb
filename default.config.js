@@ -6,6 +6,7 @@ module.exports = {
   tagline: '聆思文档中心',
   url: 'https://github.com/LISTENAI',
   baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
