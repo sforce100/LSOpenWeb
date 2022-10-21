@@ -32,7 +32,7 @@ sidebar_position: 1
 
 ### [创建你的 iFLYOS 设备](/AIsolution/dsp/firmware_development/Create_iFLYOS_equipment)
 
-本篇介绍如何在 iFLYOS 平台创建并配置你的设备。若你要对接讯飞 iFLYOS 一站式语音云，请阅读本篇。
+本篇介绍如何在 iFLYOS 平台创建并配置你的设备。若你要对接 iFLYOS 一站式语音云，请阅读本篇。
 
 ### [上位机固件二次开发](/AIsolution/dsp/firmware_development/xr872_evs)
 
