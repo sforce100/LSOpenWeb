@@ -78,7 +78,7 @@ net.load_state_dict(torch.load('data.ignore/convbn_quant.pt'))
 ## 2.Normalize浮点网络进行训练之后转换定点网络
  用以解决直接定点量化训练效果较差，需要先对浮点的输出进行Normalize约束,使其针对定点化更加友好
 
-- 前面经过双阶段教程[tutorial/two_stage_quant_aware_train.md](tutorial/two_stage_quant_aware_train.md)介绍了如何转换浮点与定点网络，相比于直接由原始浮点转int，normalize浮点转定点增加了一些normalize的设置
+- 前面经过双阶段教程介绍了如何转换浮点与定点网络，相比于直接由原始浮点转int，normalize浮点转定点增加了一些normalize的设置
 - disable_normalize用于支持特定层不做normalize, normalize_module支持特定层不同normalize 大小， 初始化之后进行加载权重之后既可以做normalize浮点训练. normalize_layers用于替换所有module到NormalizeModule进行后续的训练
 ```
     linger.disable_normalize(net.fc)
