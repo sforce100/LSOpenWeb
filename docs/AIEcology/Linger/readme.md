@@ -7,7 +7,7 @@ sidebar_position: 7  # 文档排序：1就是排第一
 --------------------------------------------------------------------------------
 [![Python][badge-version-python]](#)
 [![Pip][badge-pip]](https://pypi.org/project/pylinger/)
-[![License][badge-license]](LICENSE)
+[![License][badge-license]](../Linger/LICENSE)
 [![Download Total Count][badge-download-count]](https://github.com/LISTENAI/linger/releases)
 
 [badge-license]: https://img.shields.io/badge/License-Apache-brightgreen
@@ -65,3 +65,4 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 - [ONNX](https://github.com/onnx/onnx)
 
 ## 许可证
+linger 由 [Apache-2.0 license](../Linger/LICENSE) 提供
