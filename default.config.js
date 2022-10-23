@@ -194,6 +194,11 @@ module.exports = {
         dirName: '/AIEcology',
         items: [
           {
+            activeBasePath: "/AIEcology/Intro/",
+            to: "/AIEcology/Intro/intro",
+            label: '总概',
+          },
+          {
             activeBasePath: "/AIEcology/Linger/",
             to: "/AIEcology/Linger/readme",
             label: 'Linger',
