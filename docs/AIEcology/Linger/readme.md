@@ -65,4 +65,4 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 - [ONNX](https://github.com/onnx/onnx)
 
 ## 许可证
-- linger 由 [Apache-2.0 license](LICENSE) 提供
+- linger 由 [Apache-2.0 license](../Linger/LICENSE) 提供
