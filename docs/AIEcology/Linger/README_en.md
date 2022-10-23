@@ -37,7 +37,7 @@ The backend is adapted to [thinker](https://git-in.iflytek.com/RS_RDG_AI_Group/b
 - [Quantification of common problems and notes](../Linger/FAQ/faq.md)
 
 ## Data Search
-- [linger API]()
+- [linger API](../Linger/Training_Framework/operator.md)
 - [List of supported quantization OPs and their restrictions](../Linger/Training_Framework/operator.md)
 
 ## Communication and Feedback

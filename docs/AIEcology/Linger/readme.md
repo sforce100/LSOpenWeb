@@ -2,7 +2,7 @@
 sidebar_label: README  #文档名称
 sidebar_position: 7  # 文档排序：1就是排第一
 ---
-
+#
 ![linger_logo](../Linger/Introduction/files/linger_logo.png)
 --------------------------------------------------------------------------------
 [![Python][badge-version-python]](#)
@@ -53,7 +53,7 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 - [量化常见问题与注意事项](../Linger/FAQ/faq.md)
 
 ## 资料查询
-- [linger API]
+- [linger API](../Linger/Training_Framework/operator.md)
 - [支持量化OP列表及其限制说明](../Linger/Training_Framework/operator.md)
 
 ## 交流与反馈
