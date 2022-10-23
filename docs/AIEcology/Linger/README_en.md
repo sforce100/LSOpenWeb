@@ -51,3 +51,4 @@ The backend is adapted to [thinker](https://git-in.iflytek.com/RS_RDG_AI_Group/b
 - [ONNX](https://github.com/onnx/onnx)
 
 ## License
+- linger is provided by the [Apache-2.0 license](../Linger/LICENSE)
