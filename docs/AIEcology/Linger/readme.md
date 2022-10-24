@@ -5,19 +5,7 @@ sidebar_position: 7  # 文档排序：1就是排第一
 #
 ![linger_logo](../Linger/Introduction/files/linger_logo.png)
 --------------------------------------------------------------------------------
-[![Python][badge-version-python]](#)
-[![Pip][badge-pip]](https://pypi.org/project/pylinger/)
-[![License][badge-license]](../Linger/LICENSE)
-[![Download Total Count][badge-download-count]](https://github.com/LISTENAI/linger/releases)
 
-[badge-license]: https://img.shields.io/badge/License-Apache-brightgreen
-[badge-pip]: https://img.shields.io/pypi/v/pylinger
-[badge-download-count]: https://img.shields.io/badge/downloads-10k-brightgreen
-[badge-version-python]:https://img.shields.io/badge/python-3.6%7C3.7%7C3.8-blue
-
-
-
-[English](../Linger/README_en.md) | 简体中文
 
 Linger是聆思科技AIOT芯片CSK60XX专用神经网络量化训练组件，聆思科技结合科大讯飞在深度学习领域的积累，和科大讯飞联合共同开源本组件。本组件结合聆思科技开源的高性能神经网络推理框架
 [thinker](https://github.com/LISTENAI/thinker) 实现训练、推理一体化，助力AI开发者基于CSK芯片给予业务快速赋予AI能力。目前 linger + thinker 工具链已支持聆思芯片在计算机视觉、语音唤醒、语音识别、离线翻译等10多个AI应用场景中的使用。
@@ -65,4 +53,3 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 - [ONNX](https://github.com/onnx/onnx)
 
 ## 许可证
-linger 由 [Apache-2.0 license](../Linger/LICENSE) 提供
