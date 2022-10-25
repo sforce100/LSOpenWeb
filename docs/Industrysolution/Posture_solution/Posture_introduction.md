@@ -53,7 +53,3 @@ sidebar_position: 1
 ![](./files/8.png)
 
 
-## CSK芯片搭载了卓越的计算机视觉技术
-![](./files/9.png)
-
-
