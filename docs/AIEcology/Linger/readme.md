@@ -40,7 +40,7 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 - [量化常见问题与注意事项](../Linger/FAQ/faq.md)
 
 ## 资料查询
-- [linger API](../Linger/Training_Framework/operator.md)
+- [linger API](../Linger/Training_Framework/linger_api.md)
 - [支持量化OP列表及其限制说明](../Linger/Training_Framework/operator.md)
 
 ## 交流与反馈
