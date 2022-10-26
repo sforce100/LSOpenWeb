@@ -62,7 +62,7 @@ sidebar_position: 1
 ![](./files_new/files_Scheme_introduction/effect.png)
 
 
-### 核心优势一：业界首发全栈神经网络的声学算法
+### 核心优势一：业界先进的全栈神经网络的声学算法
 
 - 支持由客卧场景扩展到家庭全场景语音交互
 - 支持波束形成、声源定位、去混响、回声消除、语音分离 
