@@ -32,7 +32,8 @@ sidebar_position: 4
 | 1.19 | 新增语速设置接口说明 | 刘钟蔚 | 2021.12.15 |
 | 2.00 | 精简文档，只保留EVS协议部分 | 刘钟蔚 | 2022.05.01 |
 | 2.01 | 新增`visual_in`中`profile`字段`CUSTOM_JXW_SEARCHTOPIC`，用于云端搜题 | 刘钟蔚 | 2022.07.14 |
-| 2.02 | 搜题字段修改为`SEARCHTOPIC`，用于云端搜题；增加小蛙搜题服务 | 刘钟蔚 | 2022.09.20 |
+| 2.02 | 搜题协议字段修改为`SEARCHTOPIC`，用于云端搜题；增加XW01搜题服务 | 刘钟蔚 | 2022.09.20 |
+| 2.03 | 搜题协议增加WT01搜题服务，增加`resolutionratio`参数 | 刘钟蔚 | 2022.10.31 |
 
 
 
@@ -114,7 +115,8 @@ sidebar_position: 4
 | image_metadata.image_debug | boolean     | 设置为`true`时，云端暂存设备上报的数据用于从调试接口获取图片等数据，仅供开发调试使用。此时请务必将原图使用jpeg算法压缩后传输。默认为`false`      | 否   |
 | image_metadata.debug | boolean     | 设置为`true`时，云端收集ocr相关信息用于算法调试，仅供开发调试使用，默认为`false` 。处于debug模式时扫描图片，云端不会返回识别结果，只会将采集后的图片保存，用于后续算法优化。 | 否   |
 | image_metadata.searchtopic_ability | string   | 01：扫描搜题； | 否   |
-| image_metadata.searchtopic_service | string   | JXW01：学王搜题，需要申请商务授权；XW01：小蛙搜题，不返回搜题结果 | 否   |
+| image_metadata.searchtopic_service | string   | JXW01：学王搜题，需要申请商务授权；XW01：小蛙搜题，不返回搜题结果；WT01（玩瞳搜题，需要申请商务授权） | 否   |
+| image_metadata.searchtopic_resolutionratio | string   | 设备分辨率 | 否   |
 
 
 `profile`取值
