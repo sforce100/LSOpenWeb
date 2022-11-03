@@ -37,7 +37,7 @@ thinker+linger工具链支持全低精度计算(int8/int16)以提升推理性能
 聆思工具链中包括Linger和Thinker，两者相互衔接，必须联合使用。Thinker依赖于Linger的计算图导出，两者使用同一个算子标准库。
 整个工具链的使用贯穿模型落地的整个生命周期，大致可以分为六个阶段：
 ### 1. 工具链安装 
- [环境配置](../Thinker/Introduction/quick_start.md)
+ [环境配置](../Thinker/Introduction/env.md)
 (支持pip、源码、docker等多种安装方式)
 
 
