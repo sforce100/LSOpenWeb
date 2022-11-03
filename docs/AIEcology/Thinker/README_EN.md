@@ -2,7 +2,7 @@
 
 ![logo](../Thinker/Introduction/files/Thinker_logo.png)
 ----------------------------------------------------------------------------
-#### English | [Chinese](./README.md)
+#### English | [Chinese](../Thinker/readme.md)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/thinker.svg)](https://pypi.org/project/thinker)
 [![PyPI](https://badge.fury.io/py/thinker.svg)](https://badge.fury.io/py/thinker)
 [![Downloads](https://pepy.tech/badge/thinker)](https://pepy.tech/project/thinker)
