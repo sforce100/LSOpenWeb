@@ -71,6 +71,5 @@ View operator performance statistics and intermediate result data
 ***
 
 ## Copyright and License
-[Apache-2.0 license](../Thinker/LICENSE)
-***
+
 

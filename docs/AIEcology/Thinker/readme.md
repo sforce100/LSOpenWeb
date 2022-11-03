@@ -79,6 +79,6 @@ thinker+linger工具链支持全低精度计算(int8/int16)以提升推理性能
 
 
 ## 版权和许可证
-[Apache-2.0 license](../Thinker/LICENSE)
-***
+
+
 
