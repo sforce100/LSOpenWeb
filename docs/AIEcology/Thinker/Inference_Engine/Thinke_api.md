@@ -1,5 +1,5 @@
 ---
-sidebar_label: Linger API  
+sidebar_label: Thinker API  
 sidebar_position: 5  
 ---
 # Thinker API 使用文档
