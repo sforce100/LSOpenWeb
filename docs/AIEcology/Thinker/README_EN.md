@@ -1,3 +1,7 @@
+---
+sidebar_label: README_EN  #文档名称
+sidebar_position: 8  # 文档排序：1就是排第一
+---
 # 
 
 ![logo](../Thinker/Introduction/files/Thinker_logo.png)

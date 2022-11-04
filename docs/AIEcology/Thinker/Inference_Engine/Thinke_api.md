@@ -2,7 +2,7 @@
 sidebar_label: Linger API  
 sidebar_position: 5  
 ---
-# thinker API 使用文档
+# Thinker API 使用文档
 
 ## tInitialize
 ### thinker全局初始化接口

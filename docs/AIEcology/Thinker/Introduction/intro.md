@@ -3,6 +3,8 @@ sidebar_label: 功能概述  #文档名称
 sidebar_position: 1  # 文档排序：1就是排第一
 ---
 
+# Thinker功能介绍
+
 Thinker是聆思科技开发的轻量级神经网络推理框架，结合另一个聆思开源的量化训练工具[linger](https://github.com/LISTENAI/linger)可实现产业级深度学习平台，
 集深度学习量化训练和引擎推理、LUNA器件库和丰富的工具组件于一体。聆思生态工具链（linger+thinker）是专为聆思AIOT芯片（目前只支持CSK60xx）研发，
 其中推理引擎框架Thinker助力开发者在聆思VENUS芯片上快速上线AI业务，帮助越来越多嵌入式尤其是AIOT产品实现AI赋能，助力产业智能化升级。
