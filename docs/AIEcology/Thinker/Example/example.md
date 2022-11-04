@@ -2,12 +2,13 @@
 sidebar_label: 功能示例  #文档名称
 sidebar_position: 1  # 文档排序：1就是排第一
 --- 
+# Thinker功能示例
 
 thinker包括离线打包工具和引擎执行器两部分：
 离线打包工具提供onnx计算图的加载解析、图优化、Layout转换、op拆分等功能，并对优化后的计算图进行内存分析，将分析结果和图信息序列化，最终生成资源文件（默认存放在根目录下model.pkg）;
 引擎执行器解析资源文件，实现全静态内存分配
 
-# Step1-模型打包
+## Step1-模型打包
 ```Shell
 tpacker -g xx.onnx [-p venus] [-d True] [-m memory] [-o model.bin]
 ```
@@ -33,7 +34,7 @@ tpacker -g demo/resnet50/resnet50_fashion_mnist.onnx -d True -s Remove_QuantDequ
 
 ![PSRAM 内存结果](../Example/files/Resnet50_Mem1.png)
 
-# Step2-引擎执行
+## Step2-引擎执行
 执行编译后，会对应测试工程test_thinker，执行脚本如下
 
 * 输入数据格式为 input.bin model.bin result.bin  c h w
