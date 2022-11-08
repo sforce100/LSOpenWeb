@@ -3,6 +3,7 @@ sidebar_label: README  #文档名称
 sidebar_position: 7  # 文档排序：1就是排第一
 ---
 #
+
 ![linger_logo](../Linger/Introduction/files/linger_logo.png)
 --------------------------------------------------------------------------------
 
@@ -26,7 +27,7 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
 
 
 ## 快速入门
-1. [安装](../Linger/Introduction/how_to_use.md)：支持pip、源码、docker等多种安装方式
+1. [安装](../Linger/Introduction/env.md)：支持pip、源码、docker等多种安装方式
 2. [浮点-定点两阶段量化训练](../Linger/Training_Framework/train_clamp.md): 先进行浮点网络的约束训练，再针对量化友好的浮点模型进行量化训练微调
 3. [onnx导出教程](../Linger/Tools/tool.md)：将量化无损的PyTorch模型导出为ONNX格式的模型
 4. [完整入门样例](../Linger/Example/example.md)：提供若干个新手友好的量化入门样例
@@ -36,7 +37,7 @@ linger 后端适配 [thinker](https://github.com/LISTENAI/thinker) 推理引擎�
   - [权重分析工具使用及量化onnx导出错误调试](../Linger/FAQ/faq.md)
 
 ## 常见问题
-- [安装出现问题解决](../Linger/FAQ/faq.md)
+- [安装出现问题解决](../Linger/FAQ/install_faq.md)
 - [量化常见问题与注意事项](../Linger/FAQ/faq.md)
 
 ## 资料查询
