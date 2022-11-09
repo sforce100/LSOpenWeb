@@ -30,13 +30,6 @@ module.exports = {
 //          position: 'left'
 //        },
         {
-          activeBasePath: "/AIEcology",
-          to: "/AIEcology/Linger/readme", //跳转哪个目录
-          label: 'AI生态', 
-          position: 'left'
-        },
-        
-        {
           activeBasePath: "/chips",
           to: "/chips/4002/Chip_information_4002", //跳转哪个目录
           label: '芯片', 
@@ -78,13 +71,19 @@ module.exports = {
           href: "/workorder/workorder",
           label: "工单",
           position: 'right'
-        }
+        },
+        {
+          activeBasePath: "/AIEcology",
+          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          label: 'AI生态', 
+          position: 'left'
+        }      
       ],
     },
     subNavbar: [
       {
         dirName: '/start',
-       items: [
+        items: [
         ],
       },
       {

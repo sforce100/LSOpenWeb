@@ -32,7 +32,6 @@
             "label": "快速入门",
             "to": "/AIsolution/ESR/Quick_start/Quick_start" 
         },
-        
         {
             "label": "使用LStudio",
             "to": "/tools/LStudio" 
