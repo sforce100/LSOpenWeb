@@ -33,12 +33,12 @@
             "to": "/chips/600X/overview/read_guide"
         },
         {
-            "label": "快速入门",
-            "to": "/AIsolution/ESR/Quick_start/Quick_start" 
+            "label": "AI生态",
+            "to": "/AIEcology/Linger/readme" 
         },
         {
-            "label": "AI生态",
-            "to": "/AIEcology/Linger/readme"
+            "label": "快速入门",
+            "to": "/AIsolution/ESR/Quick_start/Quick_start" 
         },
         {
             "label": "使用LStudio",

@@ -7,7 +7,7 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "predeploy": "node cloneElseDocs.js && node docsRoute.js",
+    "predeploy": "patch-package && node cloneElseDocs.js && node docsRoute.js",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear"
@@ -15,7 +15,7 @@
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.2",
     "@docusaurus/preset-classic": "2.0.0-beta.2",
-    "@easyops-cn/docusaurus-search-local": "^0.19.0",
+    "@easyops-cn/docusaurus-search-local": "^0.18.1",
     "@mdx-js/react": "^1.6.21",
     "ant-design": "^1.0.0",
     "antd": "^3.26.20",
@@ -53,5 +53,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "patch-package": "^6.4.7"
+  }
 }
