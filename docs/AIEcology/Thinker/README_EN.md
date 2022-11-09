@@ -42,7 +42,7 @@ After finishing the model structure design, algorithm researchers use random ini
 
 ### 3. Quantitative training and export of models
 [Linger](https://github.com/LISTENAI/linger) is a plug-in for pytorch and can be imported with one click. [Linger](https://github.com/LISTENAI/linger) uses QAT quantization, which is completely or basically lossless for CV models. After the quantization training is completed, the model can be exported with a single click using its own tools.
-* [Example Tutorial 3](../Thinker/Inference_Engine/model_quant.md)
+* [Example Tutorial 3](../Linger/Introduction/intro.md)
 
 ### 4. Model analysis and packaging
 Parameter checking of the computational graph, computational graph optimization and memory analysis checking using Thinker's offline tool tpacker. Finally, the computational graph is serialized into the format required by the engine executor and the runtime memory is pre-allocated.

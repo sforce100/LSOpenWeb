@@ -1,6 +1,6 @@
 ---
 sidebar_label: Thinker API  
-sidebar_position: 5  
+sidebar_position: 4  
 ---
 # Thinker API 使用文档
 
