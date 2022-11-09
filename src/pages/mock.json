@@ -34,7 +34,7 @@
         },
         {
             "label": "AI生态",
-            "to": "/AIEcology/Linger/readme"
+            "to": "../AIEcology/Linger/readme"
         },
         {
             "label": "使用LStudio",
