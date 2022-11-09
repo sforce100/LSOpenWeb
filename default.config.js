@@ -58,6 +58,12 @@ module.exports = {
           position: 'left'
         },
         {
+          activeBasePath: "/AIEcology",
+          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          label: 'AI生态', 
+          position: 'left'
+        },   
+        {
           to: '/FAQ/front_page',
           label: 'FAQ',
           position: 'right'
@@ -71,13 +77,7 @@ module.exports = {
           href: "/workorder/workorder",
           label: "工单",
           position: 'right'
-        },
-        {
-          activeBasePath: "/AIEcology",
-          to: "/AIEcology/Linger/readme", //跳转哪个目录
-          label: 'AI生态', 
-          position: 'left'
-        }      
+        },   
       ],
     },
     subNavbar: [
