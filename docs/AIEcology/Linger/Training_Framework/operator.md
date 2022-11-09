@@ -1,6 +1,6 @@
 ---
 sidebar_label: 算子列表  
-sidebar_position: 4  
+sidebar_position: 3  
 ---
 
 # 算子列表

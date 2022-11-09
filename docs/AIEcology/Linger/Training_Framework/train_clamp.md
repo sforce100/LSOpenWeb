@@ -1,6 +1,6 @@
 ---
 sidebar_label: clamp训练 
-sidebar_position: 2  
+sidebar_position: 1  
 ---
 
 # 浮点-定点两阶段量化训练方案介绍
