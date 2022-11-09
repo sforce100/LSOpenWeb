@@ -30,6 +30,13 @@ module.exports = {
 //          position: 'left'
 //        },
         {
+          activeBasePath: "/AIEcology",
+          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          label: 'AI生态', 
+          position: 'left'
+        },
+        
+        {
           activeBasePath: "/chips",
           to: "/chips/4002/Chip_information_4002", //跳转哪个目录
           label: '芯片', 
@@ -44,12 +51,6 @@ module.exports = {
           activeBasePath: "/tools",
           to: '/tools/LStudio',
           label: '工具',
-          position: 'left'
-        },
-        {
-          activeBasePath: "/AIEcology",
-          to: "/AIEcology/Linger/readme", //跳转哪个目录
-          label: 'AI生态', 
           position: 'left'
         },
         {
