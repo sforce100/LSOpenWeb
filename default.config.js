@@ -47,6 +47,12 @@ module.exports = {
           position: 'left'
         },
         {
+          activeBasePath: "/AIEcology",
+          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          label: 'AI生态', 
+          position: 'left'
+        },
+        {
           activeBasePath: "/AIsolution",
           to: '/AIsolution/ESR/Quick_start/Scheme_introduction',
           label: 'AI语音应用方案',
@@ -77,13 +83,13 @@ module.exports = {
           href: "/workorder/workorder",
           label: "工单",
           position: 'right'
-        }
+        },   
       ],
     },
     subNavbar: [
       {
         dirName: '/start',
-       items: [
+        items: [
         ],
       },
       {

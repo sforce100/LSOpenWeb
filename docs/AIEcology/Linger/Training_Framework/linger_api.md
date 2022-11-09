@@ -2,6 +2,7 @@
 sidebar_label: Linger API  
 sidebar_position: 4  
 ---
+# Linger API
 ## linger normalize 约束训练接口
 
 

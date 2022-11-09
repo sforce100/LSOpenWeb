@@ -39,7 +39,7 @@
         {
             "label": "使用LStudio",
             "to": "/tools/LStudio" 
-        }
+        }   
     ],
     "collections": [
         {
@@ -102,7 +102,7 @@
                         "to": "/AIsolution/ESR/algorithm/algorithm"
                     },
                     {
-                        "label": "什么是LISA和LPM？",
+                        "label": "什么是LISA和LPM？ ",
                         "to": "/tools/LISA_LPM/awesome"
                     }
                 ]
