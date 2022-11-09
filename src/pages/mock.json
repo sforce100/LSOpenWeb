@@ -33,13 +33,13 @@
             "to": "/AIsolution/ESR/Quick_start/Quick_start" 
         },
         {
-            "label": "使用LStudio",
-            "to": "/tools/LStudio" 
-        },
-        {
             "label": "AI生态",
             "to": "/AIEcology/Linger/readme"
-        }
+        },
+        {
+            "label": "使用LStudio",
+            "to": "/tools/LStudio" 
+        }   
     ],
     "collections": [
         {
