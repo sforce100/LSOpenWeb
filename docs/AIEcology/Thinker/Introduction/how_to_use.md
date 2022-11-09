@@ -17,7 +17,7 @@ sidebar_position: 3  # 文档排序：1就是排第一
 ## 3. 模型量化训练和导出
   [linger](https://github.com/LISTENAI/linger)作为pytorch的插件，一键导入。从浮点训练阶段就开始对模型参数进行规范处理，浮点模型训练完成后，添加少量代码即可进入量化训练阶段。[Linger](https://github.com/LISTENAI/linger)采用QAT量化方式，对于CV模型能做到完全无损或基本无损。
   量化训练完成后，使用自带的工具，一键导出。
-  [模型量化训练和导出示例](../Linger/Introduction/intro.md)
+  [模型量化训练和导出示例](../../Linger/Introduction/intro.md)
 
 ## 4. 模型分析和打包
   使用Thinker离线工具tpacker对计算图的参数检查、计算图优化和内存分析检查。最后将计算图序列化成引擎执行器所需要的格式，并对运行内存进行预分配。
