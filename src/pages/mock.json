@@ -29,12 +29,12 @@
             "to": "https://www.bilibili.com/video/BV1n64y1v7sC" 
         },
         {
-            "label": "快速入门",
-            "to": "/AIsolution/ESR/Quick_start/Quick_start" 
+            "label": "CSK6开发指引",
+            "to": "/chips/600X/overview/read_guide"
         },
         {
-            "label": "AI生态",
-            "to": "/AIEcology/Linger/readme"
+            "label": "快速入门",
+            "to": "/AIsolution/ESR/Quick_start/Quick_start" 
         },
         {
             "label": "使用LStudio",

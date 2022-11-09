@@ -62,7 +62,13 @@ module.exports = {
           to: '/Industrysolution/Scanning_pen/Scheme_introduction',
           label: '行业Turnkey解决方案',
           position: 'left'
-        }, 
+        },
+        //{
+        //  activeBasePath: "/AIEcology",
+        //  to: "/AIEcology/Linger/readme", //跳转哪个目录
+        //  label: 'AI生态', 
+        //  position: 'left'
+        //},
         {
           to: '/FAQ/front_page',
           label: 'FAQ',

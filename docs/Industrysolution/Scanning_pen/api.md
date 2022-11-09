@@ -2688,6 +2688,47 @@ POST https://api.iflyos.cn/external/ocr_process/cloud/get_records
 }
 ```
 
+### 获取查词记录
+
+
+#### 接口地址
+
+```
+POST https://api.iflyos.cn/external/ocr_process/cloud/get_dict_records
+```
+
+
+#### 请求参数
+
+
+| 参数  | 类型  | 说明  | 必填  |
+| --- | --- | --- | --- |
+| client_id | String | 设备client_id | 是   |
+| device_id | String | 设备device_id | 是   |
+| page | Integer | 页码，默认为1 | 否   |
+| size | Integer | 每页数量，默认为10，最大为100 | 否   |
+
+#### 响应说明
+
+```json
+{
+    "data": [
+        {
+            "client_id": "client_id",
+            "device_id": "device_id",
+            "text": "单词",
+            "inserted_at": "2022-04-12T07:32:45Z"
+        }
+    ],
+    "total": 1
+}
+```
+
+| 参数  | 类型  | 说明  |
+| --- | --- | --- |
+| data | array | 查词记录列表 |
+| data.text | integer | 查词内容 |
+| data.inserted_at | string | 查词时间 |
 
 ### 获取语音翻译记录
 
