@@ -32,10 +32,6 @@
             "label": "CSK6开发指引",
             "to": "/chips/600X/overview/read_guide"
         },
-        // {
-        //     "label": "AI生态",
-        //     "to": "/AIEcology/Manual/Intro/intro" 
-        // },
         {
             "label": "快速入门",
             "to": "/AIsolution/ESR/Quick_start/Quick_start" 

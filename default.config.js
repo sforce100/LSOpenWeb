@@ -197,16 +197,6 @@ module.exports = {
         ],
       },
       {
-        dirName: '/AIEcology',
-        items: [
-          {
-            activeBasePath: "/AIEcology/Manual/",
-            to: "/AIEcology/Manual/Intro/intro",
-            label: '使用文档',
-          },
-        ],
-      },
-      {
         dirName: '/FAQ',//对应的一级目录
         items: [
           {
