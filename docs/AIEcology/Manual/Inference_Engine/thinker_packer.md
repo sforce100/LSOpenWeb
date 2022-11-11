@@ -24,13 +24,13 @@ tpacker -g demo/resnet50/resnet50_fashion_mnist.onnx -d True -s Remove_QuantDequ
 ```
 其中 -s Remove_QuantDequant 为保留 Quant 与 Dequant 算子, 若能打包成功，则会提示 : 
 
-![如下图片](../Inference_Engine/flies/Resnet50_sucess.png)
+![如下图片](../Inference_Engine/files/Resnet50_sucess.png)
 
 若超出硬件或内存限制，则会提示错误要求设计反工 :
 
-![如下图片](../Inference_Engine/flies/Resnet50_err.png)
+![如下图片]../Inference_Engine/files/Resnet50_err.png)
 
 最终成功会得到内存分析结果，存储在 memory.txt 中。
 
-![PSRAM 内存结果](../Inference_Engine/flies/Resnet50_Mem1.png)
+![PSRAM 内存结果](../Inference_Engine/files/Resnet50_Mem1.png)
 
