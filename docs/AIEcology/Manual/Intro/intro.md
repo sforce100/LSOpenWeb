@@ -45,3 +45,9 @@ Thinker是聆思科技开发的轻量级神经网络推理框架，结合另一�
 引擎执行器专门针对CSK60XX的VENUS架构进行了适配，集成核心运算的LUNA库，通过手写自定义指令码方式充分发挥LUNA的算力，单线程下运行常见CV模型能接近设备算力峰值。
 thinker+linger工具链支持全低精度计算(int8/int16)以提升推理性能，并对相关指令进行了适配。相对于浮点模型，量化模型能减少50%-75%的参数量，加快了数据存取速度和提升运算效率。
 ***
+
+# 交流与反馈
+- 欢迎您通过 [Github Issues](https://github.com/LISTENAI/LSOpenWeb/issues) 来提交 BUG 与建议
+- 技术交流企业微信群：123456
+# License
+Apache 2.0
