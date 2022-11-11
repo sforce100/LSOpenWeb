@@ -1,6 +1,6 @@
 ---
 sidebar_label: 导图示例 
-sidebar_position: 4  
+sidebar_position: 3  
 ---
 # 导图方法
 
