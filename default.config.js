@@ -48,7 +48,7 @@ module.exports = {
         },
         {
           activeBasePath: "/AIEcology",
-          to: "/AIEcology/Linger/readme", //跳转哪个目录
+          to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
           label: 'AI生态', 
           position: 'left'
         },
@@ -200,19 +200,9 @@ module.exports = {
         dirName: '/AIEcology',
         items: [
           {
-            activeBasePath: "/AIEcology/Intro/",
-            to: "/AIEcology/Intro/intro",
-            label: '总概',
-          },
-          {
-            activeBasePath: "/AIEcology/Linger/",
-            to: "/AIEcology/Linger/readme",
-            label: 'Linger',
-          },
-          {
-            activeBasePath: "/AIEcology/Thinker/",
-            to: "/AIEcology/Thinker/readme",
-            label: 'Thinker',
+            activeBasePath: "/AIEcology/Manual/",
+            to: "/AIEcology/Manual/Intro/intro",
+            label: '使用文档',
           },
         ],
       },
