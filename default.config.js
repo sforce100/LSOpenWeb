@@ -46,12 +46,12 @@ module.exports = {
           label: '工具',
           position: 'left'
         },
-        {
-          activeBasePath: "/AIEcology",
-          to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
-          label: 'AI生态', 
-          position: 'left'
-        },
+        // {
+        //   activeBasePath: "/AIEcology",
+        //   to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
+        //   label: 'AI生态', 
+        //   position: 'left'
+        // },
         {
           activeBasePath: "/AIsolution",
           to: '/AIsolution/ESR/Quick_start/Scheme_introduction',
