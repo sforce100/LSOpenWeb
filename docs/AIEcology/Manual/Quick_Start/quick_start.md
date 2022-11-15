@@ -1,10 +1,10 @@
 ---
 sidebar_label: 快速开始  
-sidebar_position: 3  
+sidebar_position: 2  
 ---
 # 快速开始
 
-1. [安装](../Intro/env.md)：支持pip、源码、docker等多种安装方式
+1. [安装](../Quick_Start/env.md)：支持pip、源码、docker等多种安装方式
 2. [浮点-定点两阶段量化训练](../Training_Framework/train_clamp.md): 先进行浮点网络的约束训练，再针对量化友好的浮点模型进行量化训练微调
 3. 模型量化训练和导出
   [linger](https://github.com/LISTENAI/linger)作为pytorch的插件，一键导入。从浮点训练阶段就开始对模型参数进行规范处理，浮点模型训练完成后，添加少量代码即可进入量化训练阶段。[Linger](https://github.com/LISTENAI/linger)采用QAT量化方式，对于CV模型能做到完全无损或基本无损。
