@@ -1,6 +1,6 @@
 ---
 sidebar_label: 环境配置  #文档名称
-sidebar_position: 2  # 文档排序：1就是排第一
+sidebar_position: 1  # 文档排序：1就是排第一
 ---
 
 # Linger环境配置
