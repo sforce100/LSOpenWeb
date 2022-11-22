@@ -238,7 +238,7 @@ sidebar_position: 4
 | data.code        | Int    | 请求结果代码，0代表成功。[错误码查询](https://www.xfyun.cn/document/error-code) | 是   |
 | data.description | String | 请求结果说明                                                 | 是   |
 | data.sid         | String | 图像识别请求的唯一标识                                       | 是   |
-| data.content     | String | 1. 若`profile`取值为`OCR`，`is_last`为 `false` 时，返回扫描识别的文本结果。；`is_last`为 `true` 时，返回`null`；2. 若`profile`取值为`TRANS`，则这里返回的是翻译的结果。；3. 若设备处于`debug`模式，则这里固定返回”原图已采集完成“ | 是   |
+| data.content     | String | 1. 若`profile`取值为`OCR`，`is_last`为 `false` 时，返回扫描识别的文本结果**（需注意的是：content默认返回为null，识别结果默认在segs显示，设备端只需要那segs的分词后结果即可）**；`is_last`为 `true` 时，返回`null`；2. 若`profile`取值为`TRANS`，则这里返回的是翻译的结果。；3. 若设备处于`debug`模式，则这里固定返回”原图已采集完成“ | 是   |
 | Data.segs | String | 1. 若设备开启分词，处于单行扫描模式，且原文包含中文；或处于多行扫描， 且 `is_last`为 `true` 时，返回分词结果，词与词之间通过英文逗号隔开；2. 其余情况此处返回`null` | 是 |
 | data.from     | String | 1. 若`profile`为`TRANS`时表示翻译原语种。取值:；**cn**(中文)；**en**(英文)；2. 若`profile`为其他时值为`null` | 否   |
 | data.to     | String | 1. 若`profile`为`TRANS`时表示翻译结果语种。取值:；**cn**(中文)；**en**(英文)；2. 若`profile`为其他时值为`null` | 否  |
