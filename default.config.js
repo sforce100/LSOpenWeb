@@ -6,6 +6,7 @@ module.exports = {
   tagline: '聆思文档中心',
   url: 'https://github.com/LISTENAI',
   baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -45,6 +46,12 @@ module.exports = {
           label: '工具',
           position: 'left'
         },
+        // {
+        //   activeBasePath: "/AIEcology",
+        //   to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
+        //   label: 'AI生态', 
+        //   position: 'left'
+        // },
         {
           activeBasePath: "/AIsolution",
           to: '/AIsolution/ESR/Quick_start/Scheme_introduction',
@@ -56,6 +63,12 @@ module.exports = {
           label: '行业Turnkey解决方案',
           position: 'left'
         },
+        //{
+        //  activeBasePath: "/AIEcology",
+        //  to: "/AIEcology/Linger/readme", //跳转哪个目录
+        //  label: 'AI生态', 
+        //  position: 'left'
+        //},
         {
           type: 'custom',
           to: '/',
@@ -65,6 +78,7 @@ module.exports = {
         },
         {
           to: '/FAQ/faq',
+          to: '/FAQ/front_page',
           label: 'FAQ',
           position: 'right'
         },
@@ -77,13 +91,13 @@ module.exports = {
           href: "/workorder/workorder",
           label: "工单",
           position: 'right'
-        }
+        },   
       ],
     },
     subNavbar: [
       {
         dirName: '/start',
-       items: [
+        items: [
         ],
       },
       {
@@ -194,7 +208,7 @@ module.exports = {
         dirName: '/FAQ',//对应的一级目录
         items: [
           {
-            to: "/FAQ/faq",//跳转哪个目录
+            to: "/FAQ/front_page",//跳转哪个目录
             label: '常见问题',
           },
         ],

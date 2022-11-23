@@ -32,6 +32,8 @@ sidebar_position: 4
 | 1.19 | 新增语速设置接口说明 | 刘钟蔚 | 2021.12.15 |
 | 2.00 | 精简文档，只保留EVS协议部分 | 刘钟蔚 | 2022.05.01 |
 | 2.01 | 新增`visual_in`中`profile`字段`CUSTOM_JXW_SEARCHTOPIC`，用于云端搜题 | 刘钟蔚 | 2022.07.14 |
+| 2.02 | 搜题协议字段修改为`SEARCHTOPIC`，用于云端搜题；增加XW01搜题服务 | 刘钟蔚 | 2022.09.20 |
+| 2.03 | 搜题协议增加WT01搜题服务，增加`resolutionratio`参数 | 刘钟蔚 | 2022.10.31 |
 
 
 
@@ -76,16 +78,18 @@ sidebar_position: 4
     },
     "payload": {
       "profile": "OCR_TRANS_TTS",
-      "realtime": true,
+      "realtime": "true",
       "image_metadata":{
-        "reverse": true,
-        "tokenization":true,
-        "dictionary":true, // 20210917新增: 词典开关
-	"dict_type":xuewang, // 20220520新增: 词典类型
-        "resources":true, // 20210917新增: 教育内容开关
-      	"height": 128,
-      	"image_data_debug": false,
-      	"debug": false
+        "reverse": "true",
+        "tokenization":"true",
+        "dictionary":"true", // 20210917新增: 词典开关
+	"dict_type":"xuewang", // 20220520新增: 词典类型
+        "resources":"true", // 20210917新增: 教育内容开关
+      	"height": "128",
+      	"image_data_debug": "false",
+      	"debug": "false"
+	"searchtopic_ability": "01", // 20210920新增：搜题能力
+      	"searchtopic_service": "XW01" // 20210920新增：搜题服务方
       }
     }
   }
@@ -110,6 +114,10 @@ sidebar_position: 4
 | image_metadata.resources | Boolean | 教育内容开关，设置为`true`时调用教育内容接口 | 否 |
 | image_metadata.image_debug | boolean     | 设置为`true`时，云端暂存设备上报的数据用于从调试接口获取图片等数据，仅供开发调试使用。此时请务必将原图使用jpeg算法压缩后传输。默认为`false`      | 否   |
 | image_metadata.debug | boolean     | 设置为`true`时，云端收集ocr相关信息用于算法调试，仅供开发调试使用，默认为`false` 。处于debug模式时扫描图片，云端不会返回识别结果，只会将采集后的图片保存，用于后续算法优化。 | 否   |
+| image_metadata.searchtopic_ability | string   | 01：扫描搜题； | 否   |
+| image_metadata.searchtopic_service | string   | JXW01：学王搜题，需要申请商务授权；XW01：小蛙搜题，不返回搜题结果；WT01（玩瞳搜题，需要申请商务授权） | 否   |
+| image_metadata.searchtopic_resolutionratio | string   | 设备分辨率 | 否   |
+
 
 `profile`取值
 
@@ -119,7 +127,7 @@ sidebar_position: 4
 | OCR_TTS        | 图像识别，语音合成识别结果             |
 | OCR_TRANS      | 图像识别，翻译识别结果                 |
 | OCR_TRANS_TTS  | 图像识别，翻译识别结果，合成原文和译文 |
-| CUSTOM_JXW_SEARCHTOPIC | 用于云端搜题（注：目前只调用搜题服务，不返回搜题结果，搜题结果在公众号显示） |
+| SEARCHTOPIC | 用于云端搜题（注：具体请求服务需要在`image_metadata.searchtopic`中定义） |
 | TEXTBOOK       | 教材指读，暂未开放                     |
 
 ##### 发送图像数据
@@ -230,7 +238,7 @@ sidebar_position: 4
 | data.code        | Int    | 请求结果代码，0代表成功。[错误码查询](https://www.xfyun.cn/document/error-code) | 是   |
 | data.description | String | 请求结果说明                                                 | 是   |
 | data.sid         | String | 图像识别请求的唯一标识                                       | 是   |
-| data.content     | String | 1. 若`profile`取值为`OCR`，`is_last`为 `false` 时，返回扫描识别的文本结果。；`is_last`为 `true` 时，返回`null`；2. 若`profile`取值为`TRANS`，则这里返回的是翻译的结果。；3. 若设备处于`debug`模式，则这里固定返回”原图已采集完成“ | 是   |
+| data.content     | String | 1. 若`profile`取值为`OCR`，`is_last`为 `false` 时，返回扫描识别的文本结果**（需注意的是：content默认返回为null，识别结果默认在segs显示，设备端只需要那segs的分词后结果即可）**；`is_last`为 `true` 时，返回`null`；2. 若`profile`取值为`TRANS`，则这里返回的是翻译的结果。；3. 若设备处于`debug`模式，则这里固定返回”原图已采集完成“ | 是   |
 | Data.segs | String | 1. 若设备开启分词，处于单行扫描模式，且原文包含中文；或处于多行扫描， 且 `is_last`为 `true` 时，返回分词结果，词与词之间通过英文逗号隔开；2. 其余情况此处返回`null` | 是 |
 | data.from     | String | 1. 若`profile`为`TRANS`时表示翻译原语种。取值:；**cn**(中文)；**en**(英文)；2. 若`profile`为其他时值为`null` | 否   |
 | data.to     | String | 1. 若`profile`为`TRANS`时表示翻译结果语种。取值:；**cn**(中文)；**en**(英文)；2. 若`profile`为其他时值为`null` | 否  |

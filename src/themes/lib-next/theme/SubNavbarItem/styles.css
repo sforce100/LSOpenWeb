@@ -1,5 +1,6 @@
 .subnavbar__item {
-  min-width: 96px;
+  white-space: nowrap;
+  min-width: auto;
   height: 32px;
   background: rgba(128, 128, 128, 0.15);
   border-radius: 16px;
