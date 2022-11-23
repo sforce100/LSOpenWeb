@@ -135,6 +135,10 @@ const isOfType = (type) => {
 const NavbarItemSchema = Joi.object().when({
   switch: [
     {
+      is: isOfType('custom'),
+      then: DefaultNavbarItemSchema,
+    },
+    {
       is: isOfType('docsVersion'),
       then: DocsVersionNavbarItemSchema,
     },

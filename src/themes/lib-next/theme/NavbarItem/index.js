@@ -23,6 +23,8 @@ const NavbarItemComponents = {
   doc: () =>
     // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
     require('@theme/NavbarItem/DocNavbarItem').default,
+  custom: () => DefaultNavbarItem,
+
 };
 
 const getNavbarItemComponent = (type = 'default') => {

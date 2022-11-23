@@ -443,7 +443,9 @@ declare module '@theme/NavbarItem' {
         readonly type: 'docsVersionDropdown';
       } & DocsVersionDropdownNavbarItemProps)
     | ({readonly type: 'docsVersion'} & DocsVersionNavbarItemProps)
-    | ({readonly type: 'search'} & SearchNavbarItemProps);
+    | ({ readonly type: 'search'; } & SearchNavbarItemProps)
+    | ({ readonly type: 'custom' } & DefaultNavbarItemProps);
+
 
   const NavbarItem: (props: Props) => JSX.Element;
   export default NavbarItem;

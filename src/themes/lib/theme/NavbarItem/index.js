@@ -25,6 +25,7 @@ const NavbarItemComponents = {
   default: () => _DefaultNavbarItem.default,
   localeDropdown: () => _LocaleDropdownNavbarItem.default,
   search: () => _SearchNavbarItem.default,
+  custom: () => _DefaultNavbarItem.default,
   // Need to lazy load these items as we don't know for sure the docs plugin is loaded
   // See https://github.com/facebook/docusaurus/issues/3360
   docsVersion: () => // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
@@ -32,7 +33,7 @@ const NavbarItemComponents = {
   docsVersionDropdown: () => // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
   require('@theme/NavbarItem/DocsVersionDropdownNavbarItem').default,
   doc: () => // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
-  require('@theme/NavbarItem/DocNavbarItem').default
+    require('@theme/NavbarItem/DocNavbarItem').default
 };
 
 const getNavbarItemComponent = (type = 'default') => {

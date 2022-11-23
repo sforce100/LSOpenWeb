@@ -57,6 +57,13 @@ module.exports = {
           position: 'left'
         },
         {
+          type: 'custom',
+          to: '/',
+          activeBasePath: "/support",
+          label: '技术支持',
+          position: 'right'
+        },
+        {
           to: '/FAQ/faq',
           label: 'FAQ',
           position: 'right'
@@ -310,6 +317,6 @@ module.exports = {
     // // ... Your other plugins.
     'listenai-analytics',
     'listenai-kf',
-    'plugin-image-zoom',
+    'plugin-image-zoom'
   ],
 };

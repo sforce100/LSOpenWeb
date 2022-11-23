@@ -7,10 +7,10 @@
 import React, {useCallback, useState, useEffect} from 'react';
 import clsx from 'clsx';
 import SearchBar from '@theme/SearchBar'; // import Toggle from '@theme/Toggle';
-
+import Support from '@theme/Support';
 import LsToggle from '@theme/LsToggle';
 import useThemeContext from '@theme/hooks/useThemeContext';
-import {useThemeConfig} from '@docusaurus/theme-common';
+import { useThemeConfig } from '@docusaurus/theme-common';
 import useHideableNavbar from '@theme/hooks/useHideableNavbar';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
 import useScrollPosition from '@theme/hooks/useScrollPosition';
@@ -21,8 +21,14 @@ import IconMenu from '@theme/IconMenu';
 import styles from './styles.module.css'; // retrocompatible with v1
 
 const DefaultNavItemPosition = 'right'; // If split links by left/right
-// if position is unspecified, fallback to right (as v1)
 
+// if position is unspecified, fallback to right (as v1)
+//排除掉自定义的navItem
+function filterNavItemsByType(items) {
+ return items.filter(
+    (item) => (item.type !=='custom')
+  );
+}
 function splitNavItemsByPosition(items) {
   const leftItems = items.filter(
     (item) => (item.position ?? DefaultNavItemPosition) === 'left',
@@ -73,7 +79,9 @@ function Navbar() {
     }
   }, [windowSize]);
   const hasSearchNavbarItem = items.some((item) => item.type === 'search');
-  const {leftItems, rightItems} = splitNavItemsByPosition(items);
+  const CustomNavbarItem = items.find((item) => item.type === 'custom');
+  const hasCustomNavbarItem = CustomNavbarItem.length !== 0;
+  const { leftItems, rightItems } = splitNavItemsByPosition(filterNavItemsByType(items));
   return (
     <nav
       ref={navbarRef}
@@ -107,6 +115,7 @@ function Navbar() {
           ))}
         </div>
         <div className="navbar__items navbar__items--right">
+          {hasCustomNavbarItem && <Support  {...CustomNavbarItem} />}
           {rightItems.map((item, i) => (
             <NavbarItem {...item} key={i} />
           ))}
@@ -122,6 +131,7 @@ function Navbar() {
             />
           )}
           {!hasSearchNavbarItem && <SearchBar />}
+
         </div>
       </div>
       <div
