@@ -32,9 +32,9 @@ class Support extends Component {
         const { visble } = this.state;
         const { label } = this.props;
         return (
-            <div className='support'>
+            <div className='navbar__item support '>
                 <span className='text' onClick={this.showModal.bind(this)}>{label}</span>
-                <Modal title="技术支持" width="400px" visible={visble} footer={null} destroyOnClose={true} maskClosable={false} onCancel={this.closeModal.bind(this)}>
+                <Modal title="技术支持" width="400px" visible={visble} footer={null} destroyOnClose={true} maskClosable={false} centered={ true} onCancel={this.closeModal.bind(this)}>
                     <div className="container">
                         <h3 className='title'>加入交流群或添加小助手获取技术支持</h3>
                         <div className='flex'>

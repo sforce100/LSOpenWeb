@@ -82,13 +82,13 @@ module.exports = {
           label: 'FAQ',
           position: 'right'
         },
+        // {
+        //   to: '/school/school',
+        //   label: '视频课程',
+        //   position: 'right'
+        // },
         {
-          to: '/school/school',
-          label: '视频课程',
-          position: 'right'
-        },
-        {
-          href: "/workorder/workorder",
+          to: "/workorder/workorder",
           label: "工单",
           position: 'right'
         },   

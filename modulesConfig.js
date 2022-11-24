@@ -8,7 +8,7 @@ const shellRes = exec(`git submodule foreach`, {
 
 const submodulesPath = shellRes.split('\n').map(item => {
     const reg = /\'(.*?)\'/;
-    return reg.exec(item)[1];
+    return reg.exec(item) && reg.exec(item)[1];
 })
 
 const sidebars = {};
@@ -31,7 +31,7 @@ function handleSideBar(sidebar, path) {
 }
 
 for (let index in submodulesPath) {
-    const path = submodulesPath[index];
+    const path = submodulesPath[index] || '';
     try {
         const sidebar = require(join(__dirname, path, '.lsopen', 'sidebar.json'));
         if (!Array.isArray(sidebar)) {
