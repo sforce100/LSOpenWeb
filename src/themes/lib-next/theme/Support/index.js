@@ -40,7 +40,7 @@ class Support extends Component {
                         <div className='flex'>
                             <div className='box'>
                                 <div className='img-wrap'>
-                                    <img src={qqImg} className='qq' />
+                                    <img src={qqImg} className='qr-img qq' />
                                 </div>
                                 <p>
                                     技术交流群
@@ -48,7 +48,7 @@ class Support extends Component {
                             </div>
                             <div className='box'>
                                 <div className='img-wrap'>
-                                    <img src={xzsImg} className='xzs' />
+                                    <img src={xzsImg} className='qr-img xzs' />
                                 </div>
                                 <p>
                                     开发小助手

@@ -39,7 +39,7 @@
   border: 1px solid #e6e6e6;
   text-align: center;
 }
-img {
+.qr-img {
   width: 96px;
   height: 96px;
 }
