@@ -11,6 +11,8 @@ sidebar_position: 5
 | ---- | ------------------------------------------------------------ | ------ | --------- |
 | 1.0  | 将扫描笔api接口能力与EVS标准协议内容作区分；新增学习园地、学情数据等云端接口    | 刘钟蔚 | 2022.04.20 |
 | 1.1  | 新增学王词典接口请求和返回示例    | 刘钟蔚 | 2022.05.20 |
+| 1.2  | 新增查询生词/摘抄是否被收藏接口    | 刘钟蔚 | 2023.01.06 |
+
 
 ## 词典查询接口
 
@@ -2484,7 +2486,7 @@ GET https://api.iflyos.cn/external/ocr_tool/learning_garden/media/items?hash=xxx
 | items.title | 标题 | String |
 | items.url | 播放链接 | String |
 
-## 加入/删除生词本/摘抄
+## 生词本/摘抄记录
 
 **请求headers**
 
@@ -2557,6 +2559,7 @@ POST https://api.iflyos.cn/external/ocr_tool/notebook/get_list
 | 参数     | 类型   | 说明   | 必填 |
 | :------- | :----- | :----- | :--- |
 | type | string | 内容类型word(生词本)、text(文本摘抄) | 是 |
+| language_type | string | 语言类型：中文(chinese)、英文(english)、韩文(korean)、日文(japanese)、俄文(russian) | 是 |
 | page | integer | 页数，默认1 | 否 |
 | size | integer | 每页记录数，默认10 | 否 |
 
@@ -2618,6 +2621,41 @@ POST https://api.iflyos.cn/external/ocr_tool/notebook/delete
 ```json
 {
     "message": "删除成功"
+}
+```
+
+
+### 查询生词/摘抄记录是否存在
+
+#### 接口地址
+
+```
+POST https://api.iflyos.cn/external/ocr_tool/notebook/query_content
+```
+
+#### 请求参数
+
+| 参数     | 类型   | 说明   | 必填 |
+| :------- | :----- | :----- | :--- |
+| content | string | 单词内容 | 是 |
+| type | string | 内容类型：word(生词本)、text(文本摘抄) | 是 |
+
+#### 请求示例
+
+```json
+{
+    "content": "word",
+    "type": "text"
+}
+```
+
+#### 返回示例
+
+```json
+{
+    "id": 1, // 单词id
+    "content": "word",
+    "exist": true // 是否已被收藏
 }
 ```
 
