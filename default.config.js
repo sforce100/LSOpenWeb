@@ -46,12 +46,12 @@ module.exports = {
           label: '工具',
           position: 'left'
         },
-        {
-          activeBasePath: "/AIEcology/Manual",
-          to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
-          label: 'AI生态', 
-          position: 'left'
-        },
+        // {
+        //   activeBasePath: "/AIEcology",
+        //   to: "/AIEcology/Manual/Intro/intro", //跳转哪个目录
+        //   label: 'AI生态', 
+        //   position: 'left'
+        // },
         {
           activeBasePath: "/AIsolution",
           to: '/AIsolution/ESR/Quick_start/Scheme_introduction',
@@ -63,18 +63,32 @@ module.exports = {
           label: '行业Turnkey解决方案',
           position: 'left'
         },
+        //{
+        //  activeBasePath: "/AIEcology",
+        //  to: "/AIEcology/Linger/readme", //跳转哪个目录
+        //  label: 'AI生态', 
+        //  position: 'left'
+        //},
         {
+          type: 'custom',
+          to: '/',
+          activeBasePath: "/support",
+          label: '技术支持',
+          position: 'right'
+        },
+        {
+          to: '/FAQ/faq',
           to: '/FAQ/front_page',
           label: 'FAQ',
           position: 'right'
         },
+        // {
+        //   to: '/school/school',
+        //   label: '视频课程',
+        //   position: 'right'
+        // },
         {
-          to: '/school/school',
-          label: '视频课程',
-          position: 'right'
-        },
-        {
-          href: "/workorder/workorder",
+          to: "/workorder/workorder",
           label: "工单",
           position: 'right'
         },   
@@ -187,16 +201,6 @@ module.exports = {
           {
             to: "/Industrysolution/Posture_solution/Posture_introduction",//跳转哪个目录
             label: '坐姿检测',
-          },
-        ],
-      },
-      {
-        dirName: '/AIEcology/Manual',
-        items: [
-          {
-            activeBasePath: "/AIEcology/Manual/",
-            to: "/AIEcology/Manual/Intro/intro",
-            label: '使用文档',
           },
         ],
       },
@@ -327,6 +331,6 @@ module.exports = {
     // // ... Your other plugins.
     'listenai-analytics',
     'listenai-kf',
-    'plugin-image-zoom',
+    'plugin-image-zoom'
   ],
 };
