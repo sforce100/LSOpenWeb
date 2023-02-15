@@ -4,7 +4,7 @@
 ## 芯片介绍
 
 **CSK4002是针对AloT领域开发设计的一款高性能、算力强、功耗低、资源丰富的AISoC，可广泛应用于智能家居、智能家电、新兴消费电子行业。**
-- CSK4002采用Andes D1088内核，其AI/DSP加速模块MVA支持多种Neural Network算子和向量运算，深度适配AI算法，算力最高可达128GOPS。
+- CSK4002采用D1088内核，其AI/DSP加速模块MVA支持多种Neural Network算子和向量运算，深度适配AI算法，算力最高可达128GOPS。
 - 自带8M Flash、8M PSRAM、1M SRAM。
 - 支持8个通道的PDM音频输入和16个通道的I2S Audio Input数据处理。
 - 集成丰富的主流外设接口：GPIO/UART/I2C/SPI/QSPI/SDIO/USB1.1/SDIO等。
