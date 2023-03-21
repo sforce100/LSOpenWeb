@@ -5,6 +5,7 @@ import PipCard from '../components/PipCard';
 import Paragraph from '../components/Paragraph';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import ThemedImage from '@theme/ThemedImage';
+import AnnouncementBar from '@theme/AnnouncementBar';
 import './style.css';
 
 import MockData from './mock.json'
@@ -36,6 +37,7 @@ function Hello() {
 
     return (
         <LayoutProviders title="Hello">
+            <AnnouncementBar/>
             <Navbar />
             <div>
                 <div className="main">

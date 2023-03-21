@@ -14,6 +14,12 @@ module.exports = {
   projectName: 'LSOpenWeb', // Usually your repo name.
   organizationName: 'LISTENAI',
   themeConfig: {
+    announcementBar: {
+      content:
+        '⭐️ 新版文档中心已全面升级，点击<a target="_blank" rel="noopener noreferrer" href="https://docs2.listenai.com">此处</a>访问，内容更加丰富完整！',
+      backgroundColor: '#e6f7ff',
+      textColor: '#091E42',
+    },
     navbar: {
       title: '聆思文档中心',
       logo: {
